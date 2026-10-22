@@ -121,6 +121,26 @@ try {
   await expect(
     page.getByText("Current streak: 0 · Best streak: 0", { exact: true }),
   ).toBeVisible();
+  const longestTitle = "a".repeat(80);
+  await title.fill(longestTitle);
+  await create.click();
+  await expect(
+    page.getByRole("heading", { name: longestTitle, exact: true }),
+  ).toHaveText(longestTitle);
+  const narrowLayout = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }));
+  assert.ok(
+    narrowLayout.page <= narrowLayout.viewport,
+    `A valid 80-character unbroken habit title overflowed: page ${narrowLayout.page}px, viewport ${narrowLayout.viewport}px.`,
+  );
+  await page
+    .getByRole("button", { name: `Archive ${longestTitle}`, exact: true })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: longestTitle, exact: true }),
+  ).toHaveCount(0);
   await title.fill("Walk");
   await create.click();
   await expect(
@@ -189,10 +209,10 @@ try {
     "select count(*)::int as all_habits,count(*) filter(where archived_at is null)::int as active from habits where user_id=$1",
     [fixture.user.id],
   );
-  assert.deepEqual(stored.rows[0], { all_habits: 13, active: 10 });
+  assert.deepEqual(stored.rows[0], { all_habits: 14, active: 10 });
   await context.close();
   console.log(
-    "Habit browser smoke passed: real-session empty/create/validation, real-lock pending without optimistic rows, title clear and focus, archive feedback and focus, cap preserves title, archive frees capacity, 320px/desktop layout.",
+    "Habit browser smoke passed: real-session empty/create/validation, real-lock pending without optimistic rows, title clear and focus, archive feedback and focus, cap preserves title, archive frees capacity, 80-character unbroken title at 320px, 320px/desktop layout.",
   );
 } finally {
   await browser?.close();

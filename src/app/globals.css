@@ -109,3 +109,6 @@ section {
   border-radius: 0.75rem;
   background: #fffef8;
 }
+.habits h3 {
+  overflow-wrap: anywhere;
+}
