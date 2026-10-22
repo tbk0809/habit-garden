@@ -41,3 +41,11 @@ TypeScript 7 is outside typescript-eslint's `<6.1.0` peer range. Version 6.0.3 s
 Next 16.4.2 is beyond the 16.4.1 release fixing the October 14 security issues. A read-only npm advisory query found no results for the selected direct versions and a few known transitive versions; that is not a complete dependency audit. Audit the actual lockfile after installation. [Official security update](https://nextjs.org/blog/nextjs-security-update-october-14-2026), [Node release index](https://nodejs.org/dist/index.json).
 
 No application package has been installed at this freeze checkpoint. Keep exact direct versions and commit the resulting lockfile; do not silently upgrade versions during later tasks.
+
+## Installation evidence — 2026-10-22
+
+The scaffold commit `3f27cfe` installed the exact21 direct packages and committed a lockfile. Clean `npm ci`, format/lint/typecheck,97 unit cases, and a build with DB/OAuth variables absent passed. Missing real integration/e2e/migration/seed targets fail explicitly until implemented. npm11.19.1 did not run three unapproved esbuild postinstall scripts; bundled platform binaries worked in the demonstrated tests/build. No script approvals or global npm configuration were changed.
+
+Actual lockfile audit: `npm audit --omit=dev` reports0 findings; the full audit reports8 affected development-tool nodes across two advisories (4 high,4 moderate). Next's lint plugin reaches vulnerable braces through fast-glob/micromatch; Drizzle Kit reaches an older nested esbuild through its loader. The first advisory has no published patch and concerns attacker-controlled deeply nested glob patterns; the second concerns esbuild's development server. Repository lint patterns are controlled configuration, and this app uses Next's server without starting an esbuild serve endpoint. These usage limits reduce exposure but do not make the full audit clean. [braces advisory](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm), [esbuild advisory](https://github.com/advisories/GHSA-67mh-4wv8-2f99).
+
+Retain the reviewed versions, do not apply npm's suggested major downgrades, keep lint/build jobs unprivileged and time-bounded, and recheck available compatible fixes before CI/release. This is a documented development-tool limitation; no claim is made that all dependencies are free of vulnerabilities.

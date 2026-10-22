@@ -329,3 +329,124 @@
 - Result: formatting exit 0; log hash preserved; document links still resolve. Worker installed214 packages/audited215 and captured initial real behavioral red tests (82 failed/15 passed of97 against neutral stubs); green implementation and final application checks remain pending. npm reported8 vulnerabilities (4 moderate/4 high), with exact-path assessment still in progress.
 - Commit: pending separate documentation-format commit; app worker owns functional files and will keep shared documentation unstaged.
 - Problems / follow-ups: Finish unit green/lint/type/build and inspect actual audit paths; no DB/e2e/OAuth/CI/deployment result exists yet. Do not infer a product failure from the deliberate red run or a product pass from installation.
+
+## Step 34: Record the documentation commit and actual dependency audit paths
+- Time: 2026-10-22 20:54:32 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Recorded the completed documentation-format commit and handed its hash to the functional worker as the correct code-review base. Read the generated npm audit JSON: its eight reported nodes are in the Next ESLint glob chain and Drizzle Kit's esbuild loader chain. The worker reports97 domain cases now green; final static/build checks and production-only audit are still running.
+- Why: Keep review ranges accurate when independent documentation bookkeeping commits occur, and assess real dependency paths rather than applying npm's suggested major downgrades blindly.
+- Files created/changed: ignored progress ledger, GIT_FILE.md.
+- Commands run: read-only generated npm audit JSON metadata/nodes; commit hash inspection already captured after commit; worker gate status; clock.curr_time; apply_patch.
+- Result: docs commit exists; audit JSON confirms4 moderate/4 high/0 critical reports across8 package nodes. Known paths are @next/eslint-plugin-next→fast-glob→micromatch→braces and drizzle-kit→@esbuild-kit/esm-loader→core-utils→nested esbuild. Production-only conclusions and full functional gates are not yet verified. No dependency upgrade/downgrade or override was applied.
+- Commit: 2d99a0d5aaf245d36a7e60d787b54207f4ff6f36 — docs: format approved specifications and record verified setup.
+- Problems / follow-ups: Finish/report exact green and quality/build/audit evidence, independently review the functional diff, then proceed to task4. No local DB or application acceptance is claimed yet.
+
+## Step 35: Verify the committed scaffold and test-first pure domain results
+- Time: 2026-10-22 20:59:15 +08:00 (Asia/Kuala_Lumpur; verified clock at committed-diff packaging).
+- Phase: 1 Build
+- What I did: Read the complete scoped worker report, initial red summary and actual production/full audit JSON, confirmed the functional commit/file list, and generated the exact diff for a separate spec/quality reviewer. Recorded actual installation/gate results and the two development-tool advisory chains in the dependency evidence.
+- Why: Distinguish verified scaffold/domain behavior from the still-missing database/features/browser/release acceptance, and evaluate remaining audit exposure from real paths and primary advisories.
+- Files created/changed:29 committed application/config/test files from the worker; docs/07-dependency-pins.md, STATUS.md, GIT_FILE.md; ignored report/audit/review artifacts.
+- Commands run: worker npm ci, npm ls --depth=0, format:check, lint, typecheck (next typegen + tsc), test:unit, DB/OAuth-free build, explicit unavailable-target commands, full/omit-dev audits; coordinator read report/audit output, git show --stat, exact-range review-package, official advisory reads, clock.curr_time.
+- Result: clean install and all applicable scoped gates exit0;97/97 units pass after82 failed/15 passed red evidence. No missing suite was passed: integration/e2e/migrate/seed each exit1; aggregate npm test exits1 after units. Production audit0; full audit8 dev-tool nodes across two advisories. npm did not run unapproved esbuild postinstall scripts; actual packaged binaries worked. Independent functional review is pending.
+- Commit:3f27cfe31f8f39d6288558322dd7eb52977d991b — feat: establish typed app and tested garden rules; parent2d99a0d5.
+- Problems / follow-ups: Resolve any review findings, then implement real PostgreSQL/migrations/guarded fixtures and integration tests. Keep lint patterns controlled, do not expose an esbuild development server, and recheck compatible dev-tool fixes before CI/release. Full app/check.sh/OAuth/CI/deployment remain unverified.
+
+## Step 36: Accept the independent scaffold/domain review and advance to real PostgreSQL
+- Time:2026-10-22 21:08:27 +08:00 (Asia/Kuala_Lumpur; verified clock before the progress update).
+- Phase:1 Build
+- What I did:A separate reviewer read the exact functional diff, contracts, raw red evidence and worker report, returning spec PASS and quality PASS for tasks2–3 without actionable scoped defects. Marked the task pair complete and dispatched the data-foundation task with the approved schema/guards/permission requirements.
+- Why:Advance after source and demonstrated behavior match the handoff; keep DB/browser/provider/release work distinct from unit/build success.
+- Files created/changed:STATUS.md, AGENTS.md, docs/05-task-breakdown.md progress, ignored ledger/brief, GIT_FILE.md.
+- Commands run:independent read-only review; contract/type inspection; clock.curr_time; apply_patch; scoped text updates and Prettier. Initial patch failed to match Prettier-padded table rows and made no partial edits; content-value replacements corrected the update.
+- Result:3f27cfe reviewed clean for five pure contracts, lazy/redacted configuration, exact pins and97 meaningful cases. Task4 now in progress; no real database or full app acceptance claimed. Status now accurately names existing commits. Document patch context failure was corrected without code changes.
+- Commit:3f27cfe31f8f39d6288558322dd7eb52977d991b reviewed; no new app commit for review.
+- Problems / follow-ups:Implement/review real schema/migrations/guards/local seed and adapter/constraint/permission integration tests. Maintain local-first priority; Neon remains deferred by user.
+
+## Step 37: Clarify seed isolation while the database foundation is implemented
+- Time:2026-10-22 21:15:38 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase:1 Build
+- What I did:Resolved the worker's seed-test boundary question: public seed CLI remains exact loopback habit_garden_dev with explicit confirmation; its deterministic fixture engine may be called with an already-connected client by either the dev-guarded CLI or the separately verified disposable habit_garden_test harness. The test CLI receives no production/test bypass flag. Read current project container status only.
+- Why:Exercise fixture idempotency/conflict/rollback against real disposable PostgreSQL without violating the rule that tests never reset or use the development DB. This is internal layering within the approved seed/test rules, not new product behavior.
+- Files created/changed:GIT_FILE.md; database worker owns its in-progress Compose/schema/tests/runner files.
+- Commands run:controller response to worker contract question; docker compose ps --format json (current project only); clock.curr_time; append log.
+- Result:Seed boundary clarified before implementation. Worker reported original dev port55432 occupied, selected checked free55434 and test55433 without touching unrelated data; actual schema/seed/integration results remain pending. No cloud action or repeated login request.
+- Commit:none for this clarification; latest functional commit3f27cfe remains reviewed baseline.
+- Problems / follow-ups:Require guard refusal before connection/write, fixture conflict rollback on disposable DB, and explicit safe dev seed reruns separately; complete real database tests and review before auth/features.
+
+## Step 38: Close resolved environment issues without touching database implementation
+- Time: 2026-10-22 21:26:37 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Added explicit resolution notes for the now-working Docker engine, project-only port conflict handling, the corrected document patch context, and the recovered dependency download. Kept the historical failure evidence and runtime backups intact while the database worker finishes its scoped tests.
+- Why: Let the next session distinguish old failures from current blockers and avoid repeating completed environment troubleshooting or changing unrelated listeners/data.
+- Files created/changed: ERRORS.md, GIT_FILE.md.
+- Commands run: prior verified engine/Compose and install evidence reconciliation; current execution-ledger report presence check; clock.curr_time; apply_patch; pinned Prettier on ERRORS.md.
+- Result: known environment/setup failures have accurate resolved status. Database worker reports real integration progress but has not yet delivered its final commit/report; no new app test or acceptance pass is inferred from this bookkeeping.
+- Commit: none for this documentation step; database worker retains ownership of its code/config/tests.
+- Problems / follow-ups: Finish and review task4's actual migrations/permissions/guarded fixture evidence, then continue auth and feature steps in order.
+
+## Step 39: Verify the committed PostgreSQL foundation evidence and request independent review
+- Time: 2026-10-22 21:30:32 +08:00 (Asia/Kuala_Lumpur; verified clock at report/diff packaging).
+- Phase: 1 Build
+- What I did: Read the complete database worker report and committed file summary, generated the exact c152076 diff, and dispatched a separate read-only data/security/spec reviewer. Recorded actual local image/ports, schema/permissions/migration/seed and test outcomes while leaving task4 acceptance pending review.
+- Why: Establish real PostgreSQL evidence before relying on persistence for auth/features, with destructive-test/seed safety and migration locking independently assessed.
+- Files created/changed: 26 committed task4 files from worker; STATUS.md, GIT_FILE.md; ignored implementation report/review package.
+- Commands run: worker Docker pull/health/version, Drizzle generation/check, dev migration and explicit seed twice, unit/integration/format/lint/typecheck and runtime-env-free build; coordinator report read, git show --stat, exact review-package, clock.curr_time, apply_patch.
+- Result: PostgreSQL17.11 matches pinned linux/amd64 digest; dev55434/test55433 healthy with separate volumes. One dev migration and two guarded seed runs passed without dev reset; 110 unit and 13 real integration cases plus applicable static/build gates passed. Unsafe CLI probes made zero connections; runtime permissions, adapter UUID/property defaults, migration lock/hash and fixture conflicts were exercised. Final independent review is pending; no auth/service/browser/app acceptance yet.
+- Commit: c1520766872a0f0d72914f1bfbeb1a62c5d39691 — feat: add postgres schema migrations and local fixtures; base3f27cfe.
+- Problems / follow-ups: Resolve review findings and any recorded layout/document deviations, then begin task5. Real GitHub OAuth keys/login and full check.sh/browser/CI/deployment remain unverified; Neon remains deferred.
+
+## Step 40: Apply the independent database layout finding to the approved specification
+- Time: 2026-10-22 21:35:02 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: The independent reviewer approved database correctness/quality but found one specification issue: schema/fixtures/root drizzle artifacts did not follow the approved src/db/schema, src/db/seed and src/db/migrations layout. Dispatched a scoped first fix round to restore those paths and update imports/config/runner references, preserving SQL bytes and applied hashes.
+- Why: Keep the implementation aligned with the approved handoff instead of creating duplicate future data entry points or silently revising architecture. This fixes code to the existing decision; no product/stack approval is needed.
+- Files created/changed: ignored review/progress artifacts, GIT_FILE.md; original worker owns the pending scoped layout fix.
+- Commands run: independent read-only review of c152076; scoped fix dispatch with affected-check requirements; clock.curr_time; append log.
+- Result: no database logic/permission blocker was identified. Task4 remains in review until relocation, actual aggregate/static/build/metadata checks, no-op dev migration/seed replay and scoped re-review succeed. No development reset or SQL content change is authorized.
+- Commit: c152076 reviewed; fix commit pending.
+- Problems / follow-ups: Verify the fix with preserved migration hashes, then begin task5; authentication, feature actions, browser and full application acceptance remain pending.
+
+## Step 41: Verify the database layout correction without changing migration content
+- Time: 2026-10-22 21:41:27 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the appended fix report and generated the exact c152076..9b4f151 review package. Sent the original independent reviewer only its directory-layout finding and the changed import/config wiring for re-review. Corrected stale status statements that still said database checks had never run.
+- Why: Restore the approved architecture without changing the applied migration or repeating a broad review of unchanged database logic.
+- Files created/changed: eleven scoped files in worker commit9b4f151 (five byte-identical moves); STATUS.md, GIT_FILE.md; ignored fix report/review diff.
+- Commands run: worker format:check, lint, typecheck, npm test, drizzle-kit check, development db:migrate and guarded seed replay, credential-free build, SQL SHA256 before/after; coordinator report read and review-package c152076..9b4f151.
+- Result: approved src/db/schema, src/db/migrations and src/db/seed paths restored. SQL SHA256 unchanged213B38D7EC85B372C41AA46E931C87578E720E33F74DAA2E730E178C81472A48; development applied0 migrations, seed replay passed without overwrite. All scoped gates pass including110 unit and13 real PostgreSQL cases. Re-review remains pending; no app acceptance inferred.
+- Commit: 9b4f151b26afdfb602fdcaddd7c17dfae4fadc30 — refactor: align database files with approved architecture.
+- Problems / follow-ups: accept task4 only after scoped re-review; then implement task5 auth/onboarding. Browser/provider/check.sh/cloud acceptance remain outstanding; Neon remains deferred by user.
+
+## Step 42: Accept task4 and continue authentication/onboarding implementation
+- Time: 2026-10-22 21:42:43 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Accepted independent spec/quality PASS for the scoped layout correction, marked task4 complete and dispatched task5 from exact reviewed head9b4f151. Updated entry state/checklist to auth, protected routes, database sessions and atomic timezone/garden initialization.
+- Why: Continue the approved local build after resolving the only database spec finding; preserve the user's local-first priority and distinguish normal test sessions from actual provider OAuth.
+- Files created/changed: STATUS.md, AGENTS.md, docs/05-task-breakdown.md, GIT_FILE.md; ignored task ledger/brief/report target.
+- Commands run: independent read-only c152076..9b4f151 re-review; task5 dispatch; scoped record updates and pinned Prettier.
+- Result: task4 spec/quality clean with no remaining findings. Task5 implementation started; no provider authorization, external credential creation or hosted resource action performed. Existing database checks are accepted without redundant repeats.
+- Commit: accepted9b4f151b26afdfb602fdcaddd7c17dfae4fadc30; task5 has no commit yet.
+- Problems / follow-ups: implement and review task5 before habits/completion. Real GitHub OAuth still needs actual local app keys; Neon deferred, full browser/check.sh/cloud gates pending.
+
+## Step 43: Reconcile the interrupted project with source and the original brief
+- Time: 2026-10-22 21:48:26 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the supplied original prompt, current status, actual Git history and uncommitted files. Dispatched independent read-only database and prompt-coverage audits, then resumed task5 from its interrupted input-validation RED stub using the existing approved brief.
+- Why: The user requested a fresh check because database-foundation context was compacted; source and fresh commands must establish the baseline. Existing approval and local-first/Neon-later decisions remain valid.
+- Files created/changed: GIT_FILE.md; ignored execution ledger; task5 worker owns pending application/test changes.
+- Commands run: scoped Get-Content/rg inventory; git status --short; git log -5 --oneline; clock.curr_time; independent audit and implementation dispatch.
+- Result: HEAD is 9b4f151; tasks1–4 have committed implementations, while task5 contains only an unfinished validator and test at this checkpoint. docs/06-prompt-audit.md and several document introductions still describe the earlier design checkpoint and need current-state corrections. Fresh database verification is in progress; no previous test count is claimed as a fresh pass.
+- Commit: none for this recovery/audit dispatch; reviewed baseline 9b4f151.
+- Problems / follow-ups: Finish independent foundation verification and update the prompt gap map; implement and review task5 before dependent feature work. Real OAuth, full local acceptance, CI and hosting remain unverified; no quota-resume work resumed.
+
+## Step 44: Revalidate the database foundation and correct the current requirement map
+- Time: 2026-10-23 01:38:16 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Resumed after the agent usage-limit interruption, checked that task5 had left only its original RED stub, and completed the independent source/prompt audits. Corrected current-state prose in the README, prompt audit, gates, plan footer, PRD and entry routing while preserving historical log entries.
+- Why: Compact-era reports and stale Phase0 text must not be mistaken for either missing completed work or passing full application acceptance. Preserve the reviewed database baseline and continue task5 without repeating setup or approvals.
+- Files created/changed: AGENTS.md, STATUS.md, README.md, PRD.md, GATES.md, docs/05-task-breakdown.md, docs/06-prompt-audit.md, GIT_FILE.md; formatting of existing pending ERRORS.md/docs/07-dependency-pins.md records; ignored audit report/ledger.
+- Commands run: git status/log; scoped source/prompt/document reads; reviewer explicit .tools/node-v24.22.1-win-x64/node.exe with PATH pinned for unit/integration and Drizzle check; pinned Prettier on current documents.
+- Result: fresh Node24 evidence is 110/110 existing unit cases, 13/13 isolated PostgreSQL integration cases, and Drizzle check passing. Independent database source review found no foundation blocker. The task5 RED stub was separately observed to reject a valid timezone; it is unfinished work, not a database regression. Sandbox Docker access denial was treated as a host boundary, with no environment repair or data reset outside the guarded test DB. Prior agents hit a usage limit; no code was lost and no quota-resume work was performed.
+- Commit: pending docs-only commit after scoped checks; application baseline remains 9b4f151.
+- Problems / follow-ups: Finish/review task5, then habits/completion and full local acceptance; actual provider OAuth, CI, hosting and live URL remain pending. No new product, dependency or billing decision required.

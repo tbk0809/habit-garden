@@ -1,6 +1,6 @@
 # Phase 0 — Ordered implementation checklist
 
-Status: **entry approval granted; task 1 prerequisites/specification verified 2026-10-22; scaffold/domain next**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
+Status: **entry approval granted; tasks1–4 reviewed/verified 2026-10-22; task5 auth/onboarding in progress**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
 
 ## Entry gate and execution rules
 
@@ -25,32 +25,32 @@ Run the complete `bash check.sh` gate after integrated features and before any b
 - [x] Recorded granted approval and created approved PROJECT_FRAME/FLOWS/FRONTEND_HANDOFF/GATES records; execution log appended at each step.
 - [x] Froze reviewed exact compatible packages and Node patch in `07-dependency-pins.md`; actual install/tests remain next. Auth.js beta risk was approved; no auth/storage replacement selected.
 
-Future verification: runtime version probes, Git working-tree inspection, `docker info`, Bash execution. No application lint/tests exist yet. Proposed commit once Git works: `docs: record approved habit garden design`.
+Completed evidence: runtime/Git/Bash/Docker probes and approved records; committed as `aa36bd2` and `2d99a0d`. Application checks were introduced in subsequent tasks.
 
 ### 2. Scaffold the minimal typed app and developer gates
 
-- [ ] Create Next.js App Router structure from `02-architecture.md`, TypeScript strict configuration, CSS Modules, explicit ESLint and Prettier commands, Vitest/Playwright config, lockfile, and runtime version pins.
-- [ ] Add `.gitignore` for secrets, browser auth state, local DB data, build/deploy artifacts; `.env.example` with placeholders; lazy runtime env validation and no DB network at import/build.
-- [ ] Define `format:check`, `lint`, `typecheck`, `test:unit`, `test:integration`, `test`, `build`, `test:e2e`, `db:migrate`, and `db:seed` scripts with safe targets. Add `check.sh` only when its constituent meaningful checks exist; absent prerequisites must fail, not silently skip.
-- [ ] Continue directly to Step 3's domain tests before the first functional commit if the scaffold alone has no meaningful test target.
+- [x] Create Next.js App Router structure from `02-architecture.md`, TypeScript strict configuration, CSS Modules, explicit ESLint and Prettier commands, Vitest/Playwright config, lockfile, and runtime version pins.
+- [x] Add `.gitignore` for secrets, browser auth state, local DB data, build/deploy artifacts; `.env.example` with placeholders; lazy runtime env validation and no DB network at import/build.
+- [x] Define `format:check`, `lint`, `typecheck`, `test:unit`, `test:integration`, `test`, `build`, `test:e2e`, `db:migrate`, and `db:seed` scripts with safe targets. Add `check.sh` only when its constituent meaningful checks exist; absent prerequisites must fail, not silently skip.
+- [x] Continue directly to Step 3's domain tests before the first functional commit if the scaffold alone has no meaningful test target.
 
 Future commands: `npm ci`, `npm run format:check`, `npm run lint`, `npm run typecheck`; `npm run build` with DB/OAuth config absent. Proposed commit together with tested scaffold/domain: `feat: establish typed app and tested garden rules`.
 
 ### 3. Implement and test pure date, streak, and growth rules
 
-- [ ] Implement validated civil-date values and the five domain contracts from `01-data-design.md` with no runtime clock/framework/DB imports.
-- [ ] Test first/consecutive/missed/duplicate/expiry cases, month/year/leap dates, stage boundaries, unlock zero-points, and mature cap. Timezone conversion is not a pure-domain clock dependency.
-- [ ] Verify no undo/backfill/reactivation, random plants, placement editor, schedule feature, or separately stored stage has entered scope.
+- [x] Implement validated civil-date values and the five domain contracts from `01-data-design.md` with no runtime clock/framework/DB imports.
+- [x] Test first/consecutive/missed/duplicate/expiry cases, month/year/leap dates, stage boundaries, unlock zero-points, and mature cap. Timezone conversion is not a pure-domain clock dependency.
+- [x] Verify no undo/backfill/reactivation, random plants, placement editor, schedule feature, or separately stored stage has entered scope.
 
 Future commands: format/lint/typecheck + `npm run test:unit`; run integration only when a real DB suite exists, recording its earlier absence. Proposed commit if separate from scaffold: `feat: implement deterministic streak and growth rules`.
 
 ### 4. Add local PostgreSQL, schema, reviewed migrations, and safe seed
 
-- [ ] Add `docker-compose.yml` for a pinned official PostgreSQL image, loopback port, named volume, health check, explicit local-only credentials, and no destructive reset command in ordinary setup.
-- [ ] Add nine Drizzle tables, keys/checks/partial indexes/immutable guards, adapter mappings, runtime/migration roles, and four fixed catalog rows via reviewed migration.
-- [ ] Add one-session advisory-lock migration runner and migration journal, plus guarded idempotent local seed with two fictional users. Repeated seed must not overwrite conflicting data; no production seed/reset code path.
-- [ ] Test migrations from empty DB and repeat no-op, ownership FKs, immutable histories/timezone, role privileges, and seed target guards against hosted/ambiguous DBs.
-- [ ] Document real local OAuth needs separately from seeded users. Test fixtures use a distinct disposable DB, not the developer DB volume.
+- [x] Add `docker-compose.yml` for a pinned official PostgreSQL image, loopback port, named volume, health check, explicit local-only credentials, and no destructive reset command in ordinary setup.
+- [x] Add nine Drizzle tables, keys/checks/partial indexes/immutable guards, adapter mappings, runtime/migration roles, and four fixed catalog rows via reviewed migration.
+- [x] Add one-session advisory-lock migration runner and migration journal, plus guarded idempotent local seed with two fictional users. Repeated seed must not overwrite conflicting data; no production seed/reset code path.
+- [x] Test migrations from empty DB and repeat no-op, ownership FKs, immutable histories/timezone, role privileges, and seed target guards against hosted/ambiguous DBs.
+- [x] Document real local OAuth needs separately from seeded users. Test fixtures use a distinct disposable DB, not the developer DB volume.
 
 Future commands: `docker compose up -d db`, `npm run db:migrate`, explicit guarded `npm run db:seed`, and format/lint/typecheck/unit/integration. Proposed commit: `feat: add postgres schema migrations and local fixtures`.
 
@@ -134,4 +134,4 @@ Future verification: actual workflow/deployment links and read-only live checks 
 
 ## Phase 0 exit status
 
-Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22; continue at Phase 1 task 1. The app remains unbuilt, undeployed, and untested. Local Git/Bash/Docker readiness, Auth.js compatibility, exact dependency versions, and Vercel no-card onboarding remain follow-ups. Public-source and personal/noncommercial assumptions are now explicitly approved.
+Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–4 are implemented and reviewed; continue at task5. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.

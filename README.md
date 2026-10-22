@@ -2,7 +2,7 @@
 
 Habit Tracker That Grows a Garden: completing daily habits grows plants, builds streaks, and unlocks a small virtual garden.
 
-**Current checkpoint: Phase 1 scaffold/domain implementation next. No application has been built or deployed.** On 2026-10-22 the user approved Phase 0/P0/acceptance/dependency proposals, explicitly authorized coding, confirmed personal noncommercial use, and allowed a personal public source repository. Git/Bash, project-local Node 24.22.1, and Docker Linux readiness are verified.
+**Current checkpoint: Phase 1 task5, authentication and timezone onboarding.** The typed scaffold, pure domain rules, local PostgreSQL schema, migrations and guarded seed are implemented. The application is still under construction; full local acceptance and deployment remain pending. On 2026-10-22 the user approved Phase 0/P0/acceptance/dependencies, coding, personal noncommercial use and personal public source publication. Current evidence and remaining work are in [STATUS](STATUS.md) and the [prompt audit](docs/06-prompt-audit.md).
 
 ## Review the proposal
 
@@ -19,17 +19,17 @@ Habit Tracker That Grows a Garden: completing daily habits grows plants, builds 
 | [Current status](STATUS.md) / [environment issues](ERRORS.md)                                     | Resumption point and prerequisites.                                                                |
 | [Original-prompt audit](docs/06-prompt-audit.md)                                                  | 2026-10-22 requirement coverage, remaining work, current environment probes, and approval choices. |
 | [Dependency freeze](docs/07-dependency-pins.md)                                                   | Exact compatible package/runtime pins and current support/security sources.                        |
-| [Interaction flows](FLOWS.md) / [implementation handoff](FRONTEND_HANDOFF.md) / [gates](GATES.md) | Approved implementation contracts and required evidence; still unimplemented.                      |
+| [Interaction flows](FLOWS.md) / [implementation handoff](FRONTEND_HANDOFF.md) / [gates](GATES.md) | Approved implementation contracts and required evidence.                                           |
 
 ## Proposed implementation
 
-Next.js/TypeScript and PostgreSQL are required. The proposal adds Drizzle, Auth.js with GitHub OAuth/database sessions, Zod, Vitest, Playwright, and authored SVG/CSS. Local PostgreSQL will run through Docker Compose with guarded demo seed data. Production proposes independently provisioned Neon Free plus Vercel Hobby and a personal public GitHub repository, subject to approval and actual no-card eligibility.
+The approved stack is Next.js/TypeScript, PostgreSQL, Drizzle, Auth.js with GitHub OAuth/database sessions, Zod, Vitest, Playwright and authored SVG/CSS. Docker Compose supplies separate local development and disposable test databases. Production proposes independently provisioned Neon Free plus Vercel Hobby and a personal public GitHub repository; actual no-card provisioning and access still require verification. The user chose to finish the local application before Neon setup.
 
-Auth.js currently documents a beta Next.js package. Exact compatible package/runtime versions must be checked and pinned before installation. Vercel standalone no-card project creation has not been verified through a real account; no Marketplace integration or payment method is permitted.
+Exact versions are pinned in the lockfile and [dependency record](docs/07-dependency-pins.md), including the approved Auth.js beta. Vercel standalone no-card project creation has not been verified through a real account; no Marketplace integration or payment method is permitted.
 
 ## Setup, run, test, and deployment status
 
-The typed scaffold, environment template, scripts and pure-domain tests are being implemented. Their commands are not yet verified setup instructions. Compose, migrations, seed, real feature services, browser acceptance, workflows, `check.sh`, and a live URL remain later tasks.
+The scaffold, environment template, Compose, migrations, guarded seed and unit/real-PostgreSQL test commands exist. Tasks2–4 have scoped verification evidence. Authentication is in progress; habit services, complete garden UI, Playwright acceptance, workflows, `check.sh` and a live URL remain pending. Database-foundation tests do not prove login or complete application behavior.
 
 Phase 1 will add the actual local setup/env/run/test instructions and `.env.example` with placeholders only. Phase 2 will add verified free-account/OAuth/secret instructions and CI/deployment evidence. Until `bash check.sh` and the relevant acceptance checks actually pass, the application must not be called complete.
 

@@ -1,6 +1,6 @@
 # Habit Garden — acceptance gates
 
-Date: 2026-10-22, Asia/Kuala_Lumpur. P0 and AC01–AC12 are approved. **At this document checkpoint `check.sh` has not been created or run. Application format/lint/typecheck/tests/build, real OAuth, and deployment acceptance have not passed.** This file specifies required future evidence; document creation is not application acceptance.
+Updated: 2026-10-23, Asia/Kuala_Lumpur. P0 and AC01–AC12 are approved. Tasks2–4 have scoped format/lint/typecheck/unit/real-PostgreSQL/build evidence in [STATUS](STATUS.md) and [GIT_FILE](GIT_FILE.md). **The complete application gate remains pending: `check.sh` and browser journeys do not yet exist, and real OAuth, CI and deployment have not passed.** The requirements below define the remaining acceptance evidence.
 
 ## Local prerequisites and command contract
 

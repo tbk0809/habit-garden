@@ -30,7 +30,7 @@ Custom schedules, habit editing/reactivation, backfill, undo, reminders, social 
 
 ## Observable acceptance
 
-All items below are **pending implementation and verification**.
+All items below remain **pending end-to-end acceptance**. Pure domain rules and the database foundation are implemented with scoped tests; authentication and feature flows are still being built. See [STATUS](STATUS.md) for current evidence.
 
 | ID   | Acceptance condition                                                                                                                                                                                                                                       |
 | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
