@@ -11,3 +11,101 @@
 body {
   margin: 0;
 }
+
+.shell {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 5vw, 4rem);
+}
+.entry {
+  max-width: 44rem;
+  padding-top: clamp(3rem, 10vw, 7rem);
+}
+h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+p {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.eyebrow,
+.muted {
+  color: #49644e;
+  font-size: 0.875rem;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+a {
+  color: #295c35;
+}
+button,
+input {
+  font: inherit;
+  min-height: 2.75rem;
+  border-radius: 0.5rem;
+}
+button {
+  border: 1px solid #2d5835;
+  padding: 0.65rem 1rem;
+  color: #fff;
+  background: #2d5835;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+button.secondary {
+  background: transparent;
+  color: #295c35;
+}
+input {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border: 1px solid #607864;
+  background: #fff;
+  color: #263b2a;
+}
+label {
+  font-weight: 600;
+}
+:focus-visible {
+  outline: 3px solid #955c15;
+  outline-offset: 4px;
+}
+form {
+  margin: 1.5rem 0;
+}
+section {
+  margin: 2.5rem 0;
+}
+.page-header {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.garden,
+.habits {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.garden {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+.garden li,
+.habits li {
+  padding: 1rem;
+  border: 1px solid #b3c4ad;
+  border-radius: 0.75rem;
+  background: #fffef8;
+}

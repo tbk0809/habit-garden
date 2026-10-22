@@ -7,6 +7,7 @@ const valid = {
   AUTH_SECRET: "fictional-test-secret-with-at-least-32-characters",
   AUTH_GITHUB_ID: "fictional-client-id",
   AUTH_GITHUB_SECRET: "fictional-client-secret",
+  AUTH_URL: "http://localhost:3000",
 };
 
 describe("parseRuntimeEnv", () => {
@@ -23,6 +24,9 @@ describe("parseRuntimeEnv", () => {
     { ...valid, AUTH_GITHUB_ID: "" },
     { ...valid, AUTH_GITHUB_SECRET: " " },
     { ...valid, AUTH_GITHUB_ID: "replace_with_github_oauth_client_id" },
+    { ...valid, AUTH_URL: "https://private:password@example.com" },
+    { ...valid, AUTH_URL: "http://example.com" },
+    { ...valid, AUTH_URL: "https://example.com/api/auth" },
   ])(
     "fails closed with a safe error on invalid runtime configuration %#",
     (input) => {

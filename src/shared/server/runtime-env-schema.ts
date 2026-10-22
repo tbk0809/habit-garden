@@ -22,6 +22,23 @@ const runtimeEnvSchema = z.object({
   AUTH_SECRET: configuredString.min(32),
   AUTH_GITHUB_ID: configuredString,
   AUTH_GITHUB_SECRET: configuredString,
+  AUTH_URL: configuredString.refine((value) => {
+    try {
+      const url = new URL(value);
+      return (
+        !url.username &&
+        !url.password &&
+        !url.search &&
+        !url.hash &&
+        url.pathname === "/" &&
+        (url.protocol === "https:" ||
+          (url.protocol === "http:" &&
+            ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname)))
+      );
+    } catch {
+      return false;
+    }
+  }),
 });
 
 export type RuntimeEnv = Readonly<z.infer<typeof runtimeEnvSchema>>;

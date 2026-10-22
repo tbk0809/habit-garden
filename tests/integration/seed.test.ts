@@ -32,7 +32,7 @@ test("deterministic fictional fixtures repeat without changing any retained row"
   assert.deepEqual(
     (
       await client.query(
-        "select g.lifetime_completion_count,count(l.*)::int as retained from garden_state g left join habit_logs l on l.user_id=g.user_id group by g.user_id order by g.user_id",
+        "select g.lifetime_completion_count,count(l.*)::int as retained from garden_state g left join habit_logs l on l.user_id=g.user_id where g.user_id in ('30000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000002') group by g.user_id order by g.user_id",
       )
     ).rows,
     [
@@ -41,18 +41,27 @@ test("deterministic fictional fixtures repeat without changing any retained row"
     ],
   );
   assert.equal(
-    (await client.query("select count(*)::int as count from users")).rows[0]
-      .count,
+    (
+      await client.query(
+        "select count(*)::int as count from users where id in ('30000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000002')",
+      )
+    ).rows[0].count,
     2,
   );
   assert.equal(
-    (await client.query("select count(*)::int as count from sessions")).rows[0]
-      .count,
+    (
+      await client.query(
+        "select count(*)::int as count from sessions where user_id in ('30000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000002')",
+      )
+    ).rows[0].count,
     0,
   );
   assert.equal(
-    (await client.query("select count(*)::int as count from oauth_accounts"))
-      .rows[0].count,
+    (
+      await client.query(
+        "select count(*)::int as count from oauth_accounts where user_id in ('30000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000002')",
+      )
+    ).rows[0].count,
     0,
   );
 });

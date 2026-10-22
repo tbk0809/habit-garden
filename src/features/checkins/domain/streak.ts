@@ -1,7 +1,7 @@
 import {
   civilDaysBetween,
   type CivilDate,
-} from "../../../shared/domain/civil-date";
+} from "../../../shared/domain/civil-date.ts";
 
 export type StreakState = Readonly<{
   runLength: number;
