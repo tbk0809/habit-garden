@@ -450,3 +450,69 @@
 - Result: fresh Node24 evidence is 110/110 existing unit cases, 13/13 isolated PostgreSQL integration cases, and Drizzle check passing. Independent database source review found no foundation blocker. The task5 RED stub was separately observed to reject a valid timezone; it is unfinished work, not a database regression. Sandbox Docker access denial was treated as a host boundary, with no environment repair or data reset outside the guarded test DB. Prior agents hit a usage limit; no code was lost and no quota-resume work was performed.
 - Commit: pending docs-only commit after scoped checks; application baseline remains 9b4f151.
 - Problems / follow-ups: Finish/review task5, then habits/completion and full local acceptance; actual provider OAuth, CI, hosting and live URL remain pending. No new product, dependency or billing decision required.
+
+## Step 45: Commit the corrected progress records
+- Time: 2026-10-23 01:39:38 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Checked scoped document formatting and whitespace, then committed the current progress/prompt corrections together with the pending prior database-review records. Kept the interrupted authentication code out of this documentation commit.
+- Why: Make the recovered project state reviewable and durable before task5 continues.
+- Files created/changed: ten documentation files in c151601; GIT_FILE.md append after the commit.
+- Commands run: pinned Prettier --check for changed documents; git diff --check; scoped git add/commit, retried outside the sandbox after .git/index.lock creation was denied.
+- Result: scoped formatting/whitespace checks passed; documentation commit succeeded. Sandbox Git write denial did not require repository repair or global changes. Full app checks were not claimed for this prose-only step.
+- Commit: c151601 — docs: reconcile project progress with verified database foundation.
+- Problems / follow-ups: task5 implementation/review continues on the unchanged application baseline; real OAuth and aggregate/local/cloud acceptance remain pending.
+
+## Step 46: Close the prompt-record review and prepare the next ordered briefs
+- Time: 2026-10-23 01:39:38 +08:00 (Asia/Kuala_Lumpur; latest verified clock; work completed afterward).
+- Phase: 1 Build
+- What I did: Read the complete independent database re-audit artifact and prompt-record follow-up. Corrected two small stale phrases about the moving Git HEAD and the existing env template, and extracted exact task6/7/8 text into ignored worker briefs for use only after their dependencies pass.
+- Why: Preserve an accurate recovery map and reduce repeated broad document loading while retaining the approved linear order.
+- Files created/changed: README.md, docs/06-prompt-audit.md, GIT_FILE.md; ignored review report, briefs and execution ledger.
+- Commands run: read independent report; source/doc cross-check; Markdown link check by reviewer; PowerShell exact section extraction and literal text replacement; pinned Prettier. One padded-table patch failed atomically and was replaced with a literal text edit.
+- Result: current-state review PASS; all 41 local links in the seven reviewed documents exist. Database report confirms pinned Node24 unit110/110 and PG13/13 and no foundation blocker. Task5 owns the isolated test DB for its new RED/GREEN checks. Skill brief helper expects Task N headings; equivalent exact extraction was used for this plan's existing N. headings without changing its contents.
+- Commit: no new commit for these minor follow-ups; latest docs commit c151601.
+- Problems / follow-ups: await task5 implementation evidence, independently review its actual diff, then continue task6. Cloud and real provider checks remain pending.
+
+## Step 47: Document the local database and OAuth setup while task5 is verified
+- Time: 2026-10-23 02:16:31 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Added concrete local runtime, env-file, separate DB, migration/seed and test instructions to README, with a local OAuth callback checklist and direct official references. Kept complete browser/app/CI/deployment acceptance pending.
+- Why: The original prompt requires reproducible setup; readers should be able to distinguish fictional fixtures from real provider login and avoid resetting existing development volumes to change credentials.
+- Files created/changed: README.md, GIT_FILE.md.
+- Commands run: scoped reads of actual Compose/migrate/seed/commands; official GitHub OAuth-app registration and Auth.js GitHub callback documentation; pinned Prettier on README.
+- Result: documented commands match the implemented foundation and pending task5 environment contract. This documentation does not claim a clean-clone run or real OAuth round trip. GitHub's current registration page allows multiple callbacks while the Auth.js guide still says otherwise; no callback-count claim was copied, and separate local/production apps are described for credential separation.
+- Commit: pending with the next reviewed progress-record commit; application verification remains owned by task5 worker.
+- Problems / follow-ups: finish task5 full PG/build/smoke report and independent review before task6; complete task9 clean-clone/aggregate acceptance after the application exists.
+
+## Step 48: Record the authentication implementation evidence and dispatch independent review
+- Time: 2026-10-23 02:19:14 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the full task5 implementation report and actual scoped commit summary, generated the c151601..cca18c9 diff package and dispatched a fresh read-only spec/quality reviewer. Inspected the returned narrow-screen screenshot separately.
+- Why: Validate authentication/onboarding boundaries before dependent habit services, keeping real provider OAuth distinct from intercepted authorization and ordinary database-session fixtures.
+- Files created/changed: task5 commit includes31 application/test/env-example files; GIT_FILE.md; ignored report/diff/screenshot/ledger. Shared progress updates remain root-owned.
+- Commands run: git show --stat cca18c9; existing Git Bash review-package helper; read complete task5 report; view_image on320px screenshot. Worker ran pinned Node24 unit/PG/static/build/Edge checks as detailed in its report.
+- Result: implementation evidence reports132/132 unit and23/23 real PostgreSQL cases, lint/type/format/diff checks, credential-free production build and scoped browser smoke passing. Smoke covers protected routes, actual sign-in action intercepted before GitHub contact, onboarding,320px/no-store and failed/successful revocation. Test-role permission was restored and testDB released. Independent review remains pending; task6 not yet started. AUTH_URL is now a validated required runtime origin, with placeholders only in the example.
+- Commit: cca18c9537547f2de19c1e86727470e3efb28c50 — feat: add github sessions and timezone onboarding; review basec151601.
+- Problems / follow-ups: resolve any scoped review findings before task6. Actual OAuth authorization/token/callback remains unverified without real local app credentials. Full check.sh/e2e/CI/deployment remain pending; no cloud or quota-resume action.
+
+## Step 49: Update the resumption point to authentication review
+- Time: 2026-10-23 02:19:14 +08:00 (Asia/Kuala_Lumpur; latest verified clock; record update afterward).
+- Phase: 1 Build
+- What I did: Updated STATUS, the AGENTS state block and the prompt map from the interrupted validator stub to committed task5 implementation awaiting independent review. Preserved the separate fresh foundation audit and real-provider limitation.
+- Why: A new chat must resume at the actual current implementation/review boundary instead of redispatching the stub or treating foundation tests as full authentication evidence.
+- Files created/changed: AGENTS.md, STATUS.md, docs/06-prompt-audit.md, GIT_FILE.md.
+- Commands run: literal scoped record edits; pinned Prettier; inspected actual auth config/env-example contract.
+- Result: records now identify cca18c9 and132unit/23PG/scoped smoke as task5 implementation evidence with independent review pending. No product/acceptance threshold changed.
+- Commit: pending root progress-record commit after review; implementation cca18c9 unchanged.
+- Problems / follow-ups: independent auth review, then task6; real OAuth and complete local/cloud acceptance remain pending.
+
+## Step 50: Accept the authentication review and advance to owned habit services
+- Time: 2026-10-23 02:24:22 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Accepted review_auth spec PASS/quality PASS for cca18c9 with no blocking or quality findings. Marked local task5 complete, carried actual provider OAuth to its manual gate, updated current records to task6 and packaged its exact approved brief with the reusable task5 interfaces.
+- Why: Continue the approved linear implementation after authentication, ownership scope and initialization have independent evidence. Do not claim the missing real OAuth callback as passing.
+- Files created/changed: AGENTS.md, STATUS.md, docs/05-task-breakdown.md, docs/06-prompt-audit.md, GIT_FILE.md; pending README setup improvements; ignored task6 brief and ledger.
+- Commands run: independent scoped review of packaged diff/report and focused offset/origin probes; reviewer's git diff --check; pinned formatting of current records.
+- Result: task5 local implementation accepted.132unit/23PG/empty-env build/scoped Edge smoke results remain the exact implementation evidence; no new broad test rerun. Task6 brief reuses actual authentication/DTO/error/DB types and clarifies Unicode title length consistent with PostgreSQL. The skill helper's heading mismatch was handled by exact section extraction; no scope change.
+- Commit: implementation cca18c9 accepted; root records commit follows scoped doc checks.
+- Problems / follow-ups: implement/review task6 before completion and SVG task7. Real GitHub OAuth, full e2e/check.sh and cloud acceptance remain outstanding; no new user approval required for these local tasks.

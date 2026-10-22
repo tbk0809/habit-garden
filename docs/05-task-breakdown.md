@@ -1,6 +1,6 @@
 # Phase 0 — Ordered implementation checklist
 
-Status: **entry approval granted; tasks1–4 reviewed/verified 2026-10-22; task5 auth/onboarding in progress**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
+Status: **entry approval granted; tasks1–5 local implementation reviewed; task6 habits in progress (2026-10-23)**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
 
 ## Entry gate and execution rules
 
@@ -56,10 +56,10 @@ Future commands: `docker compose up -d db`, `npm run db:migrate`, explicit guard
 
 ### 5. Add GitHub OAuth, database sessions, and timezone onboarding
 
-- [ ] Configure Auth.js with GitHub-only OAuth and real adapter sessions, minimal scopes, no unsafe email linking, and proper cookies/sign-out. No hardcoded/test login route or auth-bypass environment flag.
-- [ ] Add authenticated boundary helpers, redacted errors, scoped repository types, and runtime-only secret validation.
-- [ ] Confirm supported IANA zone explicitly once; under user lock atomically initialize zone, garden count 0, and starter plant. Test repeat/concurrent/conflicting/missing-state cases.
-- [ ] Add test-runner-only loopback session fixtures; manually verify actual GitHub OAuth when the user's credentials are available, and record unperformed checks honestly.
+- [x] Configure Auth.js with GitHub-only OAuth and real adapter sessions, minimal scopes, no unsafe email linking, and proper cookies/sign-out. No hardcoded/test login route or auth-bypass environment flag.
+- [x] Add authenticated boundary helpers, redacted errors, scoped repository types, and runtime-only secret validation.
+- [x] Confirm supported IANA zone explicitly once; under user lock atomically initialize zone, garden count 0, and starter plant. Test repeat/concurrent/conflicting/missing-state cases.
+- [x] Add test-runner-only loopback session fixtures and scoped browser smoke; task5 commit `cca18c9` passed independent spec/quality review with132unit/23PG checks. Actual GitHub OAuth remains unverified without real credentials and is carried to the manual acceptance gate.
 
 Future commands: format/lint/typecheck + `npm test`, DB-free build, targeted browser auth/onboarding checks. Proposed commit: `feat: add github sessions and timezone onboarding`.
 
@@ -134,4 +134,4 @@ Future verification: actual workflow/deployment links and read-only live checks 
 
 ## Phase 0 exit status
 
-Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–4 are implemented and reviewed; continue at task5. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.
+Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–5 local code is implemented and reviewed; continue at task6. Actual GitHub OAuth remains a separate pending manual gate. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.
