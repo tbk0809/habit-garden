@@ -1,0 +1,11 @@
+.next/
+.tools/
+.superpowers/
+node_modules/
+package-lock.json
+next-env.d.ts
+coverage/
+playwright-report/
+test-results/
+# Preserve append-only project history.
+GIT_FILE.md

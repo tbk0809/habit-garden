@@ -12,3 +12,9 @@ test-results/
 *.tsbuildinfo
 *.log
 .DS_Store
+playwright/.auth/
+.auth/
+.data/
+postgres-data/
+*.dump
+*.sql.gz
