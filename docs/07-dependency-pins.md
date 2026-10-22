@@ -4,31 +4,31 @@ Verified 2026-10-22, Asia/Kuala_Lumpur, against the official Node release index 
 
 ## Exact versions for the first install
 
-| Runtime package | Version |
-|---|---|
-| Node.js | 24.22.1 LTS |
-| next | 16.4.2 |
-| react / react-dom | 19.3.1 |
-| next-auth | 5.0.0-beta.32 |
-| @auth/drizzle-adapter | 1.11.3 |
-| drizzle-orm | 0.45.4 |
-| pg | 8.23.1 |
-| zod | 4.6.7 |
-| server-only | 0.0.1 |
+| Runtime package       | Version       |
+| --------------------- | ------------- |
+| Node.js               | 24.22.1 LTS   |
+| next                  | 16.4.2        |
+| react / react-dom     | 19.3.1        |
+| next-auth             | 5.0.0-beta.32 |
+| @auth/drizzle-adapter | 1.11.3        |
+| drizzle-orm           | 0.45.4        |
+| pg                    | 8.23.1        |
+| zod                   | 4.6.7         |
+| server-only           | 0.0.1         |
 
-| Development package | Version |
-|---|---|
-| typescript | 6.0.3 |
-| @types/node | 24.19.2 |
-| @types/react / @types/react-dom | 19.3.0 |
-| @types/pg | 8.23.1 |
-| drizzle-kit | 0.31.11 |
-| prettier | 3.9.10 |
-| vitest | 5.0.5 |
-| @playwright/test | 1.64.1 |
-| eslint | 10.13.0 |
-| typescript-eslint | 8.72.0 |
-| @next/eslint-plugin-next | 16.4.2 |
+| Development package             | Version |
+| ------------------------------- | ------- |
+| typescript                      | 6.0.3   |
+| @types/node                     | 24.19.2 |
+| @types/react / @types/react-dom | 19.3.0  |
+| @types/pg                       | 8.23.1  |
+| drizzle-kit                     | 0.31.11 |
+| prettier                        | 3.9.10  |
+| vitest                          | 5.0.5   |
+| @playwright/test                | 1.64.1  |
+| eslint                          | 10.13.0 |
+| typescript-eslint               | 8.72.0  |
+| @next/eslint-plugin-next        | 16.4.2  |
 
 Vite is Vitest's required peer; npm will resolve and lock its compatible transitive version. No separate script runner is needed: the approved Node 24 runtime can execute the limited TypeScript syntax used by local scripts.
 

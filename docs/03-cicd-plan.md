@@ -10,10 +10,10 @@ Actual Vercel standalone no-card onboarding remains unverified. If any service r
 
 ## Required workflow shape
 
-| File/job | Trigger and responsibility |
-|---|---|
-| `.github/workflows/ci.yml` — quality | Every pull request and every push to `main`; check out the exact event SHA and run all application gates against ephemeral PostgreSQL. Main is tested again; a PR success alone is insufficient. |
-| `.github/workflows/ci.yml` — production handoff | Only after quality succeeds on a trusted same-repository `push` to `refs/heads/main`; call the local reusable deploy workflow with the exact tested SHA. |
+| File/job                                                 | Trigger and responsibility                                                                                                                                                                                                                    |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.github/workflows/ci.yml` — quality                     | Every pull request and every push to `main`; check out the exact event SHA and run all application gates against ephemeral PostgreSQL. Main is tested again; a PR success alone is insufficient.                                              |
+| `.github/workflows/ci.yml` — production handoff          | Only after quality succeeds on a trusted same-repository `push` to `refs/heads/main`; call the local reusable deploy workflow with the exact tested SHA.                                                                                      |
 | `.github/workflows/deploy.yml` — reusable production job | Callable only by the trusted main CI path; protected `production` environment; validate source/caller/check results; run one serialized migration→stage→smoke→promote→smoke release. No untrusted PR caller or production secrets in PR jobs. |
 
 Avoid privileged `pull_request_target` execution, privileged `workflow_run` checkout of untrusted artifacts, arbitrary branch deploy inputs, or building a PR with production credentials. Deployment code must come from the tested trusted main commit. A manual retry reruns the trusted main workflow, repeats checks and stale-main validation, and still passes the production environment gate.
@@ -40,13 +40,13 @@ One quality result must require all gates. Set bounded job/test timeouts and clo
 
 ## Secrets and role separation
 
-| Location | Proposed values | Boundary |
-|---|---|---|
-| Committed `.env.example` | Placeholder local DB URL, test DB URL, OAuth client IDs/secrets, Auth.js secret, app URL; documented required/optional fields | No real password/token/endpoint with credentials. Dev-only sample DB credential is labeled local/disposable and is never reused in cloud. |
-| Local ignored `.env.local` | Local runtime DB URL, local OAuth app credentials and local Auth.js secret | Created by the user; never logged, uploaded, or committed. |
-| Vercel production environment | Pooled least-privilege runtime DB URL; production GitHub OAuth credentials; Auth.js secret; canonical app URL | Runtime only; no migration-owner credentials, seeds, reset flags, test sessions, or provider repository scopes. |
+| Location                                  | Proposed values                                                                                                                 | Boundary                                                                                                                                                                                      |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Committed `.env.example`                  | Placeholder local DB URL, test DB URL, OAuth client IDs/secrets, Auth.js secret, app URL; documented required/optional fields   | No real password/token/endpoint with credentials. Dev-only sample DB credential is labeled local/disposable and is never reused in cloud.                                                     |
+| Local ignored `.env.local`                | Local runtime DB URL, local OAuth app credentials and local Auth.js secret                                                      | Created by the user; never logged, uploaded, or committed.                                                                                                                                    |
+| Vercel production environment             | Pooled least-privilege runtime DB URL; production GitHub OAuth credentials; Auth.js secret; canonical app URL                   | Runtime only; no migration-owner credentials, seeds, reset flags, test sessions, or provider repository scopes.                                                                               |
 | GitHub protected `production` environment | Vercel token/project/team IDs; direct Neon migration URL; project automation bypass secret if deployment protection requires it | Available only after environment approval in trusted deployment job. Use a dedicated migration role and short-lived/scoped credentials where the service supports them without paid features. |
-| CI quality job | Ephemeral PostgreSQL credentials; generated temporary test session secret; test-only loopback app URL | No production identity/service secrets or paid infrastructure. |
+| CI quality job                            | Ephemeral PostgreSQL credentials; generated temporary test session secret; test-only loopback app URL                           | No production identity/service secrets or paid infrastructure.                                                                                                                                |
 
 Use GitHub's secret masking but do not rely on it to sanitize SQL/tool errors; redact connection URLs and tokens explicitly. Never echo env files or pass secrets to URL query parameters, cache keys, artifact names, or PR comments. Do not add an integration requiring a payment method or paid deployment-protection bypass.
 

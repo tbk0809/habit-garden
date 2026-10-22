@@ -8,18 +8,18 @@ Habit Garden is a personal, noncommercial habit tracker: a signed-in person crea
 
 User requirements already fix Next.js, TypeScript, PostgreSQL, local Docker Compose, seed data, free services, tests, and CI/CD. Other choices below require approval with this document. They have not been installed or configured.
 
-| Decision | Proposed choice | Reason and boundary |
-|---|---|---|
-| Application | One Next.js App Router monolith | One deployable unit and one authorization boundary; no separate API server or microservices. |
-| Runtime | Node.js 24 LTS, exact supported patch pinned during Phase 1 | Local Node 25 is not the deployment baseline. Confirm the current Next.js/Vercel compatibility matrix before the first install. |
-| SQL and migrations | Drizzle ORM + Drizzle Kit + `pg` | Explicit PostgreSQL constraints, reviewable SQL, small typed data layer, and a single-session migration lock. See `01-data-design.md`. |
-| Authentication | Auth.js, GitHub OAuth only, Drizzle adapter, database sessions | No password storage or paid email. Auth.js currently documents `next-auth@beta`; this is a material dependency risk, not a claim of a stable v5 release. Freeze a reviewed compatible exact version set in Phase 1. |
-| Validation | Zod at request/environment boundaries | Shared typed input contracts without trusting browser values. Domain functions receive already validated values. |
-| Styling/garden | Authored CSS, CSS Modules, inline authored SVG | No component kit, rendering engine, canvas dependency, or hosted image dependency. |
-| Unit/integration tests | Vitest; integration tests against real PostgreSQL | Pure rules get fast exhaustive tests; constraints, clock behavior, transactions, and races need a real DB. |
-| E2E | Playwright, three core Chromium journeys | Exercise browser behavior and authz with a dedicated ephemeral test DB. Real provider OAuth is a separate manual check. |
-| State | Server Components + URL for navigable state + small local UI state | Server owns authoritative completion/garden state. No global client store, React Query, or duplicate business state. |
-| Hosting | Vercel Hobby + independently provisioned Neon Free | Subject to no-card eligibility/manual onboarding verification in `04-free-tier-verification.md`; no Marketplace DB provisioning. |
+| Decision               | Proposed choice                                                    | Reason and boundary                                                                                                                                                                                                 |
+| ---------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Application            | One Next.js App Router monolith                                    | One deployable unit and one authorization boundary; no separate API server or microservices.                                                                                                                        |
+| Runtime                | Node.js 24 LTS, exact supported patch pinned during Phase 1        | Local Node 25 is not the deployment baseline. Confirm the current Next.js/Vercel compatibility matrix before the first install.                                                                                     |
+| SQL and migrations     | Drizzle ORM + Drizzle Kit + `pg`                                   | Explicit PostgreSQL constraints, reviewable SQL, small typed data layer, and a single-session migration lock. See `01-data-design.md`.                                                                              |
+| Authentication         | Auth.js, GitHub OAuth only, Drizzle adapter, database sessions     | No password storage or paid email. Auth.js currently documents `next-auth@beta`; this is a material dependency risk, not a claim of a stable v5 release. Freeze a reviewed compatible exact version set in Phase 1. |
+| Validation             | Zod at request/environment boundaries                              | Shared typed input contracts without trusting browser values. Domain functions receive already validated values.                                                                                                    |
+| Styling/garden         | Authored CSS, CSS Modules, inline authored SVG                     | No component kit, rendering engine, canvas dependency, or hosted image dependency.                                                                                                                                  |
+| Unit/integration tests | Vitest; integration tests against real PostgreSQL                  | Pure rules get fast exhaustive tests; constraints, clock behavior, transactions, and races need a real DB.                                                                                                          |
+| E2E                    | Playwright, three core Chromium journeys                           | Exercise browser behavior and authz with a dedicated ephemeral test DB. Real provider OAuth is a separate manual check.                                                                                             |
+| State                  | Server Components + URL for navigable state + small local UI state | Server owns authoritative completion/garden state. No global client store, React Query, or duplicate business state.                                                                                                |
+| Hosting                | Vercel Hobby + independently provisioned Neon Free                 | Subject to no-card eligibility/manual onboarding verification in `04-free-tier-verification.md`; no Marketplace DB provisioning.                                                                                    |
 
 The GitHub-only login limits the audience to users with a GitHub account. This tradeoff keeps the MVP small and removes password reset/email infrastructure. Approving Phase 0 accepts that audience and the Auth.js beta risk; incompatible dependencies discovered in Phase 1 return to design instead of silently changing auth or storage.
 
@@ -27,22 +27,22 @@ The GitHub-only login limits the audience to users with a GitHub account. This t
 
 Proposed folders (no source tree is created in Phase 0):
 
-| Path | Responsibility |
-|---|---|
-| `src/app/` | App Router layouts, pages, auth callback route, route handlers, request-time composition. |
-| `src/features/auth/` | Auth.js configuration, current-user adapter, first-login timezone onboarding. |
-| `src/features/habits/` | Habit input schemas, application services, scoped repositories, UI. |
-| `src/features/checkins/` | Today's completion action/service and pure streak rules. |
-| `src/features/garden/` | Pure growth/unlock rules, fixed-slot catalog reads, SVG UI. |
-| `src/shared/domain/` | Domain value types and error codes that have no React/DB/framework imports. |
-| `src/shared/server/` | Lazy environment validation, DB factory, transaction helper, authorization, error mapping. Mark with `server-only`. |
-| `src/db/schema/` | Drizzle tables/relations separated from connection creation. |
-| `src/db/migrations/` | Committed ordered SQL, Drizzle metadata, migration journal. |
-| `src/db/seed/` | Guarded local development/test fixtures and catalog definitions. |
-| `src/components/` | Shared accessible presentation primitives, only when reused. |
-| `tests/unit/`, `tests/integration/`, `tests/e2e/` | Pure rules, DB invariants/races, and browser journeys respectively. |
-| `scripts/` | Validated DB setup/migration/release verification entry points. |
-| `.github/workflows/` | CI and protected production deployment workflows, created only after approval. |
+| Path                                              | Responsibility                                                                                                      |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `src/app/`                                        | App Router layouts, pages, auth callback route, route handlers, request-time composition.                           |
+| `src/features/auth/`                              | Auth.js configuration, current-user adapter, first-login timezone onboarding.                                       |
+| `src/features/habits/`                            | Habit input schemas, application services, scoped repositories, UI.                                                 |
+| `src/features/checkins/`                          | Today's completion action/service and pure streak rules.                                                            |
+| `src/features/garden/`                            | Pure growth/unlock rules, fixed-slot catalog reads, SVG UI.                                                         |
+| `src/shared/domain/`                              | Domain value types and error codes that have no React/DB/framework imports.                                         |
+| `src/shared/server/`                              | Lazy environment validation, DB factory, transaction helper, authorization, error mapping. Mark with `server-only`. |
+| `src/db/schema/`                                  | Drizzle tables/relations separated from connection creation.                                                        |
+| `src/db/migrations/`                              | Committed ordered SQL, Drizzle metadata, migration journal.                                                         |
+| `src/db/seed/`                                    | Guarded local development/test fixtures and catalog definitions.                                                    |
+| `src/components/`                                 | Shared accessible presentation primitives, only when reused.                                                        |
+| `tests/unit/`, `tests/integration/`, `tests/e2e/` | Pure rules, DB invariants/races, and browser journeys respectively.                                                 |
+| `scripts/`                                        | Validated DB setup/migration/release verification entry points.                                                     |
+| `.github/workflows/`                              | CI and protected production deployment workflows, created only after approval.                                      |
 
 Use PascalCase for React components/types, camelCase for functions and values, kebab-case filenames, snake_case PostgreSQL names, and uppercase machine-readable error codes. Colocate feature UI/actions/schemas with the feature. Tests name the observable behavior and refer to fixtures explicitly. Avoid generic `utils` files and one repository that exposes all tables to UI code.
 
@@ -50,13 +50,13 @@ Use PascalCase for React components/types, camelCase for functions and values, k
 
 The call path is UI → Server Action/route → validated authenticated application service → transaction and scoped repository → PostgreSQL. Domain functions are called by services and return values; they do not perform I/O. A UI component never imports a DB connection or invents a streak/growth value.
 
-| Layer | Allowed work | Must not do |
-|---|---|---|
-| UI | Render server DTOs, collect inputs, accessible pending/errors, request revalidation | Trust client ownership, derive authoritative time, import secrets, SQL, optimistic growth. |
-| Boundary | Resolve database session, parse Zod schema, call service, map safe result | Accept a client user ID as authority or expose raw provider/SQL errors. |
-| Service | Enforce ownership and lifecycle, take locks, obtain authoritative date, update projections atomically | Calculate business rules differently from pure domain functions. |
-| Domain | Streak transition, effective display streak, growth stage and unlock eligibility | Read system clock, DB, environment, OAuth, React, network, or mutate input. |
-| Repository | Parameterized SQL, explicit ownership predicates, DTO projection | Return another user's data, accept unvalidated raw SQL/sort expressions. |
+| Layer      | Allowed work                                                                                          | Must not do                                                                                |
+| ---------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| UI         | Render server DTOs, collect inputs, accessible pending/errors, request revalidation                   | Trust client ownership, derive authoritative time, import secrets, SQL, optimistic growth. |
+| Boundary   | Resolve database session, parse Zod schema, call service, map safe result                             | Accept a client user ID as authority or expose raw provider/SQL errors.                    |
+| Service    | Enforce ownership and lifecycle, take locks, obtain authoritative date, update projections atomically | Calculate business rules differently from pure domain functions.                           |
+| Domain     | Streak transition, effective display streak, growth stage and unlock eligibility                      | Read system clock, DB, environment, OAuth, React, network, or mutate input.                |
+| Repository | Parameterized SQL, explicit ownership predicates, DTO projection                                      | Return another user's data, accept unvalidated raw SQL/sort expressions.                   |
 
 Every authenticated operation resolves `session.user.id` server-side. Explicitly configure the Auth.js database-session callback to copy the adapter's `user.id` into `session.user.id`, with matching TypeScript augmentation; calling `auth()` alone is not proof that this field is populated. Repositories receive this ID explicitly and constrain every private read and write by it, including joins, updates, nested resources, and reward reads. Child-table composite foreign keys add a database ownership check; they do not replace application checks. The plant catalog is public read-only data. A resource that is missing or belongs to another user returns the same safe not-found result.
 
@@ -90,28 +90,28 @@ Use a single responsive dashboard with today's local date/timezone, up to 10 act
 
 Use semantic buttons/forms/headings, visible keyboard focus, labeled inputs, sufficient text contrast, no color-only status, and a polite live region for completion feedback. Garden slots are informational and need no drag-and-drop or editor. Touch targets are comfortably usable. Verify at 320 px and desktop widths without horizontal content overflow. Status changes do not unexpectedly move focus; validation connects messages with inputs.
 
-| State | Required feedback |
-|---|---|
-| Loading/pending | Stable layout, progress label, disable the submitting control, retain existing content. |
-| No habits | Clear explanation and create-habit action; starter garden remains visible. |
-| Locked plant slot | Explain its next completion threshold without an unexplained disabled action. |
-| Completed today | Checked status and growth feedback from returned server state. |
-| Missed day | Effective streak reads zero when appropriate; best/total and garden remain. |
-| Day rollover | Explain that the day changed, refresh authoritative date, require a new deliberate submit. |
-| Failure/offline | Preserve typed input, give retry, do not show a success/growth animation. |
-| Archived habit | Remove from active list, preserve historical totals; no completion or reactivation controls. |
+| State             | Required feedback                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| Loading/pending   | Stable layout, progress label, disable the submitting control, retain existing content.      |
+| No habits         | Clear explanation and create-habit action; starter garden remains visible.                   |
+| Locked plant slot | Explain its next completion threshold without an unexplained disabled action.                |
+| Completed today   | Checked status and growth feedback from returned server state.                               |
+| Missed day        | Effective streak reads zero when appropriate; best/total and garden remain.                  |
+| Day rollover      | Explain that the day changed, refresh authoritative date, require a new deliberate submit.   |
+| Failure/offline   | Preserve typed input, give retry, do not show a success/growth animation.                    |
+| Archived habit    | Remove from active list, preserve historical totals; no completion or reactivation controls. |
 
 ## Test strategy and completion evidence
 
-| Level | Minimum evidence |
-|---|---|
-| Unit | First/same/next/skipped-day streaks; display expiry; leap/month/year boundaries; no timezone/DST millisecond arithmetic; every growth and unlock boundary; archived rejection represented in service tests. |
-| Integration | All constraints and owner isolation; real adapter persistence; idempotent concurrent completion; different-user parallelism; same-user different-habit serialization; transaction rollback; post-lock clock across midnight; onboarding once; fixed catalog restrictions; archive/log race; local-only seed guards and production migration safeguards. |
-| E2E 1 | First visit/sign-in-required UI, database-session onboarding, create habit, complete once, streak and SVG text advance after refresh. |
-| E2E 2 | Repeated submit/reload keeps one log and one increment; archive removes active habit and preserves totals; empty/error/day-change states through controlled test fixtures. |
-| E2E 3 | Second user's data cannot be read/mutated; keyboard create/complete/archive, responsive narrow viewport, reduced-motion behavior. |
-| Manual | Real GitHub OAuth round trip in local and production, sign-out/session revocation, timezone confirmation, mobile/keyboard smoke. This is not replaced by fake provider success. |
-| Build/release | Format, lint, typecheck, unit, PostgreSQL integration, build without DB/secrets, e2e, then staged and canonical deployment smoke. |
+| Level         | Minimum evidence                                                                                                                                                                                                                                                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unit          | First/same/next/skipped-day streaks; display expiry; leap/month/year boundaries; no timezone/DST millisecond arithmetic; every growth and unlock boundary; archived rejection represented in service tests.                                                                                                                                             |
+| Integration   | All constraints and owner isolation; real adapter persistence; idempotent concurrent completion; different-user parallelism; same-user different-habit serialization; transaction rollback; post-lock clock across midnight; onboarding once; fixed catalog restrictions; archive/log race; local-only seed guards and production migration safeguards. |
+| E2E 1         | First visit/sign-in-required UI, database-session onboarding, create habit, complete once, streak and SVG text advance after refresh.                                                                                                                                                                                                                   |
+| E2E 2         | Repeated submit/reload keeps one log and one increment; archive removes active habit and preserves totals; empty/error/day-change states through controlled test fixtures.                                                                                                                                                                              |
+| E2E 3         | Second user's data cannot be read/mutated; keyboard create/complete/archive, responsive narrow viewport, reduced-motion behavior.                                                                                                                                                                                                                       |
+| Manual        | Real GitHub OAuth round trip in local and production, sign-out/session revocation, timezone confirmation, mobile/keyboard smoke. This is not replaced by fake provider success.                                                                                                                                                                         |
+| Build/release | Format, lint, typecheck, unit, PostgreSQL integration, build without DB/secrets, e2e, then staged and canonical deployment smoke.                                                                                                                                                                                                                       |
 
 For automated e2e, a test-runner fixture writes real Auth.js user/session records directly to a dedicated ephemeral loopback PostgreSQL test database and sets the normal session cookie through Playwright. The fixture must fail closed unless the database is explicitly designated disposable test data. No login-bypass route, test-login environment mode, hardcoded session, or public fixture endpoint exists in application code. Test authentication demonstrates session/app behavior; it does not claim to test GitHub's OAuth exchange.
 

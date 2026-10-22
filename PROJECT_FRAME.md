@@ -10,19 +10,19 @@ User-fixed: Next.js, TypeScript, PostgreSQL. Approved additions: Node 24 LTS, Dr
 
 One App Router monolith with feature modules for auth/onboarding, habits, checkins/streaks, and garden. UI → validated authenticated Server Action → service → scoped repository/transaction → PostgreSQL is the only write path. Domain functions calculate dates/streaks/growth without I/O. UI never imports SQL, connections, or secrets and never awards optimistic growth.
 
-| Directory | Responsibility |
-|---|---|
-| `src/app/` | Layout, public sign-in, onboarding/dashboard composition, Auth.js handlers, status/readiness handlers. |
-| `src/features/auth/` | Auth.js configuration, database-session current user, timezone onboarding. |
-| `src/features/habits/` | Create/archive inputs, actions, services, scoped repository, habit UI. |
-| `src/features/checkins/` | Completion action/service, pure streak transitions and display projection. |
-| `src/features/garden/` | Pure growth/unlock functions, catalog projections, authored SVG and text. |
-| `src/shared/domain/` | Validated date/value types and safe error contracts; no framework/database imports. |
-| `src/shared/server/` | Server-only lazy environment/DB factories, transaction/auth helpers, redacted errors. |
-| `src/db/schema/`, `src/db/migrations/`, `src/db/seed/` | Adapter-compatible tables, reviewed SQL/journal, guarded fictional local fixtures. |
-| `src/components/` | Presentation primitives only where reused. |
-| `tests/unit/`, `tests/integration/`, `tests/e2e/` | Pure rules, real PostgreSQL invariants/races, three browser journeys. |
-| `scripts/`, `.github/workflows/` | Guarded DB/release entry points and later CI/deployment. |
+| Directory                                              | Responsibility                                                                                         |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `src/app/`                                             | Layout, public sign-in, onboarding/dashboard composition, Auth.js handlers, status/readiness handlers. |
+| `src/features/auth/`                                   | Auth.js configuration, database-session current user, timezone onboarding.                             |
+| `src/features/habits/`                                 | Create/archive inputs, actions, services, scoped repository, habit UI.                                 |
+| `src/features/checkins/`                               | Completion action/service, pure streak transitions and display projection.                             |
+| `src/features/garden/`                                 | Pure growth/unlock functions, catalog projections, authored SVG and text.                              |
+| `src/shared/domain/`                                   | Validated date/value types and safe error contracts; no framework/database imports.                    |
+| `src/shared/server/`                                   | Server-only lazy environment/DB factories, transaction/auth helpers, redacted errors.                  |
+| `src/db/schema/`, `src/db/migrations/`, `src/db/seed/` | Adapter-compatible tables, reviewed SQL/journal, guarded fictional local fixtures.                     |
+| `src/components/`                                      | Presentation primitives only where reused.                                                             |
+| `tests/unit/`, `tests/integration/`, `tests/e2e/`      | Pure rules, real PostgreSQL invariants/races, three browser journeys.                                  |
+| `scripts/`, `.github/workflows/`                       | Guarded DB/release entry points and later CI/deployment.                                               |
 
 Use kebab-case filenames, PascalCase components/types, camelCase functions/values, snake_case SQL names, and uppercase safe error codes. The exact DTOs and five pure-domain contracts are in [FRONTEND_HANDOFF.md](FRONTEND_HANDOFF.md); interactions are in [FLOWS.md](FLOWS.md). These documents freeze the existing design rather than add scope.
 

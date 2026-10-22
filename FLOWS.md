@@ -4,13 +4,13 @@ Date: 2026-10-22, Asia/Kuala_Lumpur. Phase 0/P0/AC01–AC12 and coding are appro
 
 ## Pages and entry states
 
-| Route/state | Trigger and visible result |
-|---|---|
-| `/` signed out | Explain habit completion/garden growth and offer “Continue with GitHub”. No private data. Signed-in visitors proceed to onboarding or dashboard according to server state. |
-| `/onboarding` | An authenticated user without confirmed timezone sees a labeled IANA timezone input, optional browser suggestion, and an explicit confirmation that timezone cannot change in P0. |
-| `/dashboard` | Require a valid session and initialized user. Show authoritative local date/timezone, create form, active habits with current/best streaks and today's status, lifetime total, and four garden slots. |
-| `/api/auth/[...nextauth]` | Auth.js owns OAuth callback/session/sign-out behavior and security checks. |
-| `/api/status`, `/api/ready` | Minimal read-only operational responses for exact-source release checks. No user data or mutation. |
+| Route/state                 | Trigger and visible result                                                                                                                                                                            |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/` signed out              | Explain habit completion/garden growth and offer “Continue with GitHub”. No private data. Signed-in visitors proceed to onboarding or dashboard according to server state.                            |
+| `/onboarding`               | An authenticated user without confirmed timezone sees a labeled IANA timezone input, optional browser suggestion, and an explicit confirmation that timezone cannot change in P0.                     |
+| `/dashboard`                | Require a valid session and initialized user. Show authoritative local date/timezone, create form, active habits with current/best streaks and today's status, lifetime total, and four garden slots. |
+| `/api/auth/[...nextauth]`   | Auth.js owns OAuth callback/session/sign-out behavior and security checks.                                                                                                                            |
+| `/api/status`, `/api/ready` | Minimal read-only operational responses for exact-source release checks. No user data or mutation.                                                                                                    |
 
 Protected requests with no/expired session return to the sign-in entry. Authenticated uninitialized users go to onboarding. Missing runtime configuration displays a safe unavailable state with retry; it never chooses test authentication. No preview-login, history, settings, placement, or account-management page is introduced.
 
@@ -52,16 +52,16 @@ At a later read, a completion today/yesterday keeps the stored run visible; an o
 
 ## Garden and general UI states
 
-| State | Required behavior |
-|---|---|
-| Empty habits | Explain how to create the first daily habit. Show the starter garden. |
-| Garden | Slots 0–3 use clover/daisy/sunflower/cherry at totals 0/5/15/30. Locked slots explain their threshold. Owned slots show plant name, growth stage, and completion progress in text alongside authored SVG. No slot is an action. |
-| Growth | Points are total minus unlock threshold; stage starts at 0/3/7/14 points. Newly unlocked plant starts at zero. Mature stays mature. |
-| Initial loading | Keep a stable layout and descriptive loading text. Do not show fabricated counts or completed states. |
-| Action pending | Retain existing content/input, disable initiating control, and communicate progress. Server idempotence remains required. |
-| Validation | Labeled fields connect to inline messages with accessible descriptions; focus the first invalid field when useful. |
-| Offline/unavailable | Preserve typed input where the page remains mounted, offer retry, and show no reward or success animation. |
-| Day change | Refresh authoritative state and require deliberate resubmission. Browser time never creates a completion date. |
+| State               | Required behavior                                                                                                                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Empty habits        | Explain how to create the first daily habit. Show the starter garden.                                                                                                                                                           |
+| Garden              | Slots 0–3 use clover/daisy/sunflower/cherry at totals 0/5/15/30. Locked slots explain their threshold. Owned slots show plant name, growth stage, and completion progress in text alongside authored SVG. No slot is an action. |
+| Growth              | Points are total minus unlock threshold; stage starts at 0/3/7/14 points. Newly unlocked plant starts at zero. Mature stays mature.                                                                                             |
+| Initial loading     | Keep a stable layout and descriptive loading text. Do not show fabricated counts or completed states.                                                                                                                           |
+| Action pending      | Retain existing content/input, disable initiating control, and communicate progress. Server idempotence remains required.                                                                                                       |
+| Validation          | Labeled fields connect to inline messages with accessible descriptions; focus the first invalid field when useful.                                                                                                              |
+| Offline/unavailable | Preserve typed input where the page remains mounted, offer retry, and show no reward or success animation.                                                                                                                      |
+| Day change          | Refresh authoritative state and require deliberate resubmission. Browser time never creates a completion date.                                                                                                                  |
 
 Use headings, real forms/buttons, visible keyboard focus, sufficient text contrast, status text beyond color, a polite live region, usable touch targets, and no horizontal content overflow at 320 px. Honor `prefers-reduced-motion`; animation completion never controls business state. Success does not unexpectedly move focus, except to restore focus after removal/navigation.
 

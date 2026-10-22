@@ -12,13 +12,13 @@ No schedules, editing/reactivation, undo/backfill, deletion, reminders, placemen
 
 The following are wire/type contracts for implementation, not executable application code. All returned structures are JSON-serializable readonly values. IDs are UUID strings; `CivilDate` is a validated real Gregorian date in canonical `YYYY-MM-DD`; `Instant` is an ISO 8601 UTC instant. No SQL `date` passes through JavaScript timestamp serialization. `PlantId` is `clover | daisy | sunflower | cherry`; `Stage` is `sprout | seedling | growing | mature`.
 
-| DTO | Exact fields |
-|---|---|
-| `HabitDTO` | `id: UUID`, `title: string`, `completedToday: boolean`, `currentStreak: number`, `bestStreak: number`. Only active owned habits appear in the dashboard. |
-| `LockedPlantDTO` | `plantId: PlantId`, `name: string`, `slotIndex: 0\|1\|2\|3`, `unlockAt: number`, `unlocked: false`. No growth/stage is invented for a locked slot. |
-| `OwnedPlantDTO` | The same identity/name/slot/threshold fields, `unlocked: true`, `growthPoints: number`, `stage: Stage`, `stageIndex: 0\|1\|2\|3`. |
-| `DashboardDTO` | `asOf: Instant`, `localDate: CivilDate`, `timeZone: string`, `habits: HabitDTO[]`, `lifetimeCompletionCount: number`, `plants: (LockedPlantDTO \| OwnedPlantDTO)[]` in slot order. |
-| `OnboardingDTO` | `suggestedTimeZone: string \| null`; browser suggestion is untrusted and requires explicit user confirmation. Confirmed timezone lives in `DashboardDTO`. |
+| DTO              | Exact fields                                                                                                                                                                       |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `HabitDTO`       | `id: UUID`, `title: string`, `completedToday: boolean`, `currentStreak: number`, `bestStreak: number`. Only active owned habits appear in the dashboard.                           |
+| `LockedPlantDTO` | `plantId: PlantId`, `name: string`, `slotIndex: 0\|1\|2\|3`, `unlockAt: number`, `unlocked: false`. No growth/stage is invented for a locked slot.                                 |
+| `OwnedPlantDTO`  | The same identity/name/slot/threshold fields, `unlocked: true`, `growthPoints: number`, `stage: Stage`, `stageIndex: 0\|1\|2\|3`.                                                  |
+| `DashboardDTO`   | `asOf: Instant`, `localDate: CivilDate`, `timeZone: string`, `habits: HabitDTO[]`, `lifetimeCompletionCount: number`, `plants: (LockedPlantDTO \| OwnedPlantDTO)[]` in slot order. |
+| `OnboardingDTO`  | `suggestedTimeZone: string \| null`; browser suggestion is untrusted and requires explicit user confirmation. Confirmed timezone lives in `DashboardDTO`.                          |
 
 Habit ordering is ascending creation timestamp then ID. The four garden slots are always present in slot order. `asOf`, `localDate`, today's logs, current streaks, total, and plants come from one coherent server snapshot. Read-time date uses one DB instant plus the stored zone; successful mutation projections use the transaction's authoritative instant/date. Do not return user email, provider tokens, session tokens, raw DB rows, credentials, or another owner's identifiers. Private DTOs are request-scoped and never shared in a public cache.
 
@@ -28,26 +28,26 @@ Boundary functions accept untrusted serialized input, parse it with Zod, derive 
 
 All application mutations return a discriminated safe result: success is `{ ok: true, data: SuccessDTO }`; failure is `{ ok: false, error: { code, message, fieldErrors?, correlationId? } }`. `fieldErrors` maps the known command field to safe messages for validation; `correlationId` is used for unexpected/unavailable failures. No raw SQL/provider error or input/credential value enters the result. Framework redirects and Auth.js managed sign-in/sign-out remain framework/library operations.
 
-| Action | Input | Success data |
-|---|---|---|
-| `confirmTimeZoneAction` | `{ timeZone: string }` | `{ status: 'initialized' \| 'already_initialized', dashboard: DashboardDTO }`. Same-zone repeat is already initialized; different-zone repeat fails. |
-| `createHabitAction` | `{ title: string }` | `{ habitId: UUID, dashboard: DashboardDTO }`. Title is trimmed and validated 1–80 characters consistently with the DB constraint. |
-| `archiveHabitAction` | `{ habitId: UUID }` | `{ habitId: UUID, status: 'archived' \| 'already_archived', dashboard: DashboardDTO }`. Both statuses preserve rewards. |
-| `completeHabitAction` | `{ habitId: UUID, expectedLocalDate: CivilDate }` | `{ habitId: UUID, status: 'completed' \| 'already_completed', dashboard: DashboardDTO }`. Duplicate is successful without another reward. |
+| Action                  | Input                                             | Success data                                                                                                                                         |
+| ----------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `confirmTimeZoneAction` | `{ timeZone: string }`                            | `{ status: 'initialized' \| 'already_initialized', dashboard: DashboardDTO }`. Same-zone repeat is already initialized; different-zone repeat fails. |
+| `createHabitAction`     | `{ title: string }`                               | `{ habitId: UUID, dashboard: DashboardDTO }`. Title is trimmed and validated 1–80 characters consistently with the DB constraint.                    |
+| `archiveHabitAction`    | `{ habitId: UUID }`                               | `{ habitId: UUID, status: 'archived' \| 'already_archived', dashboard: DashboardDTO }`. Both statuses preserve rewards.                              |
+| `completeHabitAction`   | `{ habitId: UUID, expectedLocalDate: CivilDate }` | `{ habitId: UUID, status: 'completed' \| 'already_completed', dashboard: DashboardDTO }`. Duplicate is successful without another reward.            |
 
 `expectedLocalDate` is the last dashboard's server-issued `localDate` and only a precondition. Validate it as an actual calendar date. It never authorizes backfill or next-day completion. The server checks it after acquiring the user lock and obtaining a new DB clock instant. A successful duplicate-after-archive response still omits the archived habit from the returned active list.
 
-| Failure code | Meaning and UI response |
-|---|---|
-| `UNAUTHENTICATED` | Missing/expired session; return to sign-in without data mutation. |
-| `ONBOARDING_REQUIRED` | Session exists but user not initialized; navigate to timezone confirmation. |
-| `VALIDATION_ERROR` | Invalid title/UUID/date/zone/shape; preserve input and associate field messages. |
-| `NOT_FOUND` | Missing or foreign-owned habit; same response for both, refresh list. |
-| `LIMIT_REACHED` | Ten active habits already exist; preserve title and explain archive frees capacity. |
-| `HABIT_ARCHIVED` | New completion for archived habit; refresh active list. |
-| `DAY_ROLLED_OVER` | Stale expected date; refresh authoritative state and require a fresh explicit submit. HTTP 409 if a route adapter is ever applicable; Server Actions carry the result code. |
-| `TIME_ZONE_FIXED` | Different timezone after confirmation; reload existing state. |
-| `SERVICE_UNAVAILABLE` | Unexpected DB/config/invariant/connection failure; generic retry message and correlation ID, with redacted server log. Never silently repair/reset reward state. |
+| Failure code          | Meaning and UI response                                                                                                                                                     |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `UNAUTHENTICATED`     | Missing/expired session; return to sign-in without data mutation.                                                                                                           |
+| `ONBOARDING_REQUIRED` | Session exists but user not initialized; navigate to timezone confirmation.                                                                                                 |
+| `VALIDATION_ERROR`    | Invalid title/UUID/date/zone/shape; preserve input and associate field messages.                                                                                            |
+| `NOT_FOUND`           | Missing or foreign-owned habit; same response for both, refresh list.                                                                                                       |
+| `LIMIT_REACHED`       | Ten active habits already exist; preserve title and explain archive frees capacity.                                                                                         |
+| `HABIT_ARCHIVED`      | New completion for archived habit; refresh active list.                                                                                                                     |
+| `DAY_ROLLED_OVER`     | Stale expected date; refresh authoritative state and require a fresh explicit submit. HTTP 409 if a route adapter is ever applicable; Server Actions carry the result code. |
+| `TIME_ZONE_FIXED`     | Different timezone after confirmation; reload existing state.                                                                                                               |
+| `SERVICE_UNAVAILABLE` | Unexpected DB/config/invariant/connection failure; generic retry message and correlation ID, with redacted server log. Never silently repair/reset reward state.            |
 
 Revalidate authenticated affected paths after success and render authoritative DTOs. Return success only after commit succeeds. An uncertain network outcome shows retry; retry idempotence is a service guarantee. Do not automatically replay a stale completion on a refreshed new date.
 
@@ -55,13 +55,13 @@ Revalidate authenticated affected paths after success and render authoritative D
 
 Pure functions must neither mutate inputs nor import React, Next.js, DB, sessions, environment, network, or clocks. Runtime boundary/service validation supplies canonical dates and valid nonnegative state. Calendar arithmetic uses dates rather than elapsed 24-hour milliseconds. Internal date-order/invariant failures map to the safe unavailable result at the boundary.
 
-| Contract | Input/output and required behavior |
-|---|---|
-| `guardExpectedDate(expected: CivilDate, authoritative: CivilDate)` | Returns `{ ok: true }` on equality; otherwise `{ ok: false, code: 'DAY_ROLLED_OVER' }`. |
-| `advanceStreak(previous: StreakState, acceptedDate: CivilDate)` | `StreakState = { runLength: number, bestStreak: number, lastCompletedOn: CivilDate \| null }`. Returns `{ ok: true, streak: StreakState }`; first completion → 1/1; next civil date → run+1 and max best; a larger gap → run 1 and preserved max best. Equal date returns `{ ok: false, code: 'DUPLICATE_DATE' }`; earlier date returns `{ ok: false, code: 'DATE_ORDER_INVALID' }`. No input mutation. |
-| `projectCurrentStreak(streak: StreakState, asOfDate: CivilDate)` | Returns a number: stored run if last completion is today/yesterday, otherwise 0 for older/absent completion. A future stored completion is an invariant failure, not zero or a mutation. Best/history are unaffected. |
-| `advanceGarden(previousTotal: number, catalog: readonly CatalogPlant[])` | Returns `{ nextTotal: number, newlyEligiblePlantIds: PlantId[] }`; nextTotal = previousTotal+1; newly eligible means previousTotal < unlockAt ≤ nextTotal, ordered by slot. Threshold-zero starter is initialized separately at onboarding. Call only after one confirmed new log insert. |
-| `projectPlant(total: number, catalogPlant: CatalogPlant)` | For an eligible owned plant, returns `{ growthPoints: number, stage: Stage, stageIndex: 0\|1\|2\|3 }`, with points = total−unlockAt, stages 0–2 sprout/0, 3–6 seedling/1, 7–13 growing/2, 14+ mature/3. Calling it for an ineligible/negative state is an invariant failure; locked-slot projection does not call it. |
+| Contract                                                                 | Input/output and required behavior                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `guardExpectedDate(expected: CivilDate, authoritative: CivilDate)`       | Returns `{ ok: true }` on equality; otherwise `{ ok: false, code: 'DAY_ROLLED_OVER' }`.                                                                                                                                                                                                                                                                                                                 |
+| `advanceStreak(previous: StreakState, acceptedDate: CivilDate)`          | `StreakState = { runLength: number, bestStreak: number, lastCompletedOn: CivilDate \| null }`. Returns `{ ok: true, streak: StreakState }`; first completion → 1/1; next civil date → run+1 and max best; a larger gap → run 1 and preserved max best. Equal date returns `{ ok: false, code: 'DUPLICATE_DATE' }`; earlier date returns `{ ok: false, code: 'DATE_ORDER_INVALID' }`. No input mutation. |
+| `projectCurrentStreak(streak: StreakState, asOfDate: CivilDate)`         | Returns a number: stored run if last completion is today/yesterday, otherwise 0 for older/absent completion. A future stored completion is an invariant failure, not zero or a mutation. Best/history are unaffected.                                                                                                                                                                                   |
+| `advanceGarden(previousTotal: number, catalog: readonly CatalogPlant[])` | Returns `{ nextTotal: number, newlyEligiblePlantIds: PlantId[] }`; nextTotal = previousTotal+1; newly eligible means previousTotal < unlockAt ≤ nextTotal, ordered by slot. Threshold-zero starter is initialized separately at onboarding. Call only after one confirmed new log insert.                                                                                                               |
+| `projectPlant(total: number, catalogPlant: CatalogPlant)`                | For an eligible owned plant, returns `{ growthPoints: number, stage: Stage, stageIndex: 0\|1\|2\|3 }`, with points = total−unlockAt, stages 0–2 sprout/0, 3–6 seedling/1, 7–13 growing/2, 14+ mature/3. Calling it for an ineligible/negative state is an invariant failure; locked-slot projection does not call it.                                                                                   |
 
 `CatalogPlant = { id: PlantId, slotIndex: 0|1|2|3, unlockAt: number }`; exact migration-installed combinations are clover/0/0, daisy/1/5, sunflower/2/15, cherry/3/30. The empty streak is 0/0/null; nonnull dates require run≥1 and best≥run. Domain tests cover the public behavior of these contracts, including duplicate/order errors. Services avoid calling `advanceStreak`/`advanceGarden` for duplicate completions.
 

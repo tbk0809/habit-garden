@@ -14,15 +14,15 @@ The proposed native GitHub production environment approval gate assumes a **publ
 
 ## Neon Free — preferred hosted PostgreSQL
 
-| Verified limit/behavior | Practical implication |
-|---|---|
-| No-card Free plan; no fixed trial expiration; up to 100 projects | Provision independently and keep one MVP project. These terms are not a promise that the service will never change. |
-| 100 CU-hours per project/month | Track compute usage; an always-busy app can exhaust the allowance. |
-| **1 GB database storage per project**; 20 GB aggregate across Free projects | This replaces older 0.5 GB advice. The small schema fits initially; logs still grow over time. |
-| 5 GB public network transfer per project/month | Bounded dashboard queries and no large exports. |
-| 10 branches per project; maximum 2 CU (approximately 8 GB RAM) | Branches are optional; no paid branch/test infrastructure is needed. |
-| Forced scale-to-zero after 5 idle minutes | Expect cold database startup and show retryable loading/error UI. |
-| Compute/transfer quota exhaustion pauses availability until the next billing period | Do not present a zero-cost app as having an uptime guarantee. |
+| Verified limit/behavior                                                                                                                                 | Practical implication                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| No-card Free plan; no fixed trial expiration; up to 100 projects                                                                                        | Provision independently and keep one MVP project. These terms are not a promise that the service will never change.    |
+| 100 CU-hours per project/month                                                                                                                          | Track compute usage; an always-busy app can exhaust the allowance.                                                     |
+| **1 GB database storage per project**; 20 GB aggregate across Free projects                                                                             | This replaces older 0.5 GB advice. The small schema fits initially; logs still grow over time.                         |
+| 5 GB public network transfer per project/month                                                                                                          | Bounded dashboard queries and no large exports.                                                                        |
+| 10 branches per project; maximum 2 CU (approximately 8 GB RAM)                                                                                          | Branches are optional; no paid branch/test infrastructure is needed.                                                   |
+| Forced scale-to-zero after 5 idle minutes                                                                                                               | Expect cold database startup and show retryable loading/error UI.                                                      |
+| Compute/transfer quota exhaustion pauses availability until the next billing period                                                                     | Do not present a zero-cost app as having an uptime guarantee.                                                          |
 | Storage overage blocks storage-changing operations; Free has a 6-hour recovery window with 1 GB change limit, one manual snapshot, no scheduled backups | Monitor usage and perform guarded manual exports before risky maintenance; this is limited recovery, not a backup SLA. |
 
 Sources: [Neon pricing](https://neon.com/pricing), [current plans and limits](https://neon.com/docs/introduction/plans), and [official 2026-10-02 announcement of 1 GB per Free project](https://neon.com/blog/neon-free-plan-1-gb-per-project).

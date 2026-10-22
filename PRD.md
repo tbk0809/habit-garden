@@ -32,19 +32,19 @@ Custom schedules, habit editing/reactivation, backfill, undo, reminders, social 
 
 All items below are **pending implementation and verification**.
 
-| ID | Acceptance condition |
-|---|---|
-| AC01 | A real GitHub OAuth round trip creates/loads the correct account; first login requires timezone confirmation. Logout revokes access; absent/expired sessions cannot mutate data. |
-| AC02 | Valid titles create owned daily habits; blank/overlong titles and an eleventh active habit are rejected. Concurrent creation cannot bypass the cap. |
-| AC03 | Completing a habit persists one log, advances the appropriate streak, adds one lifetime completion, and updates garden text/SVG after refresh. |
-| AC04 | Repeated/concurrent same-habit/day submissions create exactly one log/reward. A stale dashboard submitted after midnight returns a day-change error and creates no new-day completion. |
-| AC05 | Consecutive civil dates increment streaks; fully missed dates reset the effective current streak while preserving best streak and garden. Leap/month/year/DST boundaries use calendar dates. |
-| AC06 | Totals 5/15/30 unlock the expected plant exactly once at zero points; stages change at each specified boundary. Duplicate requests cannot unlock or grow twice. |
-| AC07 | Archiving removes a habit from the active list and blocks new logs, without deleting history/rewards. Completion/archive races obey the common user-lock order. |
-| AC08 | A second user cannot read or modify another user's habits, logs, streaks, or garden, including by guessing IDs or invoking actions directly. |
+| ID   | Acceptance condition                                                                                                                                                                                                                                       |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AC01 | A real GitHub OAuth round trip creates/loads the correct account; first login requires timezone confirmation. Logout revokes access; absent/expired sessions cannot mutate data.                                                                           |
+| AC02 | Valid titles create owned daily habits; blank/overlong titles and an eleventh active habit are rejected. Concurrent creation cannot bypass the cap.                                                                                                        |
+| AC03 | Completing a habit persists one log, advances the appropriate streak, adds one lifetime completion, and updates garden text/SVG after refresh.                                                                                                             |
+| AC04 | Repeated/concurrent same-habit/day submissions create exactly one log/reward. A stale dashboard submitted after midnight returns a day-change error and creates no new-day completion.                                                                     |
+| AC05 | Consecutive civil dates increment streaks; fully missed dates reset the effective current streak while preserving best streak and garden. Leap/month/year/DST boundaries use calendar dates.                                                               |
+| AC06 | Totals 5/15/30 unlock the expected plant exactly once at zero points; stages change at each specified boundary. Duplicate requests cannot unlock or grow twice.                                                                                            |
+| AC07 | Archiving removes a habit from the active list and blocks new logs, without deleting history/rewards. Completion/archive races obey the common user-lock order.                                                                                            |
+| AC08 | A second user cannot read or modify another user's habits, logs, streaks, or garden, including by guessing IDs or invoking actions directly.                                                                                                               |
 | AC09 | Fresh local PostgreSQL setup, migration, and guarded idempotent seed work from documented commands; existing unrelated data is not overwritten. Hosted DB access is unnecessary for local DB operation. Real local sign-in still needs GitHub OAuth setup. |
-| AC10 | The app is usable at 320 px and desktop widths with keyboard navigation, labels, focus, text garden status, and reduced motion. Loading/errors never report a false reward. |
-| AC11 | `bash check.sh` and PR/main format/lint/type/unit/real-DB integration/build/e2e checks actually pass; the build needs no reachable DB or runtime secrets. |
+| AC10 | The app is usable at 320 px and desktop widths with keyboard navigation, labels, focus, text garden status, and reduced motion. Loading/errors never report a false reward.                                                                                |
+| AC11 | `bash check.sh` and PR/main format/lint/type/unit/real-DB integration/build/e2e checks actually pass; the build needs no reachable DB or runtime secrets.                                                                                                  |
 | AC12 | A free, eligible no-card deployment passes migration/staged/canonical checks for the exact tested source SHA, and its real URL plus limitations are recorded. A real OAuth/manual acceptance check is recorded separately from automated session fixtures. |
 
 ## Authorization and remaining prerequisites

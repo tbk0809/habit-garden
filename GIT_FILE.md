@@ -285,3 +285,47 @@
 - Result: Docker engine probe exit 0; document check exit 0 for 18 Markdown files, 63 local links, zero broken links, zero unbalanced fences before this status update. Node 24.22.1/Git/Bash baseline is verified. Application lint/typecheck/tests/build remain unavailable because the scaffold is not created yet.
 - Commit: pending initial approved-design Conventional Commit; actual hash will be recorded after commit.
 - Problems / follow-ups: Commit/review the design checkpoint; execute tasks 2–3 together as the plan permits for the first meaningful functional test/commit. No app/DB/CI/deployment completion is claimed.
+
+## Step 30: Commit the approved design checkpoint and prepare the first functional task
+- Time: 2026-10-22 20:36:09 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Staged only project records/ignore/runtime-pin files, ran the staged whitespace check, and created the first Conventional Commit. Prepared a scoped combined tasks 2–3 brief with approved contracts and exact pins; the plan explicitly permits this combination so the first functional commit has meaningful domain tests.
+- Why: Preserve the completed approved checkpoint in version history before app installation and keep implementers scoped to one dependency-ordered functional task.
+- Files created/changed: committed design/config records; ignored task-2-3-brief.md; GIT_FILE.md.
+- Commands run: git add explicit project paths; git diff --cached --check; git status --short; git commit; git rev-parse HEAD; task-brief helper; scoped PowerShell plan extraction; clock.curr_time.
+- Result: staged whitespace check exit 0; initial commit created. The generic task-brief helper expected a 'Task 2' heading while this approved plan uses '### 2.', so it returned exit 1; an exact scoped extraction produced the brief without changing the plan or application behavior. No functional checks exist yet.
+- Commit: aa36bd2666a497a48afef50fbd5b8b58c0aa23e9 — docs: record approved habit garden design and build prerequisites.
+- Problems / follow-ups: Implement/review scaffold plus test-first domain rules; keep DB/integration/e2e/OAuth/CI/deployment evidence pending until their real steps execute. No source was pushed.
+
+## Step 31: Check eventual cloud capabilities without provisioning
+- Time: 2026-10-22 20:40:26 +08:00 (Asia/Kuala_Lumpur; verified clock around the readiness report).
+- Phase: 1 Build
+- What I did: While the scaffold/domain task ran, a separate read-only worker checked available cloud tools and browser authentication. Chrome user menus verified GitHub tbk0809 and a Vercel workspace with Hobby badge; Neon showed its login screen. The user chose to finish the local app first and handle Neon later. Also performed a read-only PostgreSQL17 Alpine manifest query for later local DB planning.
+- Why: Identify eventual external account prerequisites early without stopping independent local implementation, creating resources, or handling secrets. Preserve the user's local-first steering.
+- Files created/changed: STATUS.md, GIT_FILE.md; ignored initial-design review package.
+- Commands run: tool metadata discovery; attempted Vercel list_teams (unavailable); Get-Command gh; configuration-file presence checks only; read-only Chrome GitHub/Vercel/Neon pages; docker manifest inspect postgres:17-alpine --verbose; git show to ignored review package; clock.curr_time.
+- Result: Vercel connector returned not available to model; no GitHub/Neon connector or gh executable found. Browser GitHub/Vercel identities are verified, not their deploy permissions/credentials; Neon authentication and real no-card onboarding remain pending. PostgreSQL image metadata returned a linux/amd64 manifest digest for later pinning. No login, account creation, resource provisioning, settings change, push, or deployment occurred.
+- Commit: none for this read-only readiness step; aa36bd2 remains initial committed checkpoint.
+- Problems / follow-ups: Continue local app/tests first as requested; only revisit Neon login when local acceptance is concrete. GitHub OAuth keys, cloud DB roles/secrets, actual free project creation, repository protection, and deployment verification are still required later.
+
+## Step 32: Independently review the prerequisite and specification checkpoint
+- Time: 2026-10-22 20:43:08 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: A separate read-only reviewer assessed the initial committed diff for approved interaction/domain/action contracts, gate coverage, dependency-freeze evidence, and honest current/historical status. Recorded task 1 complete in the ignored plan ledger and tasks 2–3 in progress under one scoped implementer.
+- Why: Validate the handoff before relying on it for code, with spec compliance and quality checked independently from the author.
+- Files created/changed: ignored progress/review artifacts, GIT_FILE.md.
+- Commands run: read-only committed review package; review of task-specific contracts and evidence. No repeated application checks or credential inspection.
+- Result: reviewer returned spec PASS and quality PASS, with no actionable gaps for aa36bd2. Application dependency installation and test-first implementation are still running; no functional result is claimed.
+- Commit: aa36bd2 reviewed; no new commit for this read-only review step.
+- Problems / follow-ups: Complete scaffold/domain install, red/green tests, lint/typecheck/build, then review the actual functional diff before moving to PostgreSQL implementation. Keep runtime/app/CI/deployment claims tied to their separate evidence.
+
+## Step 33: Format nonhistorical documentation and record installation progress
+- Time: 2026-10-22 20:51:01 +08:00 (Asia/Kuala_Lumpur; verified clock following formatting).
+- Phase: 1 Build
+- What I did: After the exact dependency install completed, formatted the seventeen non-log root/docs Markdown files with the installed pinned Prettier. Updated current records to distinguish in-progress scaffold/domain work from later DB/features/deployment. Verified GIT_FILE.md's SHA256 stayed unchanged during formatting, then appended this entry normally.
+- Why: Meet the committed-document formatting gate without rewriting append-only execution history or letting the app worker edit shared records.
+- Files created/changed: non-log root/docs Markdown formatting and current README/STATUS/AGENTS state; GIT_FILE.md appended only.
+- Commands run: local Node24 + pinned Prettier --write explicit seventeen-file list; before/after GIT_FILE SHA256; scoped local-link check; read initial Vitest red-log summary; clock.curr_time; apply_patch.
+- Result: formatting exit 0; log hash preserved; document links still resolve. Worker installed214 packages/audited215 and captured initial real behavioral red tests (82 failed/15 passed of97 against neutral stubs); green implementation and final application checks remain pending. npm reported8 vulnerabilities (4 moderate/4 high), with exact-path assessment still in progress.
+- Commit: pending separate documentation-format commit; app worker owns functional files and will keep shared documentation unstaged.
+- Problems / follow-ups: Finish unit green/lint/type/build and inspect actual audit paths; no DB/e2e/OAuth/CI/deployment result exists yet. Do not infer a product failure from the deliberate red run or a product pass from installation.

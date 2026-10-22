@@ -1,11 +1,11 @@
 # Current status
 
 - Project: Habit Tracker That Grows a Garden.
-- Version: `v0.1-setup` (approved design and verified prerequisites; no release).
+- Version: `v0.1-build` (scaffold/domain implementation in progress; no release).
 - Current step: `5_前端生成代码` / Phase 1 tasks 2–3, scaffold and tested pure domain next.
 - Current objective: commit/review approved design records, then implement strict typed scaffold and meaningful date/streak/growth unit tests using the frozen package versions.
 - User approval: explicitly granted 2026-10-22 for Phase 0/P0/AC01–AC12/dependency proposals and starting code; personal noncommercial use confirmed; personal public source repository publication authorized. Do not ask again for these decisions.
-- Application code/dependencies/database/workflows/deployment: not started.
+- Application scaffold and pure domain: implementation in progress. Exact dependencies installed (214 packages); initial unit red run recorded, green verification pending. Database/migrations/feature services/e2e/workflows/deployment: not started.
 - Git: an independent repository was initialized in this project on `codex/habit-garden` on 2026-10-22. No commits or remote yet. Host Git/Bash work outside the sandbox; the earlier sandbox Git probe had been reaching an unrelated ancestor repository, which was not modified.
 - Live URL: none.
 
@@ -22,5 +22,7 @@ The preferred Neon Free terms are sourced, but actual account provisioning has n
 ## Next action
 
 Follow [05-task-breakdown.md](docs/05-task-breakdown.md) from its first unchecked task; the entry approval gate is now satisfied. Recheck prerequisites and dependency compatibility before installation. If a confirmed constraint conflicts with the design, return to the earliest affected decision for approval; do not silently add paid services or change stack.
+
+Read-only cloud readiness (2026-10-22): Chrome verifies GitHub account `tbk0809` and an existing Vercel Hobby workspace. The advertised Vercel connector is unavailable; no GitHub/Neon connector or `gh` command is available. Neon console is not authenticated. No Habit Garden remote/project/secrets were created. The user explicitly chose to finish the local application first and handle Neon later; continue local work without repeating the login request. Git push credentials, new-project no-card behavior, billing settings, and scoped deployment secrets remain unverified.
 
 The user stopped further quota-resume setup/diagnosis and requested returning to Habit Garden. Do not resume that detour automatically. Its partial environment results remain in the append-only log; no real recovery-cycle success is claimed.
