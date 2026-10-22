@@ -516,3 +516,69 @@
 - Result: task5 local implementation accepted.132unit/23PG/empty-env build/scoped Edge smoke results remain the exact implementation evidence; no new broad test rerun. Task6 brief reuses actual authentication/DTO/error/DB types and clarifies Unicode title length consistent with PostgreSQL. The skill helper's heading mismatch was handled by exact section extraction; no scope change.
 - Commit: implementation cca18c9 accepted; root records commit follows scoped doc checks.
 - Problems / follow-ups: implement/review task6 before completion and SVG task7. Real GitHub OAuth, full e2e/check.sh and cloud acceptance remain outstanding; no new user approval required for these local tasks.
+
+## Step 51: Commit authentication acceptance records and dispatch task6
+- Time: 2026-10-23 02:24:22 +08:00 (Asia/Kuala_Lumpur; latest verified clock; dispatch afterward).
+- Phase: 1 Build
+- What I did: Committed the root-owned setup/review/status records, dispatched fresh habit_services from the exact task6 brief and reserved the isolated test DB for that worker. Requested a separate read-only task7 concurrency/clock test strategy while task6 is implemented; no task7 feature code is authorized before task6 review.
+- Why: Keep the approved linear dependency gates while using independent planning to reduce later transaction-test uncertainty.
+- Files created/changed: six records in3d99987; GIT_FILE.md; ignored task6 brief/report target and task7 advice target/ledger.
+- Commands run: pinned scoped Prettier check; git diff --check; scoped git add/commit; collaboration dispatch with exact base/report paths.
+- Result: scoped document checks passed; commit3d99987 created. task6 owns app/tests only; root owns public records. task7 advisor is read-only and must not use/reset DB. No cloud action, credential change or new dependency.
+- Commit:3d99987 — docs: accept authentication review and advance to habit services; task6 BASE3d99987.
+- Problems / follow-ups: complete/review task6, then task7 implementation using safe deterministic real-DB concurrency evidence; actual OAuth/manual and aggregate/cloud gates remain pending.
+
+## Step 52: Keep the entry documents aligned with the accepted local authentication milestone
+- Time: 2026-10-23 02:25:53 +08:00 (Asia/Kuala_Lumpur; latest verified clock; edits afterward).
+- Phase: 1 Build
+- What I did: Updated README's checkpoint and the prompt-map task5 cell to the accepted local authentication state and current habit work. Refined PRD's acceptance introduction without changing any AC or requirement.
+- Why: Avoid leaving the user-facing entry document one milestone behind STATUS while task6 is being implemented.
+- Files created/changed: README.md, PRD.md, docs/06-prompt-audit.md, GIT_FILE.md.
+- Commands run: scoped literal edits and PRD acceptance-table read; pinned Prettier on changed documents.
+- Result: current documents distinguish reviewed local auth from pending real provider OAuth and complete acceptance. No code, test, acceptance threshold or external state changed.
+- Commit: pending with next progress records; latest root docs3d99987, applicationcca18c9.
+- Problems / follow-ups: task6 service tests/implementation underway; task7 advisor remains read-only.
+
+## Step 53: Prepare deterministic completion-test guidance without advancing feature code
+- Time: 2026-10-23 02:35:27 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the independent task7 test-design advice while task6's services/UI are implemented. Added its location and safety boundaries to the future task7 brief, with scoped test-only clocks/barriers and a commit-time failure strategy.
+- Why: The approved completion rules require post-lock midnight, concurrency and rollback evidence; a deterministic disposable-DB approach avoids waiting for real midnight or adding an application clock override.
+- Files created/changed: GIT_FILE.md; ignored task7 advice/brief/ledger.
+- Commands run: read binding completion/domain/schema/runner interfaces; advisor read-only Node24 native-TS import probe (exit0); no database connection or feature implementation by advisor.
+- Result: proposed clock control is isolated to a private schema/scoped test connection search_path, with real PG lock observations, helper-call diagnostics and cleanup. Production gains no test mode, extra login path, client timestamp authority or dependency. Advice remains unimplemented until task6 review passes; task6 worker retains exclusive test DB use.
+- Commit: none for test planning; task6 implementation pending.
+- Problems / follow-ups: finish/review task6; validate test-helper interception and failure cleanup before relying on future midnight/rollback assertions. Actual app/provider/CI/deployment acceptance remains pending.
+
+## Step 54: Package the habit-service implementation for independent review
+- Time: 2026-10-23 02:39:50 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the complete task6 report, generated the exact3d99987..8bb13ab review package, and dispatched a fresh independent spec/quality review. Updated the entry status to the review boundary; completion and SVG have not started.
+- Why: Verify user ownership, concurrent active-cap enforcement, atomic habit/streak creation and archive retention before building completion on these interfaces.
+- Files created/changed: ten implementation/test files in8bb13ab; AGENTS.md, STATUS.md, GIT_FILE.md; ignored task6 report/diff/ledger. Earlier root docs remain unstaged.
+- Commands run: read task6 report and scoped commit; existing review-package helper; pinned current-record formatting. Worker report includes meaningful RED/GREEN and full unit/real-PG/static/build/scopedbrowser evidence.
+- Result:150/150 unit and32/32 realPG pass; lint/type/format/build/diff and320px/desktop scope smoke pass. New tests cover12 creates→10 accepted, owner isolation, zero-streak failure rollback, user-first lock observation, archive idempotence/history/rewards and runtime deletion denial. Smoke covers real-lock pending without optimistic rows, input/focus, cap retention and freed capacity. Independent review is pending, so task6 is not yet accepted. No new dependency/env/migration or dev data mutation.
+- Commit:8bb13abaa424cb288180b495654fb28ef535a452 — feat: add owned daily habits and archive; base3d99987.
+- Problems / follow-ups: resolve review findings before task7. Actual provider OAuth, full e2e/check.sh and CI/deployment remain pending. Task7 advice finalized as46-line disposable-DB clock/barrier/deferred-fault guidance, without implementation or DB access.
+
+## Step 55: Route the independent narrow-screen title finding to a scoped fix
+- Time: 2026-10-23 02:39:50 +08:00 (Asia/Kuala_Lumpur; latest verified clock; review afterward).
+- Phase: 1 Build
+- What I did: Read review_habits' spec/quality FAIL for one P2 and returned it to the original implementer as fix round1/5. A valid80-character unbroken title lacked heading wrap styling; the reviewer measured886px document width at320px. Service/security/transaction paths had no other important finding.
+- Why: The existing smoke used ordinary short titles and missed an allowed input that violates the approved narrow-screen contract. Fix the display and add that boundary to the scoped browser check before accepting task6.
+- Files created/changed: GIT_FILE.md; ignored review/fix ledger and pending implementation fix/report.
+- Commands run: reviewer targeted offline Edge layout measurement only; scoped fix dispatch naming heading/CSS and existing browser test.
+- Result: task6 remains in review; task7 feature code has not started. Fix must demonstrate RED with the current CSS and GREEN with wrapped title at320px, then preserve existing interactions. No broad repeated DB suite is required for this isolated layout change absent another failure.
+- Commit: reviewed8bb13ab; fix commit pending.
+- Problems / follow-ups: verify the exact fix diff and scoped re-review before task7. No new approval, dependency, service or data operation requested.
+
+## Step 56: Accept the habit title fix and advance to completion/garden
+- Time: 2026-10-23 02:48:23 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the appended fix report, packaged8bb13ab..7ab8519 and accepted the original reviewer’s scoped ADDRESSED/spec PASS/quality PASS verdict. Updated current records to task7 and its approved transaction/SVG scope.
+- Why: The valid80-character title regression is closed with actual RED886px and GREEN320px evidence, so completion may now build on reviewed habit interfaces.
+- Files created/changed: two fix files in7ab8519; AGENTS.md, STATUS.md, README.md, PRD.md, docs/05-task-breakdown.md, docs/06-prompt-audit.md, GIT_FILE.md; ignored fix package and ledger.
+- Commands run: read fix covering-test/command/output report; review-package helper; independent scoped re-review; pinned current-record formatting.
+- Result: Task6 is complete and independently clean after fix round1/5.150unit/32PG service evidence is unchanged; affected format/lint/type/build and browser regression passed after CSS-only logic change. No extra broad tests were repeated. Task7 will parallelize independent server transaction/tests and a presentation-only SVG component, then run one integrated gate and independent task review; this adapts the single-worker skill default to the active parallel-delegation instruction without bypassing linear task acceptance.
+- Commit:7ab8519bcc3d120de64955117ded30cb9242f642 — fix: wrap long habit titles on narrow screens; root progress commit follows scoped checks.
+- Problems / follow-ups: implement/review task7 before full browser/check.sh acceptance. SVG consumes only approved DTOs; no client-authoritative growth or new dependency. Actual OAuth and cloud gates remain pending.

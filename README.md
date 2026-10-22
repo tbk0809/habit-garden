@@ -2,7 +2,7 @@
 
 Habit Tracker That Grows a Garden: completing daily habits grows plants, builds streaks, and unlocks a small virtual garden.
 
-**Current checkpoint: Phase 1 task5, authentication and timezone onboarding.** The typed scaffold, pure domain rules, local PostgreSQL schema, migrations and guarded seed are implemented. The application is still under construction; full local acceptance and deployment remain pending. On 2026-10-22 the user approved Phase 0/P0/acceptance/dependencies, coding, personal noncommercial use and personal public source publication. Current evidence and remaining work are in [STATUS](STATUS.md) and the [prompt audit](docs/06-prompt-audit.md).
+**Current checkpoint: Phase 1 task7, atomic daily completion and SVG garden.** The typed scaffold, pure domain rules, local PostgreSQL schema, migrations and guarded seed are implemented. The application is still under construction; full local acceptance and deployment remain pending. On 2026-10-22 the user approved Phase 0/P0/acceptance/dependencies, coding, personal noncommercial use and personal public source publication. Current evidence and remaining work are in [STATUS](STATUS.md) and the [prompt audit](docs/06-prompt-audit.md).
 
 ## Review the proposal
 
@@ -29,7 +29,7 @@ Exact versions are pinned in the lockfile and [dependency record](docs/07-depend
 
 ## Setup, run, test, and deployment status
 
-The scaffold, environment template, Compose, migrations, guarded seed and unit/real-PostgreSQL test commands exist. Tasks2–4 have scoped verification evidence. Authentication is in progress; habit services, complete garden UI, Playwright acceptance, workflows, `check.sh` and a live URL remain pending. Database-foundation tests do not prove login or complete application behavior.
+The scaffold, environment template, Compose, migrations, guarded seed and unit/real-PostgreSQL test commands exist. Tasks2–4 have scoped verification evidence. Local authentication and habit services are reviewed; atomic completion and SVG garden are in progress, while full browser acceptance, Playwright acceptance, workflows, `check.sh` and a live URL remain pending. Database-foundation tests do not prove login or complete application behavior.
 
 Use Node **24.22.1**, npm and Docker with its Linux engine running. The version files and lockfile define the project baseline. On this workstation an ignored `.tools/node-v24.22.1-win-x64` runtime is available; prepend it to this shell's PATH if the system Node differs. A fresh checkout must supply the pinned runtime separately.
 

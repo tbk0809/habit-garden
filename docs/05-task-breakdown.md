@@ -1,6 +1,6 @@
 # Phase 0 — Ordered implementation checklist
 
-Status: **entry approval granted; tasks1–5 local implementation reviewed; task6 habits in progress (2026-10-23)**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
+Status: **entry approval granted; tasks1–6 local implementation reviewed; task7 completion/garden in progress (2026-10-23)**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
 
 ## Entry gate and execution rules
 
@@ -65,9 +65,9 @@ Future commands: format/lint/typecheck + `npm test`, DB-free build, targeted bro
 
 ### 6. Implement scoped habit creation, listing, and archive
 
-- [ ] Add validated labels, 10-active cap, user-first locking, atomic zero streak creation, coherent dashboard query, and archive with retained history.
-- [ ] Test title bounds, cap under concurrency, archived capacity, missing/foreign resources, no/expired session, and role-level deletion denial.
-- [ ] Implement minimal forms and pending/empty/errors so the service paths can be exercised; no edit/reactivation/delete UI.
+- [x] Add validated labels, 10-active cap, user-first locking, atomic zero streak creation, coherent dashboard query, and archive with retained history.
+- [x] Test title bounds, cap under concurrency, archived capacity, missing/foreign resources, no/expired session, and role-level deletion denial.
+- [x] Implement minimal forms and pending/empty/errors so the service paths can be exercised; no edit/reactivation/delete UI.
 
 Future commands: format/lint/typecheck + `npm test`; scoped browser smoke. Proposed commit: `feat: add owned daily habits and archive`.
 
@@ -134,4 +134,4 @@ Future verification: actual workflow/deployment links and read-only live checks 
 
 ## Phase 0 exit status
 
-Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–5 local code is implemented and reviewed; continue at task6. Actual GitHub OAuth remains a separate pending manual gate. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.
+Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–6 local code is implemented and reviewed; continue at task7. Actual GitHub OAuth remains a separate pending manual gate. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.
