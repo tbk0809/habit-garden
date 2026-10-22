@@ -14,12 +14,12 @@
     "lint": "eslint . --max-warnings 0",
     "typecheck": "next typegen && tsc --noEmit",
     "test:unit": "vitest run --project unit",
-    "test:integration": "node scripts/not-ready.ts integration",
+    "test:integration": "node --env-file=.env.test scripts/integration.ts",
     "test": "npm run test:unit && npm run test:integration",
     "build": "next build",
     "test:e2e": "node scripts/not-ready.ts e2e",
-    "db:migrate": "node scripts/not-ready.ts migrate",
-    "db:seed": "node scripts/not-ready.ts seed"
+    "db:migrate": "node --env-file=.env.local scripts/migrate.ts",
+    "db:seed": "node --env-file=.env.local scripts/seed.ts"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "1.11.3",

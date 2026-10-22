@@ -1,0 +1,39 @@
+name: habit-garden
+
+x-postgres: &postgres
+  image: postgres:17-alpine@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4
+  restart: unless-stopped
+  environment: &credentials
+    POSTGRES_USER: habit_garden_migrator
+    POSTGRES_PASSWORD: ${LOCAL_DB_PASSWORD:?Set LOCAL_DB_PASSWORD in ignored .env}
+    RUNTIME_PASSWORD: ${LOCAL_RUNTIME_PASSWORD:?Set LOCAL_RUNTIME_PASSWORD in ignored .env}
+  healthcheck:
+    test: [CMD-SHELL, 'pg_isready -U habit_garden_migrator -d "$$POSTGRES_DB"']
+    interval: 3s
+    timeout: 3s
+    retries: 20
+
+services:
+  db:
+    <<: *postgres
+    environment:
+      <<: *credentials
+      POSTGRES_DB: habit_garden_dev
+    ports: ["127.0.0.1:55434:5432"]
+    volumes:
+      - dev-data:/var/lib/postgresql/data
+      - ./scripts/postgres-init.sql:/docker-entrypoint-initdb.d/10-runtime.sql:ro
+  db-test:
+    <<: *postgres
+    profiles: [test]
+    environment:
+      <<: *credentials
+      POSTGRES_DB: habit_garden_test
+    ports: ["127.0.0.1:55433:5432"]
+    volumes:
+      - test-data:/var/lib/postgresql/data
+      - ./scripts/postgres-init.sql:/docker-entrypoint-initdb.d/10-runtime.sql:ro
+
+volumes:
+  dev-data:
+  test-data:
