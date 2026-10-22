@@ -1,6 +1,6 @@
 import pg from "pg";
 import { assertLocalDatabaseTarget } from "../src/shared/server/db/local-target.ts";
-import { seedFixtures } from "../src/shared/server/db/fixtures.ts";
+import { seedFixtures } from "../src/db/seed/fixtures.ts";
 
 try {
   if (process.argv.length !== 3 || process.argv[2] !== "--local-development")

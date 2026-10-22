@@ -4,7 +4,7 @@ import pg from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { eq } from "drizzle-orm";
-import { adapterTables, users } from "../../src/shared/server/db/schema.ts";
+import { adapterTables, users } from "../../src/db/schema/index.ts";
 import { assertLocalDatabaseTarget } from "../../src/shared/server/db/local-target.ts";
 
 assertLocalDatabaseTarget(
@@ -113,7 +113,7 @@ test("civil dates stay strings while timestamp columns preserve instants", async
       "insert into habit_logs values($1,$2,'2024-02-29','2024-02-29T23:30:00-05:00')",
       [habit, user],
     );
-    const { habitLogs } = await import("../../src/shared/server/db/schema.ts");
+    const { habitLogs } = await import("../../src/db/schema/index.ts");
     const [log] = await drizzle(client)
       .select()
       .from(habitLogs)

@@ -12,7 +12,7 @@ export async function migrateDatabase(
 ): Promise<number> {
   const migrations = readMigrationFiles({
     migrationsFolder: fileURLToPath(
-      new URL("../../../../drizzle", import.meta.url),
+      new URL("../../../db/migrations", import.meta.url),
     ),
   });
   const client = new pg.Client({

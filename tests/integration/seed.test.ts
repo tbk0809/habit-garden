@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { after, test } from "node:test";
 import pg from "pg";
 import { assertLocalDatabaseTarget } from "../../src/shared/server/db/local-target.ts";
-import { seedFixtures } from "../../src/shared/server/db/fixtures.ts";
+import { seedFixtures } from "../../src/db/seed/fixtures.ts";
 
 assertLocalDatabaseTarget(
   process.env.TEST_DATABASE_URL,

@@ -1,7 +1,7 @@
 import "server-only";
 import pg from "pg";
 import { drizzle, type NodePgDatabase } from "drizzle-orm/node-postgres";
-import * as schema from "./schema.ts";
+import * as schema from "../../../db/schema/index.ts";
 import { requireDatabaseUrl } from "./database-url.ts";
 
 let database:
