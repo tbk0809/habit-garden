@@ -295,11 +295,12 @@ test("missing catalog makes initialization roll back timezone, garden and starte
   try {
     await assert.rejects(
       drizzle(admin, { schema }).transaction(async (tx) => {
-        await tx
-          .delete(schema.plantCatalog)
-          .where(
-            (await import("drizzle-orm")).eq(schema.plantCatalog.id, "cherry"),
-          );
+        // A connection-local read fault works even when other cases own Cherry.
+        // The real catalog and every retained reward remain intact.
+        await tx.execute(
+          (await import("drizzle-orm"))
+            .sql`create temporary view plant_catalog as select * from public.plant_catalog where id <> 'cherry'`,
+        );
         const result = await confirmTimeZoneForSession(tx, resolved, {
           timeZone: "UTC",
         });

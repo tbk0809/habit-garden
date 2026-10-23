@@ -14,6 +14,9 @@ const messages: Record<ErrorCode, string> = {
     "That habit is no longer available. Refresh your list and try again.",
   LIMIT_REACHED:
     "You have ten active habits. Archive one to make room for another.",
+  DAY_ROLLED_OVER:
+    "The day changed. Refresh your garden, then choose Complete again for the new day.",
+  HABIT_ARCHIVED: "That habit has been archived. Your list will refresh.",
   TIME_ZONE_FIXED:
     "Your timezone is already confirmed. Open your dashboard to continue.",
   SERVICE_UNAVAILABLE: "We couldn't load your garden. Please try again.",

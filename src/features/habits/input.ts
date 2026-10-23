@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { civilDate } from "../../shared/domain/civil-date.ts";
 
 export const createHabitCommand = z.strictObject({
   title: z
@@ -15,3 +16,14 @@ export const createHabitCommand = z.strictObject({
     }, "Use a title of 1–80 characters."),
 });
 export const archiveHabitCommand = z.strictObject({ habitId: z.uuid() });
+export const completeHabitCommand = z.strictObject({
+  habitId: z.uuid(),
+  expectedLocalDate: z.string().transform((value, ctx) => {
+    try {
+      return civilDate(value);
+    } catch {
+      ctx.addIssue({ code: "custom", message: "Use a real calendar date." });
+      return z.NEVER;
+    }
+  }),
+});

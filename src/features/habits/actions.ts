@@ -4,7 +4,22 @@ import { revalidatePath } from "next/cache";
 import { readSession } from "../auth/runtime.ts";
 import { getDatabase } from "../../shared/server/db/client.ts";
 import { safeFailure } from "../../shared/server/result.ts";
-import { archiveHabitForSession, createHabitForSession } from "./service.ts";
+import {
+  archiveHabitForSession,
+  createHabitForSession,
+  completeHabitForSession,
+} from "./service.ts";
+
+export async function completeHabitAction(input: unknown) {
+  try {
+    const session = await readSession();
+    const result = await completeHabitForSession(getDatabase(), session, input);
+    if (result.ok) revalidatePath("/dashboard");
+    return result;
+  } catch (error) {
+    return safeFailure(error);
+  }
+}
 
 export async function createHabitAction(input: unknown) {
   try {

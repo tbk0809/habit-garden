@@ -4,10 +4,18 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import type { DashboardDTO } from "../../shared/domain/dashboard.ts";
 import type { ActionResult } from "../../shared/domain/errors.ts";
-import { archiveHabitAction, createHabitAction } from "./actions.ts";
+import {
+  archiveHabitAction,
+  createHabitAction,
+  completeHabitAction,
+} from "./actions.ts";
+import { Garden } from "../garden/garden.tsx";
+import type { CivilDate } from "../../shared/domain/civil-date.ts";
 
 type Failure = Extract<ActionResult<unknown>, { ok: false }>["error"];
-type Operation = { kind: "create" } | { kind: "archive"; habitId: string };
+type Operation =
+  { kind: "create" } | { kind: "archive" | "complete"; habitId: string };
+type Completion = { habitId: string; expectedLocalDate: CivilDate };
 
 export function DashboardView({
   initialDashboard,
@@ -22,6 +30,10 @@ export function DashboardView({
   const [error, setError] = useState<Failure | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const [operation, setOperation] = useState<Operation | null>(null);
+  const [retryCompletion, setRetryCompletion] = useState<Completion | null>(
+    null,
+  );
+  const [rolledOverDate, setRolledOverDate] = useState<CivilDate | null>(null);
   const [pending, startTransition] = useTransition();
   const input = useRef<HTMLInputElement>(null);
   const archiveButtons = useRef(new Map<string, HTMLButtonElement>());
@@ -46,7 +58,14 @@ export function DashboardView({
     } else if (failed.code === "ONBOARDING_REQUIRED") {
       router.replace("/onboarding");
       router.refresh();
-    } else if (failed.code === "NOT_FOUND") {
+    } else if (failed.code === "DAY_ROLLED_OVER") {
+      setRolledOverDate(dashboard.localDate);
+      setRetryCompletion(null);
+      router.refresh();
+    } else if (
+      failed.code === "NOT_FOUND" ||
+      failed.code === "HABIT_ARCHIVED"
+    ) {
       focusAfterPending.current = "title";
       router.refresh();
     } else if (failed.fieldErrors?.title) {
@@ -64,6 +83,7 @@ export function DashboardView({
     if (pending) return;
     setOperation({ kind: "create" });
     setError(null);
+    setRetryCompletion(null);
     startTransition(async () => {
       try {
         const result = await createHabitAction({ title });
@@ -92,6 +112,7 @@ export function DashboardView({
     if (!habit) return;
     setOperation({ kind: "archive", habitId });
     setError(null);
+    setRetryCompletion(null);
     startTransition(async () => {
       try {
         const result = await archiveHabitAction({ habitId });
@@ -108,6 +129,51 @@ export function DashboardView({
             Math.min(index, result.data.dashboard.habits.length - 1)
           ]?.id ?? "title";
       } catch {
+        unavailable();
+      }
+    });
+  }
+
+  function complete(command: Completion) {
+    if (pending || dashboard.localDate === rolledOverDate) return;
+    const habit = dashboard.habits.find((item) => item.id === command.habitId);
+    if (!habit) return;
+    setOperation({ kind: "complete", habitId: command.habitId });
+    setError(null);
+    setRetryCompletion(null);
+    startTransition(async () => {
+      try {
+        const result = await completeHabitAction(command);
+        if (!result.ok) {
+          if (result.error.code === "SERVICE_UNAVAILABLE")
+            setRetryCompletion(command);
+          failure(result.error);
+          return;
+        }
+        setLatest(result.data.dashboard);
+        const garden = result.data.dashboard;
+        const changes = garden.plants.flatMap((plant) => {
+          if (!plant.unlocked) return [];
+          const previous = dashboard.plants.find(
+            (item) => item.plantId === plant.plantId,
+          );
+          if (!previous?.unlocked)
+            return [`${plant.name} unlocked at ${plant.stage}.`];
+          if (previous.stage !== plant.stage)
+            return [`${plant.name} is now ${plant.stage}.`];
+          return [];
+        });
+        setAnnouncement(
+          [
+            result.data.status === "completed"
+              ? `Completed ${habit.title}.`
+              : `${habit.title} was already completed today. No extra reward was added.`,
+            `Garden total: ${garden.lifetimeCompletionCount} lifetime ${garden.lifetimeCompletionCount === 1 ? "completion" : "completions"}.`,
+            ...changes,
+          ].join(" "),
+        );
+      } catch {
+        setRetryCompletion(command);
         unavailable();
       }
     });
@@ -162,11 +228,22 @@ export function DashboardView({
             )}
           </p>
         )}
+        {error && retryCompletion && (
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => complete(retryCompletion)}
+          >
+            Try completion again
+          </button>
+        )}
         <p role="status" aria-live="polite">
           {pending
             ? operation?.kind === "create"
               ? "Creating your habit…"
-              : "Archiving your habit…"
+              : operation?.kind === "complete"
+                ? "Completing your habit…"
+                : "Archiving your habit…"
             : announcement}
         </p>
         <p id="archive-help">
@@ -190,6 +267,35 @@ export function DashboardView({
                 </p>
                 <button
                   type="button"
+                  onClick={() =>
+                    complete({
+                      habitId: habit.id,
+                      expectedLocalDate: dashboard.localDate,
+                    })
+                  }
+                  disabled={
+                    pending ||
+                    habit.completedToday ||
+                    dashboard.localDate === rolledOverDate
+                  }
+                  aria-label={
+                    pending &&
+                    operation?.kind === "complete" &&
+                    operation.habitId === habit.id
+                      ? "Completing…"
+                      : `${habit.completedToday ? "Completed" : "Complete"} ${habit.title}`
+                  }
+                >
+                  {pending &&
+                  operation?.kind === "complete" &&
+                  operation.habitId === habit.id
+                    ? "Completing…"
+                    : habit.completedToday
+                      ? "Completed today"
+                      : "Complete today"}
+                </button>
+                <button
+                  type="button"
                   className="secondary"
                   onClick={() => archive(habit.id)}
                   ref={(element) => {
@@ -211,22 +317,10 @@ export function DashboardView({
           </ul>
         )}
       </section>
-      <section aria-labelledby="garden-heading">
-        <h2 id="garden-heading">Your garden</h2>
-        <p>{dashboard.lifetimeCompletionCount} lifetime completions</p>
-        <ul className="garden">
-          {dashboard.plants.map((plant) => (
-            <li key={plant.plantId}>
-              <h3>{plant.name}</h3>
-              <p>
-                {plant.unlocked
-                  ? `${plant.stage} · ${plant.growthPoints} growth points`
-                  : `Unlocks at ${plant.unlockAt} completions`}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Garden
+        plants={dashboard.plants}
+        lifetimeCompletionCount={dashboard.lifetimeCompletionCount}
+      />
     </main>
   );
 }

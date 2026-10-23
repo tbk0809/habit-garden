@@ -4,6 +4,8 @@ export type ErrorCode =
   | "VALIDATION_ERROR"
   | "NOT_FOUND"
   | "LIMIT_REACHED"
+  | "DAY_ROLLED_OVER"
+  | "HABIT_ARCHIVED"
   | "TIME_ZONE_FIXED"
   | "SERVICE_UNAVAILABLE";
 

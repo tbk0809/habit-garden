@@ -1,0 +1,235 @@
+.garden {
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.header > div {
+  min-width: 0;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.header p {
+  margin: 0.5rem 0 0;
+  color: #49644e;
+  font-size: 0.875rem;
+}
+
+.header .total {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  margin: 0;
+  max-width: 100%;
+}
+
+.total strong {
+  color: #263b2a;
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  min-width: 0;
+  padding: 0.75rem 0.75rem 1.25rem;
+  border: 1px solid #b3c4ad;
+  border-radius: 0.75rem;
+  background: #fffef8;
+}
+
+.slot figure {
+  margin: 0;
+}
+
+.illustration {
+  display: block;
+  width: 100%;
+  max-width: 16rem;
+  height: auto;
+  margin: 0 auto;
+}
+
+.caption {
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.caption h3 {
+  margin: 0.25rem 0 0.6rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.caption p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.stage,
+.locked {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.2rem 0.65rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+
+.stage {
+  background: #e6efdf;
+  color: #2d5835;
+}
+
+.locked {
+  background: #eeeae0;
+  color: #625b4b;
+}
+
+.caption .detail {
+  margin-top: 0.6rem;
+  color: #49644e;
+}
+
+.backdrop {
+  fill: #f0f2e5;
+}
+
+.soil {
+  fill: #ded6bf;
+}
+
+.soilLine {
+  fill: none;
+  stroke: #b7aa8c;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.stem,
+.cherryStem {
+  fill: none;
+  stroke: #4c7042;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.leaf,
+.cloverLeaf {
+  fill: #64884d;
+}
+
+.lightLeaf {
+  fill: #88a667;
+}
+
+.cloverLeaf {
+  stroke: #fffef8;
+  stroke-width: 0.7;
+}
+
+.stemFill {
+  fill: #4c7042;
+}
+
+.daisyBud,
+.daisyPetal {
+  fill: #fffef8;
+  stroke: #c5c4ab;
+  stroke-width: 1;
+}
+
+.goldBud,
+.sunflowerPetal {
+  fill: #e6b849;
+  stroke: #bb8c29;
+  stroke-width: 1;
+}
+
+.daisyCenter {
+  fill: #d9a73a;
+}
+
+.sunflowerCenter {
+  fill: #745438;
+}
+
+.seedDots {
+  fill: #bd9561;
+}
+
+.trunk {
+  fill: none;
+  stroke: #806448;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.treeCrown {
+  fill: #719357;
+}
+
+.treeHighlight {
+  fill: none;
+  stroke: #9cb87c;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.cherryStem {
+  stroke-width: 2;
+}
+
+.cherryFruit {
+  fill: #ac5148;
+}
+
+.lockDrawing {
+  fill: none;
+  stroke: #817b66;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 55rem) {
+  .slots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 25rem) {
+  .slots {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .slot {
+    padding: 0.75rem 1rem 1.25rem;
+  }
+}
