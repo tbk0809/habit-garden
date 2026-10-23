@@ -1,12 +1,12 @@
 # Habit Garden — acceptance gates
 
-Updated: 2026-10-23, Asia/Kuala_Lumpur. P0 and AC01–AC12 are approved. Tasks1–7 are reviewed; task7 has fresh151unit/45real-PostgreSQL/static/build/scoped-browser evidence in [STATUS](STATUS.md) and [GIT_FILE](GIT_FILE.md). **The complete application gate remains pending: `check.sh` and browser journeys do not yet exist, and real OAuth, CI and deployment have not passed.** The requirements below define the remaining acceptance evidence.
+Updated:2026-10-23, Asia/Kuala_Lumpur. P0/AC01–AC12 are approved. Tasks1–8 are implemented and independently reviewed. **The complete local automated `bash check.sh` passed:173unit/45realPG/3formalbrowser plus format/lint/type/build.** Clean-checkout reproduction passed at `8a27c54` on 2026-10-23 (173 unit, 45 PostgreSQL, 3 browser tests; exit 0, clean source). Actual local/production OAuth, realCI and deployment remain unverified; the full product acceptance is not complete.
 
 ## Local prerequisites and command contract
 
 Use the approved supported Node 24 LTS patch, lockfile, usable Bash, Docker Linux engine, and local PostgreSQL. Read-only prerequisite probes are `node --version`, `npm --version`, `git --version`, `bash --version`, and `docker info`; their availability is not a functional-app pass. Never substitute an unrelated DB volume or a hosted DB for disposable tests.
 
-Create these scripts during the scaffold/implementation tasks. Until they and meaningful suites exist, mark the corresponding result unavailable rather than pass. No empty-test success flags, placeholder passing tests, or swallowed failure exit codes.
+These scripts and meaningful suites now exist; the full local aggregate has passed. Record unavailable future environments or manual checks separately rather than inferring a pass. No empty-test success flags, placeholder passing tests, or swallowed failure exit codes.
 
 | Command                    | Required result                                                                                                                                                               |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

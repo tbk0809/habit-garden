@@ -6,18 +6,18 @@
 
 每次推进后更新本块。
 
-| 字段       | 当前值                                                                             |
-| ---------- | ---------------------------------------------------------------------------------- |
-| 当前步骤   | `5_前端生成代码` / Phase 1 第 8 项本地整体验收                                     |
-| 当前目标   | 第7项打卡/花园已通过检查和独立审阅；补正式浏览器旅程、状态端点与check.sh           |
-| PRD        | `2026-10-22 已批准 P0 与 AC01–AC12`                                                |
-| 项目框架   | `已批准；脚手架、领域、数据库基础已实现并审阅`                                     |
-| 交互逻辑   | `FLOWS.md 已固化；认证、习惯、打卡流程已实现，正式整体验收进行中`                  |
-| 前端交接包 | `已创建 FRONTEND_HANDOFF.md；按任务5执行中`                                        |
-| 前端代码   | `151项单测、45项PG集成、打卡smoke和空凭据build已过；第7项审阅通过，整体验收待完成` |
-| 当前版本   | `v0.1-build`                                                                       |
-| 历史报错   | `已区分沙箱限制并修复 Docker stale socket；主机工具就绪，历史证据见 ERRORS.md`     |
-| 验收闸门   | `GATES.md 已创建；check.sh 未创建、未运行；应用验收未通过`                         |
+| 字段       | 当前值                                                                         |
+| ---------- | ------------------------------------------------------------------------------ |
+| 当前步骤   | `7_验收闸门` / Phase 2 第10项 CI                                               |
+| 当前目标   | Phase 1本地构建与干净检出已通过；推进CI，真实OAuth及部署待验                   |
+| PRD        | `2026-10-22 已批准 P0 与 AC01–AC12`                                            |
+| 项目框架   | `已批准；脚手架、领域、数据库基础已实现并审阅`                                 |
+| 交互逻辑   | `FLOWS.md 已固化；认证、习惯、打卡流程已实现，正式整体验收进行中`              |
+| 前端交接包 | `已创建 FRONTEND_HANDOFF.md；按任务5执行中`                                    |
+| 前端代码   | `8a27c54干净检出；173单测、45PG、3条Playwright及check.sh通过；真实OAuth未验`   |
+| 当前版本   | `v0.1-build`                                                                   |
+| 历史报错   | `已区分沙箱限制并修复 Docker stale socket；主机工具就绪，历史证据见 ERRORS.md` |
+| 验收闸门   | `check.sh与8a27c54干净检出通过；真实OAuth/CI/部署待验证`                       |
 
 当前产品是 **Habit Tracker That Grows a Garden**。用户最新明确需求替代旧的 executive-assistant 描述。Phase 0 仅设计，写完六份文档后必须停止并等批准；不得把文档存在当作应用完成。
 
@@ -33,23 +33,23 @@
 
 ## 3. 文件路由
 
-| 当前任务                    | 读取范围                                                                                        |
-| --------------------------- | ----------------------------------------------------------------------------------------------- |
-| 接续已有项目                | 本状态块、STATUS.md；ERRORS.md 有记录时一并读。不默认读取完整历史/产品文档。                    |
-| 产品定位/P0/验收            | PRD.md；必要时 docs/01-data-design.md 的精确规则。                                              |
-| 技能/工具选择               | docs/00-skills-plan.md；真正使用技能时再读对应 SKILL.md。                                       |
-| 原始 prompt 完成度/剩余要求 | docs/06-prompt-audit.md、STATUS.md；需要核对细节时再读对应设计。                                |
-| 数据结构/领域规则           | docs/01-data-design.md、src/db/schema、src/features 下的相关 domain 源码。                      |
-| 项目框架/技术方案           | PRD.md、PROJECT_FRAME.md、docs/02-architecture.md；必要时验收规则。                             |
-| 后端/API/Mock               | PRD.md、PROJECT_FRAME.md 第 6 节、docs/01-data-design.md；页面形状直接相关时才读交互。          |
-| 交互逻辑                    | PRD.md、PROJECT_FRAME.md、FLOWS.md；按相关功能读取 docs/02-architecture.md。                    |
-| 前端交接                    | PRD.md、PROJECT_FRAME.md、FLOWS.md、FRONTEND_HANDOFF.md；按批准后的任务清单推进。               |
-| 前端代码                    | 批准后的 FRONTEND_HANDOFF.md/具体任务规格、相关源码、必要时 check.sh；不默认重读完整 PRD/历史。 |
-| CI/CD 与服务免费条款        | docs/03-cicd-plan.md、docs/04-free-tier-verification.md；相关 workflow/部署输出。               |
-| 未来 Phase 1/2 执行         | docs/05-task-breakdown.md 和其所引用的具体设计；不得跳过审批。                                  |
-| 项目记录/报错               | STATUS.md、GIT_FILE.md；版本发布读 CHANGELOG.md（未来创建）；失败读 ERRORS.md 和相关输出。      |
-| 验收闸门                    | GATES.md、check.sh（未来创建）、PRD.md 对应验收。文件未创建/命令未运行不能声称通过。            |
-| 理解框架/入口               | README.md；必要时本文件。不默认读取业务文档全部。                                               |
+| 当前任务                    | 读取范围                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------ |
+| 接续已有项目                | 本状态块、STATUS.md；ERRORS.md 有记录时一并读。不默认读取完整历史/产品文档。               |
+| 产品定位/P0/验收            | PRD.md；必要时 docs/01-data-design.md 的精确规则。                                         |
+| 技能/工具选择               | docs/00-skills-plan.md；真正使用技能时再读对应 SKILL.md。                                  |
+| 原始 prompt 完成度/剩余要求 | docs/06-prompt-audit.md、STATUS.md；需要核对细节时再读对应设计。                           |
+| 数据结构/领域规则           | docs/01-data-design.md、src/db/schema、src/features 下的相关 domain 源码。                 |
+| 项目框架/技术方案           | PRD.md、PROJECT_FRAME.md、docs/02-architecture.md；必要时验收规则。                        |
+| 后端/API/Mock               | PRD.md、PROJECT_FRAME.md 第 6 节、docs/01-data-design.md；页面形状直接相关时才读交互。     |
+| 交互逻辑                    | PRD.md、PROJECT_FRAME.md、FLOWS.md；按相关功能读取 docs/02-architecture.md。               |
+| 前端交接                    | PRD.md、PROJECT_FRAME.md、FLOWS.md、FRONTEND_HANDOFF.md；按批准后的任务清单推进。          |
+| 前端代码                    | `8a27c54干净检出；173单测、45PG、3条Playwright及check.sh通过；真实OAuth未验`               |
+| CI/CD 与服务免费条款        | docs/03-cicd-plan.md、docs/04-free-tier-verification.md；相关 workflow/部署输出。          |
+| 未来 Phase 1/2 执行         | docs/05-task-breakdown.md 和其所引用的具体设计；不得跳过审批。                             |
+| 项目记录/报错               | STATUS.md、GIT_FILE.md；版本发布读 CHANGELOG.md（未来创建）；失败读 ERRORS.md 和相关输出。 |
+| 验收闸门                    | `check.sh与8a27c54干净检出通过；真实OAuth/CI/部署待验证`                                   |
+| 理解框架/入口               | README.md；必要时本文件。不默认读取业务文档全部。                                          |
 
 ## 4. 阶段视角
 

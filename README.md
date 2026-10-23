@@ -1,57 +1,90 @@
 # Habit Garden
 
-Habit Tracker That Grows a Garden: completing daily habits grows plants, builds streaks, and unlocks a small virtual garden.
+Complete daily habits to grow a four-slot SVG garden. The app supports GitHub sign-in, one confirmed timezone, up to ten active habits, daily completion, current/best streaks and archive with retained history. Plants unlock at5,15 and30 lifetime completions; each slot includes equivalent stage/progress text.
 
-**Current checkpoint: Phase 1 task8, formal local acceptance.** The typed scaffold, pure domain rules, local PostgreSQL schema, migrations and guarded seed are implemented. The application is still under construction; full local acceptance and deployment remain pending. On 2026-10-22 the user approved Phase 0/P0/acceptance/dependencies, coding, personal noncommercial use and personal public source publication. Current evidence and remaining work are in [STATUS](STATUS.md) and the [prompt audit](docs/06-prompt-audit.md).
+The local automated gate passes: **173 unit tests, 45 real PostgreSQL integration cases and 3 Playwright journeys**, plus format, lint, strict types and a credential-free production build. Tasks 1–8 are independently reviewed. The clean Windows checkout uses the repository's explicit LF policy from `8a27c54`; its full gate is recorded in [STATUS](STATUS.md). Real GitHub OAuth, GitHub Actions and production deployment still require separate verification; there is no live URL. See [GATES](GATES.md) and the [original-prompt audit](docs/06-prompt-audit.md).
 
-## Review the proposal
+## Prerequisites
 
-| Document                                                                                          | Review focus                                                                                       |
-| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| [Product scope and acceptance](PRD.md)                                                            | Facts, proposed MVP defaults, exclusions, and observable acceptance.                               |
-| [00 — Skills plan](docs/00-skills-plan.md)                                                        | Actual installed skills/tools and their roles.                                                     |
-| [01 — Data design](docs/01-data-design.md)                                                        | Nine PostgreSQL tables, Mermaid ER diagram, keys/indexes, exact streak/growth/timezone rules.      |
-| [02 — Architecture](docs/02-architecture.md)                                                      | Feature boundaries, auth, validation, UI states, and tests.                                        |
-| [03 — CI/CD plan](docs/03-cicd-plan.md)                                                           | PR/main checks, migrations, staged deployment, smoke, and promotion.                               |
-| [04 — Free-tier evidence](docs/04-free-tier-verification.md)                                      | Current official limits/sources and unverified signup conditions.                                  |
-| [05 — Ordered tasks](docs/05-task-breakdown.md)                                                   | Phase 1/2 checklist, files, checks, and commit boundaries.                                         |
-| [Execution log](GIT_FILE.md)                                                                      | Append-only actions, decisions, failures, and results.                                             |
-| [Current status](STATUS.md) / [environment issues](ERRORS.md)                                     | Resumption point and prerequisites.                                                                |
-| [Original-prompt audit](docs/06-prompt-audit.md)                                                  | 2026-10-23 requirement coverage, remaining work, current environment probes, and approval choices. |
-| [Dependency freeze](docs/07-dependency-pins.md)                                                   | Exact compatible package/runtime pins and current support/security sources.                        |
-| [Interaction flows](FLOWS.md) / [implementation handoff](FRONTEND_HANDOFF.md) / [gates](GATES.md) | Approved implementation contracts and required evidence.                                           |
+Use Node **24.22.1**, npm, Git, Bash and Docker with its Linux engine running. The verified workstation uses npm11.19.1 and Git2.52.0.windows.1. Exact application/tool packages are in the lockfile and [dependency record](docs/07-dependency-pins.md); no global Node change is required.
 
-## Proposed implementation
+Browser tests use installed Microsoft Edge on Windows and Playwright Chromium on Linux. Windows/Edge is verified here; Linux CI execution remains pending. Supply the matching browser before running e2e. The ignored workstation runtime at `.tools/node-v24.22.1-win-x64` is not shipped with a checkout.
 
-The approved stack is Next.js/TypeScript, PostgreSQL, Drizzle, Auth.js with GitHub OAuth/database sessions, Zod, Vitest, Playwright and authored SVG/CSS. Docker Compose supplies separate local development and disposable test databases. Production proposes independently provisioned Neon Free plus Vercel Hobby and a personal public GitHub repository; actual no-card provisioning and access still require verification. The user chose to finish the local application before Neon setup.
+## First local setup
 
-Exact versions are pinned in the lockfile and [dependency record](docs/07-dependency-pins.md), including the approved Auth.js beta. Vercel standalone no-card project creation has not been verified through a real account; no Marketplace integration or payment method is permitted.
+1. Install the pinned Node version and run `npm ci`.
+2. Create the private env files below only if absent, selecting the appropriate groups from `.env.example`. Replace placeholders privately. URL-encode special characters in connection-string passwords.
+3. Start the existing local databases and wait for health:
 
-## Setup, run, test, and deployment status
+   ```sh
+   docker compose up -d db
+   docker compose --profile test up -d db-test
+   docker compose ps
+   ```
 
-The scaffold, environment template, Compose, migrations, guarded seed and unit/real-PostgreSQL test commands exist. Tasks2–4 have scoped verification evidence. Local authentication and habit services are reviewed; atomic completion and SVG garden are reviewed in20058c3, while full Playwright acceptance, workflows, `check.sh` and a live URL remain pending. Database-foundation tests do not prove login or complete application behavior.
+4. Apply reviewed development migrations with `npm run db:migrate`. The journal and dedicated session lock make an unchanged replay a no-op.
+5. Optionally run `npm run db:seed -- --local-development`. It adds/verifies fictional users and history, refuses conflicting fixtures, and creates no sign-in identity.
+6. Configure local GitHub OAuth, then run `npm run dev` and open [localhost:3000](http://localhost:3000).
 
-Use Node **24.22.1**, npm and Docker with its Linux engine running. The version files and lockfile define the project baseline. On this workstation an ignored `.tools/node-v24.22.1-win-x64` runtime is available; prepend it to this shell's PATH if the system Node differs. A fresh checkout must supply the pinned runtime separately.
+| Private file | Values                                                                                                                                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.env`       | Compose only: distinct `LOCAL_DB_PASSWORD` for migrator and `LOCAL_RUNTIME_PASSWORD` for runtime. Initial passwords are shared by the two local containers.                                                                          |
+| `.env.local` | `DATABASE_URL` as `habit_garden_runtime` and direct `MIGRATION_DATABASE_URL` as `habit_garden_migrator`, both targeting `habit_garden_dev` at127.0.0.1:55434. Add `AUTH_URL`, `AUTH_SECRET`, `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`. |
+| `.env.test`  | `TEST_DATABASE_URL` as migrator and `TEST_RUNTIME_DATABASE_URL` as runtime, both targeting exactly `habit_garden_test` at127.0.0.1:55433. This database is disposable; the integration runner rebuilds its schema.                   |
 
-1. Run `npm ci` with the pinned Node version.
-2. Create the ignored files below only if absent. Copy the relevant placeholder names from `.env.example`, replace them privately and preserve existing values. Never commit these files.
-3. Run `docker compose up -d db` for development. Run `docker compose --profile test up -d db-test` for isolated tests; wait for both requested services to be healthy.
-4. Run `npm run db:migrate` against the development migration URL. A repeat with unchanged SQL is a no-op.
-5. Optionally run `npm run db:seed -- --local-development`. It adds/verifies two fictional users and retained habit history, creates no login identity and refuses conflicting fixture data instead of overwriting it.
-6. Configure local OAuth below, then run `npm run dev` and open [localhost:3000](http://localhost:3000).
+Existing volumes retain their original PostgreSQL passwords. Editing env values does not rotate a database login. Normal setup preserves env files, development rows and volumes. On a later run, start the existing DB, apply only pending reviewed migrations, and start the app; seed replay is optional.
 
-| Ignored file | Values and target                                                                                                                                                                                                                     |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.env`       | Compose `LOCAL_DB_PASSWORD` and `LOCAL_RUNTIME_PASSWORD`; choose distinct private values. Initial database credentials are set when the volumes are first created.                                                                    |
-| `.env.local` | Runtime `DATABASE_URL` uses `habit_garden_runtime`; `MIGRATION_DATABASE_URL` uses `habit_garden_migrator`. Both name `habit_garden_dev` on loopback port55434. Add `AUTH_URL`, `AUTH_SECRET`, `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`. |
-| `.env.test`  | `TEST_DATABASE_URL` uses migrator and `TEST_RUNTIME_DATABASE_URL` uses runtime, both naming `habit_garden_test` on loopback port55433. The test runner checks these targets before rebuilding its test schema.                        |
+## Local GitHub sign-in
 
-Use passwords matching the existing Compose volumes. Changing an env value does not rotate an already-created PostgreSQL login. Do not delete volumes or reset development data to resolve a credential mismatch.
+Register a local GitHub OAuth app with homepage `http://localhost:3000` and callback `http://localhost:3000/api/auth/callback/github`. Put its client ID/secret in ignored `.env.local`, set `AUTH_URL=http://localhost:3000`, and use a private random `AUTH_SECRET` of at least32 characters. Restart the server after changing configuration.
 
-For local sign-in, register a GitHub OAuth app with homepage `http://localhost:3000` and callback `http://localhost:3000/api/auth/callback/github`. Set `AUTH_URL=http://localhost:3000`, use a private random `AUTH_SECRET` of at least32 characters, and place the app's client ID/secret in `.env.local`. The application requests profile scope only. Separate local and production apps keep their credentials independent. Follow the [GitHub registration instructions](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) and [Auth.js callback guide](https://authjs.dev/guides/configuring-github). Real provider login is still a manual acceptance step; seeded users cannot sign in.
+Complete a real provider round trip, explicitly confirm the IANA timezone, then sign out and verify the dashboard is protected again. The app requests profile scope only. Keep local and production OAuth apps separate. Follow the [GitHub registration instructions](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) and [Auth.js callback guide](https://authjs.dev/guides/configuring-github). Seeded users and automated session fixtures cannot replace this provider check. Real local OAuth is still pending because credentials have not been configured.
 
-Run `npm run format:check`, `npm run lint`, `npm run typecheck`, `npm run test:unit` and `npm run test:integration` for their respective checks; `npm test` combines unit/integration. Integration tests use and rebuild only the verified disposable test database. The build must remain independent of DB/OAuth credentials. Browser journeys and `bash check.sh` are still pending at this checkpoint; do not treat the explicit failing e2e placeholder as a pass.
+## Run and verify
 
-Phase 2 will add verified free-account/production-secret instructions and actual CI/deployment evidence. Until `bash check.sh` and the relevant acceptance checks pass, the application must not be called complete.
+| Command                                                     | Behavior                                                                                                                             |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm run dev`                                               | Development server using private runtime configuration.                                                                              |
+| `npm run build`                                             | Production build with DB/OAuth runtime values cleared in the child process, including env-file fallback prevention.                  |
+| `npm start`                                                 | Serve the existing production build; runtime DB/OAuth configuration is required for sign-in and private pages.                       |
+| `npm run format:check`, `npm run lint`, `npm run typecheck` | Separate formatting, lint and strict TypeScript checks.                                                                              |
+| `npm run test:unit`                                         | Domain, validation, source-identity, readiness and gate behavior.                                                                    |
+| `npm run test:integration`                                  | Guarded fresh-schema migrations and real PostgreSQL invariants/transactions in the exact disposable testDB.                          |
+| `npm test`                                                  | Unit and real-DB suites.                                                                                                             |
+| `npm run test:e2e`                                          | Three formal browser journeys against a built app and the migrated disposable testDB; it does not reset or migrate another database. |
+| `bash check.sh`                                             | Fail-fast preflight, format →lint →typecheck →unit →guarded integration/migration →credential-free build →three browser journeys.    |
 
-For another agent, start with [AGENTS.md](AGENTS.md) and [STATUS.md](STATUS.md); use [PROJECT_FRAME.md](PROJECT_FRAME.md) as the design routing map. Do not rerun environment setup or advance into code merely because this README exists.
+Run the complete gate from the repository root. It requires the exact Node version, installed dependencies/browser, working Git/Bash/Docker and private `.env.test`; missing or unsafe prerequisites fail. Only the existing integration runner rebuilds the explicitly named disposable testDB. Run `npm run test:integration` and `npm run build` before standalone e2e if those prerequisites are not already satisfied. The gate does not seed or reset the development database.
+
+On the verified Windows workstation, Git for Windows Bash works while the default WSL Bash launcher is restricted. With pinned Node on PATH, use:
+
+```powershell
+& 'C:/Program Files/Git/bin/bash.exe' check.sh
+```
+
+The gate prefers the reviewed `.tools` Windows runtime if present; other checkouts must supply Node24.22.1. Browser fixtures create ordinary Auth.js sessions only from guarded test-runner code. Application code has no fixture endpoint, login bypass or fake-clock setting. Auth-bearing traces, videos, screenshots and failure contexts are disabled for these journeys.
+
+## Build identity and operational checks
+
+`/api/status` returns no-store liveness, the baked full source SHA and a dirty-checkout flag. `/api/ready` performs only a bounded `SELECT 1`, returning ready200 or generic unavailable503. Neither endpoint requires OAuth or returns private rows/configuration.
+
+Production builds require a verified checkout identity. A dirty local build reports that fact; request headers, query parameters and runtime metadata variables cannot replace the baked SHA. A trusted source export without `.git` must supply its corresponding full nonzero SHA through build-time `HABIT_GARDEN_BUILD_SOURCE_SHA`; a mismatch with an existing checkout is refused. Release verification must compare the tested artifact's exact SHA and reject dirty/unknown identity.
+
+## Data and troubleshooting
+
+All private operations derive ownership from an unexpired session and validate input. The server obtains the authoritative local date after acquiring the user lock. Same-habit/day retries retain one log/reward; stale-day requests refresh state and require another deliberate click. Archive keeps logs, streak history, plants and totals. Timezone is fixed after confirmation; undo, backfill, edit/reactivation, placement editors and reminders are outside P0.
+
+- If the Docker pipe is absent or PostgreSQL refuses connections, verify the Linux engine and the project containers first. See [ERRORS](ERRORS.md) for diagnosed socket and sandbox failures; preserve existing data/volumes.
+- The development port is55434 and the disposable test port is55433. The old55432 port conflicted; do not stop an unrelated listener to reclaim it.
+- `EACCES`, Git Bash MSYS permission errors or Turbopack junction denial may be sandbox boundaries. The recorded checks passed on the permitted host; a failed/unrun command remains pending until actually verified.
+- Seed refusal means target, flag or fixture conflicts need investigation. It never authorizes overwriting data. A login configuration error requires private OAuth settings, not a seeded login or bypass.
+
+## CI/CD and remaining manual work
+
+Phase2 is pending: no workflow, remote publication, production migration, cloud project or deployment has been verified. The approved design proposes a personal public repository, independently provisioned Neon Free and Vercel Hobby for personal/noncommercial use. Actual account permissions, current free/no-card terms, secrets and onboarding must be verified before provisioning. No card, paid plan, trial or Marketplace billing is authorized.
+
+The next manual application check is local OAuth registration/configuration and the real sign-in/sign-out round trip. Later cloud work needs production OAuth and DB credentials, GitHub/Vercel secrets and actual exact-SHA pipeline/deployment evidence. Enter credentials privately; public source and logs must contain placeholders only. The historical audit has0 production and8 development-tool affected nodes; see the dated [dependency record](docs/07-dependency-pins.md), not a claim of a fresh audit.
+
+## Project records
+
+Start with [AGENTS](AGENTS.md) and [STATUS](STATUS.md) to resume. [PRD](PRD.md) owns P0/AC01–AC12; [data design](docs/01-data-design.md) owns exact rules; [architecture](docs/02-architecture.md), [FLOWS](FLOWS.md) and [handoff](FRONTEND_HANDOFF.md) define implementation boundaries. [Ordered tasks](docs/05-task-breakdown.md), [CI/CD design](docs/03-cicd-plan.md), [free-tier evidence](docs/04-free-tier-verification.md) and [GIT_FILE](GIT_FILE.md) retain decisions and command evidence. [CHANGELOG](CHANGELOG.md) records the unreleased local build.

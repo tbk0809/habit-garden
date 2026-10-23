@@ -703,3 +703,157 @@
 - Result: task8 in progress, task9/actual OAuth/Phase2 still open. Fresh151unit/45PG/build/scopedbrowser is separated from formal complete acceptance and historical dependency/free-tier records.
 - Commit: records pending; latest feature20058c3.
 - Problems / follow-ups: finish task8 integration/review, update final source metadata and task9 documentation; no cloud/provider completion inferred.
+
+## Step 68: Commit the corrected project and prompt audit records
+- Time: 2026-10-23 12:45:07 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Committed the aligned task7 acceptance/task8 entry records. A separate read-only audit found and closed one stale task-plan footer pointing to task7. Accepted task8 workers' proposed script interfaces; root remains the only package.json writer.
+- Why: Keep current status recoverable while browser and ops work proceeds, with explicit ownership for testDB, .next/config and package integration.
+- Files created/changed: eight public records ine193da5; GIT_FILE.md; ignored task9 documentation advice requested.
+- Commands run: scoped Prettier and git diff --check; independent state/link review; scoped local git commit.
+- Result: e193da5 — docs: record garden acceptance and remaining prompt requirements. Browser test:e2e runner and credential-free build wrapper interfaces are approved within existing dependencies. Ops may edit next.config while browser builds are paused; final runtime SHA-spoof checks requested.
+- Commit:e193da5.
+- Problems / follow-ups: task8 implementation and integrated test/review still pending. Source metadata from a dirty development build must not be described as a clean release; rebuild exact final commit later.
+
+## Step 69: Record task8 test-first and formal journey milestones
+- Time: 2026-10-23 12:46:36 +08:00 (Asia/Kuala_Lumpur; latest verified clock; milestones afterward).
+- Phase: 1 Build
+- What I did: Read the ops RED report and browser implementation milestone. Ops observed11failed/6passed across17new behavior checks against deliberately incomplete health/source/build implementations. Browser authored exactly three real-session journeys and the guarded runner, then began a host run against accepted task7 before any UI patch.
+- Why: Verify meaningful behavior failures before implementation and promote accepted smoke coverage into the real e2e target without placeholder passes or application test modes.
+- Files created/changed: worker-owned pending health/source/build/check files, formal browser config/runner/fixtures/journeys; GIT_FILE.md.
+- Commands run: ops focused RED unit checks; browser scoped Prettier/ESLint/tsc pass and first formal host Playwright run started. Ops test-only local PostgreSQL wire peer validates bounded connection/query lifecycle without using shared testDB.
+- Result: task8 code/tests are under construction; no final GREEN/aggregate claim yet. Browser owns testDB/server/.next, config builds paused pending ops freeze; package integration remains root-owned.
+- Commit: none for task8; HEAD e193da5.
+- Problems / follow-ups: complete ops behavior and formal e2e, merge exact scripts, aggregate gate, independent review and source-SHA spoof check. Actual provider and cloud work remain pending.
+
+## Step 70: Route the formal onboarding keyboard-focus regression to a scoped fix
+- Time: 2026-10-23 12:46:36 +08:00 (Asia/Kuala_Lumpur; latest verified clock; formal RED afterward).
+- Phase: 1 Build
+- What I did: Read the first three-journey RED run: invalid timezone feedback attempted input focus while the control was still disabled/pending. Returned the concrete focus defect to the browser implementer for a pending-complete effect, preserving existing onboarding semantics.
+- Why: Keyboard error recovery is part of the approved local acceptance; a formal journey caught a boundary absent from earlier scoped smoke.
+- Files created/changed: pending tests/e2e/runner/helper/config and scoped timezone-form.tsx fix; GIT_FILE.md.
+- Commands run: browser owner host formal Playwright against accepted task7 build; no other DB use. Worker confirmed auth-bearing traces/videos/screenshots/context collection disabled and failure contexts removed.
+- Result: one genuine UI focus RED. Two other initial failures are isolated test setup/selectors (hidden Next route announcer duplicates role alert; foreign-ID intercept URL retained query), being corrected without weakening security assertions. Task8 not accepted.
+- Commit: none for task8; HEAD e193da5.
+- Problems / follow-ups: verify focus fix GREEN against new ops-frozen build, then full gate and independent review. Broad accepted-baseline review is running read-only, with no DB/build access.
+
+## Step 71: Integrate real build/e2e command contracts and record ops GREEN
+- Time: 2026-10-23 12:49:02 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Switched the package build command to the verified-source credential-free wrapper and test:e2e from its failing placeholder to the guarded formal browser runner. Read frozen ops routes/helpers/config and accepted17/17focused GREEN plus scoped lint; notified browser that config/wrapper are ready for its final build.
+- Why: Expose real acceptance commands only after constituent implementations exist; runtime credentials must stay absent from the build child, and release identity must come from a verified checkout rather than a request/runtime claim.
+- Files created/changed: package.json, GIT_FILE.md; worker-owned pending ops and e2e files.
+- Commands run: exact package script patch; ops Node24focused17testGREEN and scopedESLint reported; root frozen source inspection. Broader baseline review through20058c3 returnedPASS with no actionable important defect, read-only.
+- Result: formal script interfaces are integrated, not yet full-gate accepted. Readiness onlySELECT1, generic503 and bounded startup/query/socket closure have behavior evidence; status identity spoof defense awaits actual built-server assertion.
+- Commit: none for task8; HEAD e193da5.
+- Problems / follow-ups: three formal journeys against final build, gate/preflight behavior and independent delta review. Actual provider and cloud remain pending.
+
+## Step 72: Verify the integrated credential-free build and broaden concrete accessibility evidence
+- Time: 2026-10-23 12:50:50 +08:00 (Asia/Kuala_Lumpur; latest verified clock; build afterward).
+- Phase: 1 Build
+- What I did: Read browser's successful integrated ops-wrapper build and scoped lint/typecheck report; requested and received concrete DOM contrast,44px control, visible keyboard outline and zero-motion assertions within the existing three journeys. Removed the now-unreferenced obsolete not-ready.ts placeholder after replacing its final package command.
+- Why: Formal acceptance must exercise the built application and observable accessibility behavior, not leave failing scaffolding or infer contrast from appearance.
+- Files created/changed: scripts/not-ready.ts removed; package and pending task8 implementation/tests; GIT_FILE.md.
+- Commands run: browser-owned node scripts/build.ts, scoped lint/typecheck, second formal three-journey run started; rg confirmed no remaining placeholder references outside historical records.
+- Result: credential-free build is GREEN with baked e193da5c165b1d9ea94aec4f5ed29a1c3a2b054d and dirty=true, honestly representing in-progress source. Onboarding focus fix compiled. No claim about final committed identity or full gate yet.
+- Commit: task8 pending; HEAD e193da5.
+- Problems / follow-ups: formal GREEN, check.sh guard tests/full aggregate and independent delta review; clean committed-source reproduction after task8 acceptance.
+
+## Step 73: Record formal browser GREEN and prepare the aggregate gate
+- Time: 2026-10-23 12:51:54 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the formal3journeyGREEN report against the integrated dirty build. Inspected check.sh preflight/order and its isolated failure-propagation fixtures while ops completes its report; requested browser release shared resources after guard/artifact verification.
+- Why: Preserve exact browser evidence and prevent further optional broadening once meaningful journeys pass; root must run the final integrated gate on stable files.
+- Files created/changed: worker-owned task8 files and reports, GIT_FILE.md.
+- Commands run: browser reported3/3Playwright in22.1s on installed Edge/Node24.22.1; root check.sh/source/fixture read. No root testDB action while worker owns it.
+- Result: formal journeys cover real sessions/expiry, onboarding focus, pending/no optimistic rewards, unlock/reload, lost-response/date retry, retention, foreign/missing ownership, keyboard/320px80-character title/reduced-motion/contrast. Built-server status resists runtime/query/header spoof; ready200withDB and503withoutDB verified. Full check.sh remains pending.
+- Commit: task8 pending; HEAD e193da5.
+- Problems / follow-ups: final ops guard tests/report, root aggregate, independent task8 delta review and clean-checkout verification. No real-provider OAuth or cloud success implied.
+
+## Step 74: Freeze task8 after independent review and start the full local gate
+- Time: 2026-10-23 12:55:38 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read both full slice reports, inspected the real gate and frozen source, and received independent task8 spec/qualityPASS with no actionable important finding. Restored the existing gitattributes policy after detecting an accidental overwrite; started root-owned full Git Bash check.sh on stable source.
+- Why: Slice-level GREEN must be followed by one complete sequential gate and independent review before accepting task8 or cloning its source.
+- Files created/changed: pending task8 source/config/tests plus GIT_FILE.md; gitattributes restored exactly toHEAD (no diff). Ignored full reports retained.
+- Commands run: reviewed22focusedopsGREEN/scopedstatic/Bash-n evidence, formal3journeyGREEN, root git diff --check exit0; host C:/Program Files/Git/bin/bash.exe check.sh started with pinnedNode24.22.1.
+- Result: testDB/.next/server now root-owned. Independent baseline and task8 reviewsPASS. Aggregate format passed; remaining gates in progress. No worker commit or new dependency.
+- Commit: task8 pending; HEAD e193da5.
+- Problems / follow-ups: await full real173unit/PG/build/e2e output (count must be confirmed, not assumed), then coherent commit and task9 clean-checkout/documentation evidence. Actual OAuth/CI/deployment remain separate.
+
+## Step 75: Accept the complete local automated gate for task8
+- Time: 2026-10-23 12:56:46 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Ran the complete real Git Bash check.sh sequentially on frozen task8 source and inspected every stage and final exit0. Accepted task8 after independent spec/qualityPASS and baselinePASS; prepared the scoped Conventional Commit.
+- Why: This is the first actual aggregate application gate, replacing the original failing e2e placeholder and separating automated local evidence from provider/cloud acceptance.
+- Files created/changed: check.sh; real build/e2e scripts; status/ready/source/readiness helpers; next/Playwright config;3formal journeys/private test helpers;22ops/gate tests; onboarding focus fix; package scripts; obsolete placeholder removed; GIT_FILE.md.
+- Commands run: host C:/Program Files/Git/bin/bash.exe check.sh withNode24.22.1/npm11.19.1; format→lint→typecheck→unit173/173→guarded realPG45/45→credential-free build→formalPlaywright3/3 in21.2s, finalexit0. Root git diff --check also passed.
+- Result: full automated local gatePASS, zero skipped tests. Build accurately reports e193da5c165b1d9ea94aec4f5ed29a1c3a2b054d dirty=true because reviewed task8 was uncommitted; no final-commit or deployed identity claim. Development data untouched. Independent task8 reviewer has zero important findings; exact attrs policy preserved.
+- Commit: task8 feature commit follows accepted evidence; BASE e193da5.
+- Problems / follow-ups: task9 documentation and clean-checkout reproduction with exact committed source/dirty=false. Actual GitHub OAuth, realLinuxCI, free-account provisioning and deployment remain pending.
+
+## Step 76: Catch and fix the clean-Windows-checkout line-ending boundary
+- Time: 2026-10-23 13:00:35 +08:00 (Asia/Kuala_Lumpur; worker verified failure time).
+- Phase: 1 Build
+- What I did: Started task9 documentation and clean-checkout verification of440dcdf. The new local clone installed214locked packages offline, then failed its actual full gate at formatting106files. Verified system autocrlf plus blob/worktree bytes; changed only the existing broad gitattributes policy to explicit LF while preserving suffix rules.
+- Why: A working existing tree is insufficient when a default Windows clone fails the documented first gate. Repository EOL policy must make formatting reproducible without changing a user's global Git settings or running formatter as a workaround.
+- Files created/changed: .gitattributes, ERRORS.md, GIT_FILE.md; pending task9 README/CHANGELOG/status/gates/checklist; failed ignored clean clone preserved.
+- Commands run: local clone/checkout440dcdf and initial clean status; only .env.test copied privately; npm ci --offline --no-audit --no-fund exit0; host bash check.sh exit1atformat; read-only Git config/check-attr/blob/worktreebyte diagnosis. No subsequent clone DB/test/build stage ran.
+- Result: meaningful reproducibility RED; core.autocrlf=true produced CRLF for ordinary text despite clean Git status. Explicit eol=lf fix awaits checks/commit/newcleancloneGREEN. No global config, developer data, ignored OAuth/env or package dependency changed.
+- Commit: latest application440dcdf; EOL fix pending.
+- Problems / follow-ups: applicable static/unit checks, scoped policy commit, NEW clean checkout and full gate. Actual OAuth/Phase2 remain pending; do not mark task9 accepted.
+
+## Step 77: Commit the EOL repair and restart clean-checkout acceptance
+- Time: 2026-10-23 13:03:07 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Ran applicable fresh format/lint/type/173unit/diff checks after the one-line EOL repair, committed8a27c54 and authorized a new local clone at that exact SHA. Kept the failed440dcdf clone and its report untouched; continued explicit task9 local/manual/cloud documentation.
+- Why: Prove the repository-level fix under default Windows Git checkout rather than correcting already-written CRLF files or changing global autocrlf.
+- Files created/changed: .gitattributes in8a27c54; README/CHANGELOG/STATUS/AGENTS/GATES/task checklist/prompt audit and GIT_FILE.md pending; ignored clean-checkout-8a27c54/report.
+- Commands run: pinned format/lint/type/173unit/diff all exit0; scoped localgitcommit; new cleanclone/offlineinstall/fullgate dispatched with only private .env.test and exact guarded testDB.
+- Result:8a27c5451bbb567f0bc1a8d69a2061f2555b7ccf — fix: preserve LF in fresh Windows checkouts. Old cloneRED remains evidence. New cloneGREEN is pending; no app behavior/dependency/global setting change.
+- Commit:8a27c54; task8 application440dcdf.
+- Problems / follow-ups: verify new config bytesLF/gitclean plus actualfullgate and bakedsource8a27/dirty=false. Complete docs/links/review after result; actual OAuth/Phase2 remain open.
+
+## Step 78: Resume remaining acceptance and release work
+- Time: 2026-10-23 17:32 +08:00 (Asia/Kuala_Lumpur).
+- Phase: 1 Build
+- What I did: Reconciled HEAD 8a27c54 and the pending task9 documentation with the handoff. Read the routed status, error history, task and release designs; began independent official free-tier research.
+- Why: Continue approved work without restarting Phase0 or treating historical tests as fresh cloud evidence.
+- Files created/changed: GIT_FILE.md; research stays in ignored .superpowers.
+- Commands run: git status/log/remote, routed file reads, available-tool inventory and Vercel list-teams attempt.
+- Result: Eight modified tracked documents plus untracked CHANGELOG; no remote or CLI login established. Vercel connector reports unavailable; browser account inspection is the fallback. Clean-checkout report is being verified.
+- Commit: none; HEAD 8a27c54.
+- Problems / follow-ups: finish task9, implement exact-source CI/CD, verify account access and real OAuth. No deployment or provider success claimed.
+
+## Step 79: Recover the repeated Docker runtime-socket startup failure
+- Time: 2026-10-23 17:40 +08:00 (Asia/Kuala_Lumpur).
+- Phase: 1 Build
+- What I did: Read the existing clean-clone log (173 unit,45 PG,3 browser, baked8a27c54/dirty=false), then diagnosed the stopped host before a fresh gate. Docker startup again failed at the same dockerInference socket.
+- Why: Restore the already approved local test prerequisites without resetting application data.
+- Files created/changed: ERRORS.md,GIT_FILE.md; two checked socket-only runtime directories preserved as sibling .habit-garden-backup-20261023-1740 directories.
+- Commands run: host docker desktop start/status; backend log; docker desktop stop --force; exact-path/content checks; native PowerShell Move-Item; docker desktop start --detach.
+- Result: runtime backups preserved; restart requested. No image, volume, database, WSL disk or global configuration was deleted or reset.
+- Commit: none; HEAD8a27c54.
+- Problems / follow-ups: confirm engine health and fresh clean-checkout gate. Browser confirms GitHub tbk0809, Vercel Hobby, existing Neon login with no projects; no cloud resource created.
+
+## Step 80: Accept fresh clean-checkout reproduction
+- Time: 2026-10-23 17:39:04 +08:00 (Asia/Kuala_Lumpur; verified UTC clock).
+- Phase: 1 Build
+- What I did: Reran the complete Git Bash gate in the preserved clean clone of8a27c5451bbb567f0bc1a8d69a2061f2555b7ccf with pinned Node and only private test configuration. Read final exit0 and all suite results; confirmed the source worktree is clean.
+- Why: Finish task9 with reproducible exact-source evidence before implementing CI.
+- Files created/changed: README,STATUS,AGENTS,GATES,CHANGELOG,task checklist,prompt audit,ERRORS,GIT_FILE; ignored clean-check-resume.log.
+- Commands run: host docker29.1.2; existing root Compose db/db-test healthy; clone bash check.sh: format/lint/typecheck/173unit/45PG/build/3Playwright; git status.
+- Result: PASS, zero skipped tests; baked8a27c54/dirty=false. Clone Compose pre-command correctly refused absent .env; existing containers were started from the parent private .env, and the actual gate passed. No development reset or production action.
+- Commit: documentation commit follows static review; HEAD8a27c54.
+- Problems / follow-ups: real OAuth remains separate. Step79 time17:40 was an approximate label entered ahead of the clock; this verified17:39:04 entry records the actual ordering. Start task10 after documentation commit.
+
+## Step 81: Finalize local handoff documentation and commit task9
+- Time: 2026-10-23 17:42 +08:00 (Asia/Kuala_Lumpur).
+- Phase: 1 Build
+- What I did: Updated README/current status/gates/checklist/prompt audit and unreleased changelog with the fresh clean-checkout evidence and remaining manual/cloud work. Reviewed tracked env/artifact scope and whitespace.
+- Why: Make the local result reproducible and leave an accurate starting point for Phase2.
+- Files created/changed: AGENTS.md,ERRORS.md,GATES.md,GIT_FILE.md,README.md,STATUS.md,CHANGELOG.md,docs/05-task-breakdown.md,docs/06-prompt-audit.md.
+- Commands run: pinned Prettier,format:check,lint,typecheck,diff checks; sandbox unit164pass/9failed due to blocked temp Git/junction/TCP; unchanged host rerun173/173pass.
+- Result: documentation/static/host unit checks pass; clean clone complete gate already passed inStep80. Only .env.example is tracked; private state/artifacts ignored. Sandbox failures remain real and do not replace host evidence.
+- Commit: task9 docs commit follows this entry.
+- Problems / follow-ups: Phase2 CI implementation dispatched; actual OAuth and deployment remain unverified.

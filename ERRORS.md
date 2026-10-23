@@ -63,3 +63,18 @@
 - `docker desktop start --detach` returned0, but host backend log at04:33:49 UTC confirms the same stale Docker/run/dockerInference socket startup crash recorded on2026-10-22. Recovery is limited to stopping the failed startup and preserving checked runtime directories as sibling backups; database volumes/images/WSL disks are outside that operation.
 - Sandbox Turbopack build failed creating a pg junction with Windows access denied. The exact empty-runtime-env build passed on the host; no package/config workaround was introduced.
 - Full integration/browser evidence is pending until the local engine is restored. These failures are not passing acceptance and are not evidence of an application transaction defect.
+
+## 2026-10-23 — Clean Windows checkout fails formatting because EOL was unspecified
+
+- A new clean local clone at440dcdf installed214 packages from lockfile/cache, then actual `bash check.sh` failed at format:check with106 tracked-file warnings. No later DB reset/test/build ran.
+- Read-only diagnosis: system Git has core.autocrlf=true. The committed .prettierrc.json blob is50bytes/4LF/0CRLF; the clean worktree is54bytes/4LF/4CRLF. Existing `* text=auto` left eol unspecified for ordinary source/config, while Prettier expects LF. The dedicated shell rule already produced LF.
+- Scoped fix: set the existing broad rule to `* text=auto eol=lf`, preserving shell/YAML/SQL rules. Do not change global Git configuration, format the failed clone, or treat a clean Git status as formatting evidence.
+- Follow-up: preserve failed clone, commit the policy fix after applicable checks, create a new clean clone of that SHA and rerun installation/full gate. Task9 remains in progress until actual GREEN.
+
+## 2026-10-23 — Repeated runtime socket failure on afternoon resume
+
+Host startup at09:34UTC reproduced dockerInference stale-socket failure. Stopped Docker, verified exact runtime paths contain only socket reparse entries, and preserved Docker/run plus docker-secrets-engine as sibling .habit-garden-backup-20261023-1740 directories. Existing backups, database volumes and images remain. Restart is being checked; this is not yet acceptance evidence.
+
+## 2026-10-23 — Documentation checkpoint sandbox test restrictions
+
+The unchanged173-case unit suite returned164pass/9fail in the sandbox: temporary Git config writes and junction creation were denied, and loopback readiness fixtures could not complete. The same suite passed173/173 on the host at17:42MYT. Format,lint,typecheck and diff checks passed; no test or application workaround was introduced.

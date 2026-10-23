@@ -1,6 +1,6 @@
 # Phase 0 — Ordered implementation checklist
 
-Status: **entry approval granted; tasks1–7 local implementation reviewed; task8 local acceptance in progress (2026-10-23)**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
+Status: **entry approval granted; tasks1–7 local implementation reviewed; task8 automated local acceptance passed; task9 documentation/reproduction passed (2026-10-23)**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
 
 ## Entry gate and execution rules
 
@@ -81,17 +81,17 @@ Future commands: format/lint/typecheck + `npm test`, DB-free build, completion/b
 
 ### 8. Complete responsive/accessibility states and e2e acceptance
 
-- [ ] Finish keyboard/focus/label/contrast/reduced-motion behavior, 320 px layout, day-rollover messaging, safe unavailable/retry state, archived removal, and garden unlock feedback.
-- [ ] Implement three Playwright journeys from `02-architecture.md` using isolated real DB session fixtures. Cover UI refresh/idempotence, archive retention, owner isolation, and keyboard/narrow-screen use.
-- [ ] Add or finalize `check.sh` aggregate gate; perform the real local OAuth/manual smoke if credentials are supplied. Record manual vs automated evidence distinctly.
+- [x] Finish keyboard/focus/label/contrast/reduced-motion behavior, 320 px layout, day-rollover messaging, safe unavailable/retry state, archived removal, and garden unlock feedback.
+- [x] Implement three Playwright journeys from `02-architecture.md` using isolated real DB session fixtures. Cover UI refresh/idempotence, archive retention, owner isolation, and keyboard/narrow-screen use.
+- [x] Add or finalize `check.sh` aggregate gate; perform the real local OAuth/manual smoke if credentials are supplied. Record manual vs automated evidence distinctly.
 
 Future commands: `npm run format:check`, `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`, `npm run test:e2e`, then `bash check.sh`. Proposed commit: `test: verify responsive habit and garden journeys`.
 
 ### 9. Finish local-run documentation and build handoff
 
-- [ ] Expand README with prerequisites, env meanings, local DB/migration/seed/run/test commands, safe rerun behavior, local OAuth setup, and troubleshooting drawn from actual results.
-- [ ] Record clean-clone local acceptance, dependency/version inventory, security boundaries, no-code deviations (if any), known issues, and next action in status/log/changelog.
-- [ ] Review the actual diff for secrets and scope drift. Run the full aggregate gate before claiming a working local app. An unavailable check remains a blocker, not a pass.
+- [x] Expand README with prerequisites, env meanings, local DB/migration/seed/run/test commands, safe rerun behavior, local OAuth setup, and troubleshooting drawn from actual results.
+- [x] Record clean-clone local acceptance, dependency/version inventory, security boundaries, no-code deviations (if any), known issues, and next action in status/log/changelog.
+- [x] Review the actual diff for secrets and scope drift. Run the full aggregate gate before claiming a working local app. An unavailable check remains a blocker, not a pass.
 
 Future commands: `git diff --check`, working-tree/secret review, `bash check.sh`. Proposed commit: `docs: document verified local setup and acceptance`.
 
@@ -134,4 +134,4 @@ Future verification: actual workflow/deployment links and read-only live checks 
 
 ## Phase 0 exit status
 
-Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–7 local code is implemented and reviewed; continue at task8 local acceptance. Actual GitHub OAuth remains a separate pending manual gate. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.
+Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–7 local code is implemented and reviewed; continue at task9 documentation and clean-checkout reproduction. Actual GitHub OAuth remains a separate pending manual gate. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.

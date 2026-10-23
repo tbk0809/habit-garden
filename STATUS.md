@@ -1,31 +1,31 @@
 # Current status
 
 - Project: Habit Tracker That Grows a Garden.
-- Version: `v0.1-build` (local implementation in progress; no release).
-- Current step: `5_前端生成代码` / Phase 1 task8, formal local acceptance.
-- Current objective: complete three Playwright journeys, safe status/readiness endpoints and the fail-fast aggregate check.sh gate; task7 completion/garden is accepted.
-- User approval: explicitly granted 2026-10-22 for Phase 0/P0/AC01–AC12/dependency proposals and starting code; personal noncommercial use confirmed; personal public source repository publication authorized. Do not ask again for these decisions.
-- Scaffold/domain `3f27cfe` passed independent review. Database foundation `c152076` and layout correction `9b4f151` passed independent spec/quality review. After the move, 110 unit cases, 13 real PostgreSQL integration cases, format/lint/typecheck, migration metadata and DB/OAuth-free build passed. Development migration returned0 and safe seed replay passed; SQL bytes/hash stayed unchanged. Auth/onboarding implementation cca18c9 has132 unit/23 real-PG cases, static checks, credential-free build and scoped Edge smoke passing; independent spec/quality review PASS. Task6 implementation8bb13ab has150unit/32realPG, static/build and scoped habit-browser smoke passing; independent spec/quality review PASS after long-title wrap fix7ab8519. Task7 completion/garden is accepted in20058c3 with151unit/45PG/static/build/browser evidence; formal e2e/gates are now in progress, workflows and deployment remain unstarted.
-- Git: independent project repository on `codex/habit-garden`; latest application commit `20058c3` (atomic completion and four-slot garden), independently reviewed. No remote or push. Host Git/Bash work; sandbox .git writes require host execution.
+- Version: `0.1.0`, unreleased local build.
+- Current step: Phase 2 task 10, implement and verify unprivileged CI.
+- Phase 1: tasks 1–9 implemented/documented; real GitHub OAuth acceptance remains open.
+- Accepted source: `8a27c5451bbb567f0bc1a8d69a2061f2555b7ccf`, including the Windows LF checkout fix. Tasks 1–8 received independent review.
+- Authorization: Phase 0/P0/AC01–AC12, existing dependencies, coding, personal/noncommercial use and personal public-source publication were approved on 2026-10-22. The user requested all remaining work on 2026-10-23.
+- Git: local `codex/habit-garden`; no remote or push yet.
 - Live URL: none.
-- Fresh recovery audit (2026-10-23): compared the original prompt with source and Git. Using project-local Node24.22.1, the existing 110 domain/database/environment unit cases and 13 real PostgreSQL integration cases pass again; Drizzle metadata check passes. Independent source review found no foundation blocker. The interrupted task5 RED stub was subsequently replaced in cca18c9; foundation results alone do not cover auth/onboarding or future feature transactions.
-- Dependency audit: production-only0 findings; full audit8 development-tool nodes (4 high/4 moderate) across braces/esbuild advisory chains, with actual usage/limits recorded in docs/07-dependency-pins.md. No blind major downgrade or override applied.
-- Local PostgreSQL: official 17.11 image pinned by digest; healthy project dev port55434/test port55433, separate named volumes. Development migration applied and guarded seed ran twice without resetting or overwriting development data. Ignored local credentials exist; no real GitHub OAuth configuration or cloud DB is claimed.
 
-Start with [README.md](README.md) for document links. [PRD.md](PRD.md) separates requirements, proposed defaults, exclusions, and acceptance. Detailed decisions live in `docs/00` through `docs/05`; [prompt audit](docs/06-prompt-audit.md) maps the original requirements to current evidence and remaining work. [GIT_FILE.md](GIT_FILE.md) records actions and the interrupted environment setup detour without rewriting history.
+## Verified local evidence
 
-## Verification evidence and limits
+On 2026-10-23 at 17:39 MYT, the clean checkout of `8a27c54` completed the full Git for Windows `bash check.sh`: format, lint, strict typecheck, **173 unit tests**, **45 real PostgreSQL integration tests**, credential-free production build and **3 Playwright journeys**, exit 0 with no skips. The build reports the full source SHA and `sourceDirty=false`; Git status is clean. Its prior lockfile-only install added 214 packages. The failed `440dcdf` checkout and its CRLF diagnosis remain preserved.
 
-Fresh task7 verification (2026-10-23): format/lint/typecheck/diff,151unit tests,45real PostgreSQL integration cases and strict empty-runtime-env host build pass. Scoped completion browser smoke passes pending/no optimistic reward, unlock live feedback, lost-response idempotent retry, stale-day refresh requiring a new deliberate click, stage feedback and320px/desktop. Independent review passed after one accessible garden-announcement fix. Formal three-journey browser acceptance, `bash check.sh`, actual GitHub OAuth, CI and deployment remain unperformed. Do not mark the product complete.
+Browser coverage includes real database sessions, expiry/sign-out, timezone onboarding, validation focus, pending without premature rewards, unlock/stage feedback, refresh, dropped-response idempotence, stale-day rejection, archive retention, ownership, keyboard and 320px layout, contrast and reduced motion. Status resists runtime/request SHA spoofing; readiness returns 200 with DB and generic 503 without it. These fixtures do not verify GitHub's provider exchange.
 
-Host Git and Git Bash work outside the sandbox; a separate project repository is established. Project-local Node 24.22.1 is checksum-verified and pinned without changing system Node. Docker's stale runtime socket directories were preserved as backups; the engine returned `29.1.2 linux`, and project PostgreSQL/migration/integration checks now pass. See [ERRORS.md](ERRORS.md) for historical failures and repair evidence.
+The runtime is Node 24.22.1/npm 11.19.1, PostgreSQL 17.11 digest-pinned, and installed Edge on Windows. Development/test ports are 55434/55433. Only the guarded `habit_garden_test` schema is rebuilt by tests. The afternoon Docker startup again hit stale runtime sockets; checked socket-only directories were preserved as sibling backups, after which engine 29.1.2 and both existing containers became healthy. No volume/image/WSL database reset occurred. See [ERRORS](ERRORS.md).
 
-The preferred Neon Free terms are sourced, but actual account provisioning has not occurred. The 2026-10-22 review corrected a Marketplace-terms misreading and confirmed public all-plan automation bypass availability; actual project configuration/access remains unverified. Vercel standalone no-card project creation remains unverified. The user authorized a personal public source repository; no remote, push, or source publication has occurred yet.
+## Remaining work
 
-## Next action
+1. Implement CI, publish the authorized personal repository, and verify actual PR/main runs.
+2. Verify account plans/no-card project creation and configure protected production secrets.
+3. Implement and verify serialized migration, staged production smoke and same-deployment promotion.
+4. Verify real local/production OAuth and deliberate user-owned acceptance; record the live URL and seven-part handover.
 
-Follow task8 in [05-task-breakdown.md](docs/05-task-breakdown.md), then task9 local documentation/reproduction. Tasks1–7 implementation/review are complete. Browser and ops slices have disjoint ownership; one worker owns the disposable testDB/build/server while the ops slice prepares DB-free routes/gates. Actual provider OAuth needs a local GitHub OAuth app; database-session fixtures verify application paths separately. If a confirmed constraint conflicts with the design, return to the earliest affected decision for approval.
+Current browser inspection confirms GitHub `tbk0809`, Vercel workspace `tbk0809's projects` on Hobby, and an existing Neon account on Free ($0/month) with no projects. No new cloud resource, token, secret or repository has been created in this resumption. Public service terms were independently rechecked; account provisioning is not yet acceptance.
 
-Read-only cloud readiness (2026-10-22): Chrome verifies GitHub account `tbk0809` and an existing Vercel Hobby workspace. The advertised Vercel connector is unavailable; no GitHub/Neon connector or `gh` command is available. Neon console is not authenticated. No Habit Garden remote/project/secrets were created. The user explicitly chose to finish the local application first and handle Neon later; continue local work without repeating the login request. Git push credentials, new-project no-card behavior, billing settings, and scoped deployment secrets remain unverified.
+Private env files and browser state remain ignored. Historical dependency audit: production 0 findings, development 8 affected nodes; see the dated [dependency record](docs/07-dependency-pins.md). No fresh clean audit is claimed. The stopped quota-resume work remains stopped.
 
-The user stopped further quota-resume setup/diagnosis and requested returning to Habit Garden. Do not resume that detour automatically. Its partial environment results remain in the append-only log; no real recovery-cycle success is claimed.
+Start with [README](README.md), [prompt audit](docs/06-prompt-audit.md), [ordered tasks](docs/05-task-breakdown.md) and [GIT_FILE](GIT_FILE.md). A failed or unrun cloud check remains open even when local tests pass.
