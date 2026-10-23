@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      EXPECTED_SOURCE_SHA: ${{ github.sha }}
+    services:
+      postgres:
+        image: postgres:17-alpine@sha256:e4cb93687b062cd25a0e8f672d85a7708235009d70d31f8a7698d9370092a9c4
+        env:
+          POSTGRES_USER: habit_garden_migrator
+          POSTGRES_PASSWORD: ci-disposable-admin
+          POSTGRES_DB: habit_garden_test
+          RUNTIME_PASSWORD: ci-disposable-runtime
+        ports:
+          - "127.0.0.1:55433:5432"
+        options: >-
+          --health-cmd "pg_isready -U habit_garden_migrator -d habit_garden_test"
+          --health-interval 3s
+          --health-timeout 3s
+          --health-retries 20
+    steps:
+      - name: Check out the exact event commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Verify clean source identity
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SOURCE_SHA"
+          test -z "$(git status --porcelain)"
+
+      - name: Set up the reviewed Node patch
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.22.1"
+          package-manager-cache: false
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Initialize the disposable runtime role
+        env:
+          POSTGRES_CONTAINER: ${{ job.services.postgres.id }}
+        run: |
+          docker exec -i "$POSTGRES_CONTAINER" \
+            psql --no-psqlrc --set=ON_ERROR_STOP=1 \
+            -U habit_garden_migrator -d habit_garden_test < scripts/postgres-init.sql
+          umask 077
+          cat > .env.test <<'ENV'
+          TEST_DATABASE_URL=postgresql://habit_garden_migrator:ci-disposable-admin@127.0.0.1:55433/habit_garden_test
+          TEST_RUNTIME_DATABASE_URL=postgresql://habit_garden_runtime:ci-disposable-runtime@127.0.0.1:55433/habit_garden_test
+          ENV
+
+      - name: Install the locked Playwright browser
+        run: npx --no-install playwright install --with-deps chromium
+
+      - name: Run every local quality gate
+        id: gates
+        run: bash check.sh
+
+      - name: Verify the built source matches the tested commit
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from "node:assert/strict";
+          import { readFileSync } from "node:fs";
+          const built = JSON.parse(readFileSync(".next/required-server-files.json", "utf8")).config.env;
+          assert.equal(built.HABIT_GARDEN_BUILD_SOURCE_SHA, process.env.EXPECTED_SOURCE_SHA);
+          assert.equal(built.HABIT_GARDEN_BUILD_SOURCE_DIRTY, "false");
+          NODE
+          test -z "$(git status --porcelain)"
+
+      - name: Record the quality conclusion
+        if: always()
+        env:
+          QUALITY_RESULT: ${{ job.status }}
+          GATE_RESULT: ${{ steps.gates.outcome }}
+        run: |
+          {
+            printf '### Quality evidence\n\n'
+            printf -- '- Event SHA: `%s`\n' "$EXPECTED_SOURCE_SHA"
+            printf -- '- Aggregate gates: %s\n' "$GATE_RESULT"
+            printf -- '- Quality result: %s\n' "$QUALITY_RESULT"
+            printf -- '- Gate order: format, lint, types, unit, isolated PostgreSQL, credential-free build, browser journeys.\n'
+            printf -- '- No production secrets, browser state, traces, screenshots, database dumps or env files uploaded.\n'
+          } >> "$GITHUB_STEP_SUMMARY"

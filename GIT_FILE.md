@@ -857,3 +857,36 @@
 - Result: documentation/static/host unit checks pass; clean clone complete gate already passed inStep80. Only .env.example is tracked; private state/artifacts ignored. Sandbox failures remain real and do not replace host evidence.
 - Commit: task9 docs commit follows this entry.
 - Problems / follow-ups: Phase2 CI implementation dispatched; actual OAuth and deployment remain unverified.
+
+## Step 82: Resume task10 from the verified local handoff
+- Time: 2026-10-23 22:47 +08:00 (Asia/Kuala_Lumpur).
+- Phase: 2 CI-CD
+- What I did: Confirmed clean HEAD71a80e1, absent workflows and absent Git remote; read the ordered release design and test runners. Checked available cloud tools and browser access.
+- Why: Implement the approved CI contract using the existing isolated PostgreSQL/browser gate, then pursue the remaining release gates without repeating approval.
+- Files created/changed: GIT_FILE.md.
+- Commands run: git status/log/remote, routed documentation and script reads, official Actions release lookup, Vercel list-teams, browser GitHub inspection, sandbox Docker/Git Credential Manager probes.
+- Result: Vercel connector unavailable. This session's in-app browser shows GitHub signed out and exposes no previous browser tabs. Sandbox credential enumeration is denied and Docker engine is not yet reachable; host checks follow before attributing either to the account or machine.
+- Commit: none; starting HEAD71a80e1.
+- Problems / follow-ups: implement CI, verify host prerequisites and authenticated access. No CI/cloud/OAuth pass claimed.
+
+## Step 83: Implement unprivileged exact-source CI
+- Time: 2026-10-23 22:54 +08:00 (Asia/Kuala_Lumpur).
+- Phase: 2 CI-CD
+- What I did: Added PR/main quality workflow pinned to official checkout7.0.1/setup-node7.1.0 commits, Node24.22.1 and the existing PostgreSQL digest. It initializes only the disposable runtime role, runs check.sh, verifies the baked SHA/clean source, and publishes a credential-free summary without browser artifacts.
+- Why: Keep local and hosted gate behavior identical and deny production credentials to PR code. Official action tags were resolved with Windows TLS trust via a per-command Git setting, preserving certificate validation and global configuration.
+- Files created/changed: .github/workflows/ci.yml,GIT_FILE.md; ignored .superpowers/github-api.ps1 uses existing Credential Manager authentication without printing it.
+- Commands run: official tag ls-remote; pinned format/lint/type checks and git diff --check; host authenticated GitHub account/repository reads; Docker startup/log inspection.
+- Result: static checks pass. GitHub account tbk0809 has an existing public habit-garden repository; contents/history still require reconciliation before push. Docker repeated its stale socket failure; the checked run directory was preserved as run.habit-garden-backup-20261023-2253 and restart is pending.
+- Commit: none; HEAD71a80e1.
+- Problems / follow-ups: full local gate, workflow validation, remote history check and actual PR/main runs. No hosted CI success claimed.
+
+## Step 84: Pass the local CI checkpoint and reconcile the remote
+- Time: 2026-10-23 22:56 +08:00 (Asia/Kuala_Lumpur).
+- Phase: 2 CI-CD
+- What I did: Ran the complete host check.sh after restoring Docker; verified all173unit,45PostgreSQL and3Playwright cases passed with format/lint/types and credential-free build. Read GitHub repository metadata and empty refs; it is an existing public personal repository with no commits to overwrite.
+- Why: Establish local regression evidence and a safe publication target before exercising real PR/main CI. The user is restoring in-app browser sign-ins for later cloud work.
+- Files created/changed: CI implementation/status/design/checklist/README/CHANGELOG/ERRORS and this log; ignored ci-local-gate.log retained.
+- Commands run: docker compose --profile test up -d db-test; host bash check.sh exit0; authenticated GitHub repo/branches reads and TLS-verified ls-remote; tracked-history/env review and credential-signature scan.
+- Result: local gate PASS with zero skips. The working build reports HEAD71a80e1/dirty=true because the new workflow/docs are not yet committed; no clean-commit or hosted pass is inferred. Remote contains zero refs; history scan result is checked before publication.
+- Commit: task10 implementation commit follows final format/diff review.
+- Problems / follow-ups: publish baseline and CI branch, open CI PR, configure required quality protection, inspect real PR/main conclusions.

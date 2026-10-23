@@ -99,7 +99,7 @@ Future commands: `git diff --check`, working-tree/secret review, `bash check.sh`
 
 ### 10. Implement and verify unprivileged CI
 
-- [ ] Add PR/main `ci.yml` with exact SHA, pinned actions/Node, standard Linux runner, ephemeral PostgreSQL, all gates, DB-free build, Playwright, safe artifacts and timeouts.
+- [x] Add PR/main `ci.yml` with exact SHA, pinned actions/Node, standard Linux runner, ephemeral PostgreSQL, all gates, DB-free build, Playwright, safe summaries and timeouts (2026-10-23; actual hosted runs pending).
 - [ ] Create/select the authorized personal repository and push only when publication is explicitly authorized. Configure required quality checks/branch rules supported by the chosen visibility/free plan.
 - [ ] Verify real PR and main checks from workflow run URLs and exact SHAs; do not infer a pass from local tests or workflow syntax.
 
