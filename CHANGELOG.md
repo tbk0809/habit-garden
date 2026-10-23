@@ -6,4 +6,5 @@
 - Grow four authored SVG slots from atomic daily completion, with retained streaks/rewards and idempotent retries (`20058c3`).
 - Fix80-character narrow-screen titles and validation focus; announce garden totals, unlocks and stages (`7ab8519`, `20058c3`, `440dcdf`).
 - Add safe status/readiness, baked source identity, credential-free build and three formal browser journeys (`440dcdf`).
-- Verify the full local Bash gate:173unit,45real PostgreSQL and3browser tests. Clean-checkout reproduction is in progress; CI and deployment remain pending.
+- Verify the full local Bash gate:173unit,45real PostgreSQL and3browser tests, including clean-checkout reproduction at8a27c54.
+- Add pinned, read-only PR/main CI using the same full gate and exact build SHA verification. Hosted runs and production deployment are being verified separately.

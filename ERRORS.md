@@ -78,3 +78,9 @@ Host startup at09:34UTC reproduced dockerInference stale-socket failure. Stopped
 ## 2026-10-23 — Documentation checkpoint sandbox test restrictions
 
 The unchanged173-case unit suite returned164pass/9fail in the sandbox: temporary Git config writes and junction creation were denied, and loopback readiness fixtures could not complete. The same suite passed173/173 on the host at17:42MYT. Format,lint,typecheck and diff checks passed; no test or application workaround was introduced.
+
+## 2026-10-23 — Evening CI prerequisites
+
+The host again failed to start Docker at14:48UTC because the existing `Docker/run/dockerInference` socket could not be removed. With Docker stopped, both entries in the exact runtime directory were checked as zero-byte socket/reparse files. The directory was preserved as `run.habit-garden-backup-20261023-2253`; engine29.1.2 then started and the existing test container ran. No database, volume, image or WSL disk was reset.
+
+GitHub HTTPS through Git's OpenSSL backend could not verify the local issuer. The same official tag lookup passed using `git -c http.sslBackend=schannel`, which uses the Windows trust store and retains TLS certificate verification. No global Git configuration changed. Sandbox Credential Manager access was denied; the host read-only probe authenticated tbk0809 successfully. The Vercel connector is unavailable and this chat's in-app browser starts signed out of all three services; the user is restoring browser logins while local/CI work continues.

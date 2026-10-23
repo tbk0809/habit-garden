@@ -1,6 +1,14 @@
 # Phase 0.4 — CI/CD and release design
 
-Status: proposal awaiting Phase 0 approval. Date: 2026-10-21, Asia/Kuala_Lumpur. No workflow, repository, secrets, migration runner, or deployment has been configured.
+Status: approved design; task10 quality workflow implemented on 2026-10-23, hosted verification pending. Original design date: 2026-10-21, Asia/Kuala_Lumpur. Production configuration and deployment remain pending.
+
+## Implementation checkpoint — 2026-10-23
+
+`.github/workflows/ci.yml` runs the existing `bash check.sh` on Ubuntu24.04 for every PR and main push. It uses checkout7.0.1 (`3d3c42e5aac5ba805825da76410c181273ba90b1`), setup-node7.1.0 (`949feb2413d6458794dcd2491c4babbbce0c15c1`), Node24.22.1, and the Compose PostgreSQL digest. The official action tags and setup-node inputs were checked during implementation. Both actions run with read-only repository permissions; checkout credentials and dependency caching are disabled.
+
+Only the ephemeral `habit_garden_test` service is initialized. The existing test runner owns reset, migration/no-op verification and runtime-role tests. Build and e2e keep their existing credential and target guards. The workflow also checks the artifact's baked SHA and clean source against the event SHA (the synthetic merge commit for a PR).
+
+Test output stays in job logs and a compact workflow summary; no artifact upload is configured. This deliberately avoids publishing browser cookies/state/traces or SQL/env files. The job has a20-minute deadline. Task12 will add the trusted production handoff after actual quality/account gates pass. The public personal repository `tbk0809/habit-garden` was found empty with admin/push permission; publication and actual run URLs are recorded separately when verified.
 
 ## Preconditions and free-plan boundary
 

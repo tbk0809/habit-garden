@@ -2,11 +2,11 @@
 
 - Project: Habit Tracker That Grows a Garden.
 - Version: `0.1.0`, unreleased local build.
-- Current step: Phase 2 task 10, implement and verify unprivileged CI.
+- Current step: Phase 2 task10, quality workflow implemented; verify local gates and real PR/main runs.
 - Phase 1: tasks 1–9 implemented/documented; real GitHub OAuth acceptance remains open.
 - Accepted source: `8a27c5451bbb567f0bc1a8d69a2061f2555b7ccf`, including the Windows LF checkout fix. Tasks 1–8 received independent review.
 - Authorization: Phase 0/P0/AC01–AC12, existing dependencies, coding, personal/noncommercial use and personal public-source publication were approved on 2026-10-22. The user requested all remaining work on 2026-10-23.
-- Git: local `codex/habit-garden`; no remote or push yet.
+- Git: local `codex/habit-garden`; verified existing empty public `tbk0809/habit-garden`, with admin/push access. Remote/push verification follows.
 - Live URL: none.
 
 ## Verified local evidence

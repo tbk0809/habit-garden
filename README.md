@@ -81,7 +81,9 @@ All private operations derive ownership from an unexpired session and validate i
 
 ## CI/CD and remaining manual work
 
-Phase2 is pending: no workflow, remote publication, production migration, cloud project or deployment has been verified. The approved design proposes a personal public repository, independently provisioned Neon Free and Vercel Hobby for personal/noncommercial use. Actual account permissions, current free/no-card terms, secrets and onboarding must be verified before provisioning. No card, paid plan, trial or Marketplace billing is authorized.
+The quality workflow is implemented in [.github/workflows/ci.yml](.github/workflows/ci.yml): every PR and main push runs `bash check.sh` on Ubuntu24.04 with the pinned Node and disposable PostgreSQL service. It checks the exact event/build SHA, uses read-only repository permissions, and uploads no browser state or secret-bearing artifacts. Actual hosted results are recorded in [STATUS](STATUS.md); local success alone does not verify CI.
+
+Production migration, cloud projects and deployment remain unverified. The approved services are a personal public repository, independently provisioned Neon Free and Vercel Hobby for personal/noncommercial use. Actual account permissions, current free/no-card terms, secrets and onboarding must be verified before provisioning. No card, paid plan, trial or Marketplace billing is authorized.
 
 The next manual application check is local OAuth registration/configuration and the real sign-in/sign-out round trip. Later cloud work needs production OAuth and DB credentials, GitHub/Vercel secrets and actual exact-SHA pipeline/deployment evidence. Enter credentials privately; public source and logs must contain placeholders only. The historical audit has0 production and8 development-tool affected nodes; see the dated [dependency record](docs/07-dependency-pins.md), not a claim of a fresh audit.
 
