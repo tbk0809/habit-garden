@@ -1,6 +1,6 @@
 # Phase 0 — Ordered implementation checklist
 
-Status: **entry approval granted; tasks1–6 local implementation reviewed; task7 completion/garden in progress (2026-10-23)**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
+Status: **entry approval granted; tasks1–7 local implementation reviewed; task8 local acceptance in progress (2026-10-23)**. Original plan date: 2026-10-21, Asia/Kuala_Lumpur. Authorization comes from the user's explicit responses, not from this checklist's existence. No working application is claimed yet.
 
 ## Entry gate and execution rules
 
@@ -73,9 +73,9 @@ Future commands: format/lint/typecheck + `npm test`; scoped browser smoke. Propo
 
 ### 7. Implement atomic completion and fixed-slot garden
 
-- [ ] Implement the exact completion protocol: user lock → post-lock DB clock → authoritative local date → stale-date guard → duplicate check before archive rejection → insert → streak/total/unlock → commit.
-- [ ] Add real concurrency/rollback/midnight tests, including different-habit same-user work, archive-first/complete-first, duplicate-after-archive, lost-response next-day retry, timezone DST conversion, and cache reconstruction checks.
-- [ ] Return consistent authoritative projections and revalidate authenticated UI. Render four fixed authored SVG slots and accessible stage/progress text. Disable repeated submit while pending and retain DB idempotence.
+- [x] Implement the exact completion protocol: user lock → post-lock DB clock → authoritative local date → stale-date guard → duplicate check before archive rejection → insert → streak/total/unlock → commit.
+- [x] Add real concurrency/rollback/midnight tests, including different-habit same-user work, archive-first/complete-first, duplicate-after-archive, lost-response next-day retry, timezone DST conversion, and cache reconstruction checks.
+- [x] Return consistent authoritative projections and revalidate authenticated UI. Render four fixed authored SVG slots and accessible stage/progress text. Disable repeated submit while pending and retain DB idempotence.
 
 Future commands: format/lint/typecheck + `npm test`, DB-free build, completion/browser journey. Proposed commit: `feat: grow the garden from atomic daily completions`.
 
@@ -134,4 +134,4 @@ Future verification: actual workflow/deployment links and read-only live checks 
 
 ## Phase 0 exit status
 
-Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–6 local code is implemented and reviewed; continue at task7. Actual GitHub OAuth remains a separate pending manual gate. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.
+Phase 0 produced and reviewed the six design documents. User approval was granted 2026-10-22. Tasks1–7 local code is implemented and reviewed; continue at task8 local acceptance. Actual GitHub OAuth remains a separate pending manual gate. Scaffold/domain/database checks have run, while complete local acceptance, actual GitHub OAuth, CI and deployment remain pending. Public-source and personal/noncommercial use are approved. Exact dependency versions and local runtime are established; Vercel no-card provisioning remains unverified.

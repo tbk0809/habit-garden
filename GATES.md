@@ -1,6 +1,6 @@
 # Habit Garden — acceptance gates
 
-Updated: 2026-10-23, Asia/Kuala_Lumpur. P0 and AC01–AC12 are approved. Tasks2–4 have scoped format/lint/typecheck/unit/real-PostgreSQL/build evidence in [STATUS](STATUS.md) and [GIT_FILE](GIT_FILE.md). **The complete application gate remains pending: `check.sh` and browser journeys do not yet exist, and real OAuth, CI and deployment have not passed.** The requirements below define the remaining acceptance evidence.
+Updated: 2026-10-23, Asia/Kuala_Lumpur. P0 and AC01–AC12 are approved. Tasks1–7 are reviewed; task7 has fresh151unit/45real-PostgreSQL/static/build/scoped-browser evidence in [STATUS](STATUS.md) and [GIT_FILE](GIT_FILE.md). **The complete application gate remains pending: `check.sh` and browser journeys do not yet exist, and real OAuth, CI and deployment have not passed.** The requirements below define the remaining acceptance evidence.
 
 ## Local prerequisites and command contract
 

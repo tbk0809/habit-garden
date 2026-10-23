@@ -582,3 +582,124 @@
 - Result: Task6 is complete and independently clean after fix round1/5.150unit/32PG service evidence is unchanged; affected format/lint/type/build and browser regression passed after CSS-only logic change. No extra broad tests were repeated. Task7 will parallelize independent server transaction/tests and a presentation-only SVG component, then run one integrated gate and independent task review; this adapts the single-worker skill default to the active parallel-delegation instruction without bypassing linear task acceptance.
 - Commit:7ab8519bcc3d120de64955117ded30cb9242f642 — fix: wrap long habit titles on narrow screens; root progress commit follows scoped checks.
 - Problems / follow-ups: implement/review task7 before full browser/check.sh acceptance. SVG consumes only approved DTOs; no client-authoritative growth or new dependency. Actual OAuth and cloud gates remain pending.
+
+## Step 57: Commit habit acceptance records and start parallel task7 work
+- Time: 2026-10-23 02:50:24 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Committed the current acceptance/status records and dispatched separate task7 server/test and SVG presentation workers with disjoint file ownership. The visual worker returns an uncommitted component; root transfers it explicitly, and the main worker runs integrated gates and commits the coherent task only after both are ready.
+- Why: The SVG consumes the existing approved DTO and can be authored independently of the completion transaction, reducing wait without bypassing the reviewed task6 dependency.
+- Files created/changed: seven records in6819b50; GIT_FILE.md; ignored task7 backend and garden briefs/report targets/ledger.
+- Commands run: scoped document formatting and git diff checks; scoped git commit; isolated-context agent dispatch with explicit Node24/testDB/ownership/no-new-dependency boundaries.
+- Result:6819b50 created; completion_services owns all DB use and server/UI integration. garden_visual owns only garden.tsx/garden.module.css and uses no DB. Both use exact API and approved DTO authority. Task7 has no passing implementation evidence yet.
+- Commit:6819b50 — docs: accept habit review and advance to garden completions; task7 BASE6819b50.
+- Problems / follow-ups: finish task7, integrated real-PG/browser/build checks and independent review before task8. Keep production clock/session behavior unchanged by test fixtures; actual provider/cloud gates remain pending.
+
+## Step 58: Transfer the completed SVG presentation to the completion integrator
+- Time: 2026-10-23 02:54:22 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Read the garden worker report and owned component/CSS, then explicitly transferred the frozen two files to completion_services for dashboard wiring, integrated verification and the coherent task7 commit. Corrected two small status/README duplicate phrases and the next-action pointer after the milestone update.
+- Why: Parallel presentation work must have a clear handoff so the backend worker cannot commit files another agent is still changing. Its scoped checks do not establish integrated app acceptance.
+- Files created/changed: uncommitted src/features/garden/garden.tsx and garden.module.css; STATUS.md, README.md, GIT_FILE.md; ignored presentation report/ledger.
+- Commands run: garden worker owned Prettier/ESLint/tsc checks; root report/source inspection; pinned root document formatting and transfer message. No DB/browser action by visual worker.
+- Result: agreed Garden DTO API, four authored static SVG kinds/stages, locked-threshold and equivalent text are implemented. Visual files are frozen and now integrator-owned. Their initial node_modules-bin checks are scoped evidence; final pinned Node24 full gates and real-projection browser screenshots remain required. No client clock/reward state or new dependency.
+- Commit: none for presentation alone; task7 integrator owns final combined commit, BASE6819b50.
+- Problems / follow-ups: finish atomic transaction/test code, integrate SVG and verify real snapshots/320px; root then inspects screenshots and dispatches independent task review. Full local/provider/cloud gates remain pending.
+
+## Step 59: Prepare the local OAuth handoff while completion work continues
+- Time: 2026-10-23 02:56:56 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Used the existing Chrome browser session to inspect GitHub OAuth settings and verified the signed-in account as tbk0809. The account displayed No OAuth apps. Prepared, but did not submit, a local app form with name Habit Garden Local, homepage localhost:3000 and callback /api/auth/callback/github; left wildcard/device-flow disabled and token expiry at its default.
+- Why: Actual provider acceptance remains required after local code; a concrete prepared form makes the eventual user/approval step precise while allowing all independent local implementation to continue first.
+- Files created/changed: GIT_FILE.md; browser-only unsubmitted form at GitHub settings/applications/new, marked for later handoff. No app, key, permission or cloud resource was created.
+- Commands run: browser tool inventory; direct official OAuth settings navigation; visible form field entry; user-navigation identity read; form handoff mark. No credential values were read or transmitted.
+- Result: current GitHub account access is verified and the missing local OAuth app is confirmed. Browser confirmation rules require action-time confirmation/user handoff for creating security-sensitive credentials/access; that final step remains pending after independent local work. Neon setup remains deferred as requested.
+- Commit: none for read-only/preparatory external inspection; task7 implementation remains in progress.
+- Problems / follow-ups: finish local transaction/UI/e2e/gates first; then obtain the required concrete OAuth registration/credential handoff and run real provider round trip. No repeated Phase0/source/dependency approval requested.
+
+## Step 60: Prepare the remaining local acceptance contract
+- Time: 2026-10-23 03:02:25 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Added the existing operational endpoint and three-journey requirements to the future task8 brief, explicitly preserving real suites, bounded read-only readiness, baked source identity and credential-free build. Inspected the installed GitHub provider for the concrete private-email/minimal-scope risk: its optional email lookup checks res.ok before use, so no source change was needed.
+- Why: The aggregate gate must exercise the completed app and verified source instead of passing placeholder scripts or accidentally depending on runtime credentials. Preparation is read-only guidance until task7 passes review.
+- Files created/changed: GIT_FILE.md; ignored task8 brief. No app/source/DB or public design change.
+- Commands run: scoped CI/CD health/source-SHA references and current task8 brief; installed @auth/core GitHub provider/source config inspection; exact brief append.
+- Result: required /api/status and /api/ready behavior is traced to approved FRONTEND_HANDOFF, not new scope. No task8 implementation started. Task7 worker reports ongoing real-PG GREEN cases and has integrated completion UI/Garden; final aggregate and browser evidence remain pending.
+- Commit: none for acceptance preparation; task7 BASE6819b50 remains current committed checkpoint.
+- Problems / follow-ups: finish/review task7, then actual Playwright target/check.sh/operational routes and clean local documentation acceptance. OAuth app registration and real callback still need concrete final handoff; cloud work remains deferred.
+
+## Step 61: Inspect the integrated garden screenshots and resolve the test-order boundary
+- Time: 2026-10-23 03:05:32 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Inspected the task7 desktop and320px screenshots from real isolated-session browser runs. Accepted the proposed scoped TEMP VIEW correction for the older missing-catalog onboarding test, whose direct catalog deletion now conflicts with legitimately retained cherry rewards from new threshold fixtures; requested final strict empty-env build evidence.
+- Why: Validate text/SVG correspondence and narrow layout while preserving all real catalog/reward data and distinguishing a fixture-order issue from a production bug.
+- Files created/changed: GIT_FILE.md; worker-owned pending task7 code/tests and screenshots. No root app edits.
+- Commands run: view_image on task-7-desktop.png and task-7-320.png; worker coordination on test isolation and DATABASE_URL/AUTH_SECRET/GitHub/AUTH_URL blank overrides.
+- Result: inspected total5 Clover seedling/Daisy sprout/two locked slots, and total8 Clover growing/Daisy seedling/two locked slots, consistent with approved thresholds/stages.320px screenshot has readable stacked content. Browser paths report GREEN, but final full unit/PG/static/strict build and task review remain pending. Earlier full run was151unit and44/45PG with the isolated old fixture-order failure; it is not reported as an all-green pass. The scoped corrected onboarding check is GREEN with real catalog still4 and its admin connection closed in finally.
+- Commit: task7 implementation pending; no app acceptance/deployment claimed.
+- Problems / follow-ups: require final45PG/full gate and exact report, then independent review. Formal Playwright/check.sh/ops endpoints, actual OAuth and cloud gates remain later work.
+
+## Step 62: Resume from the actual working tree and audit the original prompt
+- Time: 2026-10-23 12:31:43 +08:00 (Asia/Kuala_Lumpur; verified UTC clock plus eight hours).
+- Phase: 1 Build
+- What I did: Compared the supplied original prompt with AGENTS, STATUS, prompt audit, Git history and the uncommitted task7 implementation. Started independent read-only completion review and local-acceptance gap audit; root owns fresh static/unit/PostgreSQL verification.
+- Why: Resume the existing implementation without repeating completed tasks or treating unfinished code and historical test counts as accepted work.
+- Files created/changed: GIT_FILE.md; existing task7 code preserved for review. No new dependency or external resource.
+- Commands run: routed state/spec/source/report reads; git status/diff/log/branch; project-local Node24.22.1 format/lint/typecheck and npm test started.
+- Result: tasks1–6 are reviewed milestones; task7 is uncommitted and not yet accepted. Task8 browser/check.sh, task9 reproducible documentation, real OAuth and Phase2 CI/CD/deployment remain open. Original audit contains some stale historical wording to correct after current verification.
+- Commit: none; HEAD6819b50, branch codex/habit-garden.
+- Problems / follow-ups: complete task7 verification/review before task8. Preserve local-first/Neon-later and stopped quota-resume boundaries; do not read or log secrets.
+
+## Step 63: Identify current host blockers and the scoped accessibility finding
+- Time: 2026-10-23 12:34:59 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Verified fresh static checks and151unit cases; traced integration failure from sandbox EACCES to host ECONNREFUSED and absent Docker engine. Started Docker, diagnosed its repeated stale runtime socket crash, and began stopping the failed startup. Independent review found oneP2 completion announcement gap; added browser assertions for authoritative totals/unlock/stage results before fixing UI.
+- Why: Distinguish environment failures from code and prove the accessibility regression before its minimal fix; preserve all existing DB data and runtime backups.
+- Files created/changed: tests/smoke/completions.browser.ts, ERRORS.md, GIT_FILE.md.
+- Commands run: pinned format/lint/typecheck (pass), npm test (151unit pass; PG unavailable); read-only host Docker/PG probes; Docker start/stop; scoped backend log read; strict blank DATABASE_URL/AUTH_SECRET/GitHub/AUTH_URL build (sandbox junction denial, host pass).
+- Result: no completion transaction/security finding; live garden announcement needs total and unlock/stage feedback. Host credential-free build passed. TestDB/browser remain pending; task7 not accepted.
+- Commit: none, HEAD6819b50.
+- Problems / follow-ups: complete checked reversible socket recovery, run RED browser assertion then fix/GREEN, fullPG verification and scoped re-review. Formal local gate/cloud/OAuth remain open.
+
+## Step 64: Restore the existing local database engine without resetting data
+- Time: 2026-10-23 12:36:58 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Verified the failed Docker startup processes and exact runtime-directory entries, stopped the failed backend/UI, and preserved Docker/run and docker-secrets-engine as sibling habit-garden-backup-20261023-1237 directories. Restarted Docker and the existing project db/db-test containers.
+- Why: The backend reproduced the previously diagnosed inaccessible socket failure. Checked zero-byte runtime entries support the same reversible repair; persistent storage is outside its scope.
+- Files created/changed: GIT_FILE.md; two external runtime backup directories retained, including all older backups. No Docker volume/image/WSL database data moved or deleted.
+- Commands run: native PowerShell exact path/parent/content/existing-backup checks and Move-Item; docker desktop start --detach; docker info; docker compose up -d db db-test; pinned real-PG integration runner.
+- Result: Docker29.1.2 responds and existing project containers run on55434/55433. Fresh completion cases including concurrency, midnight, deferred COMMIT rollback, unlocks and DST are passing; full integration summary still pending.
+- Commit: none; task7 remains in verification.
+- Problems / follow-ups: finish45PG summary; browser announcement RED/GREEN; fresh independent scoped re-review and task7 commit. No application/CI/deployment completion claim.
+
+## Step 65: Accept atomic completion and the accessible four-slot garden
+- Time: 2026-10-23 12:39:44 +08:00 (Asia/Kuala_Lumpur; verified clock).
+- Phase: 1 Build
+- What I did: Completed task7 verification and corrected the independentP2 so successful completion announces the authoritative garden total and newly unlocked/stage changes. Reproduced its browser RED before fixing; reviewed the final320px screenshot and obtained independent scoped finalPASS with zero open findings.
+- Why: Users must receive coherent persisted habit/garden state, including assistive-technology feedback, before formal acceptance work builds on these interfaces.
+- Files created/changed: task7 service/action/input/result/UI, two garden SVG/CSS files, validation/helper/integration/browser tests and scoped onboarding fixture correction; ignored full task7 report; GIT_FILE.md.
+- Commands run: pinned format/lint/typecheck/diff pass;151unit pass; host45/45 realPG pass; strict blank runtime-env host build pass; browser RED then GREEN with explicit NODE_ENV=test. Initial smoke omitted NODE_ENV and was correctly refused before DB access. Corrected one stage-test expectation after observing Clover already growing at total7; total8 correctly announces Daisy only.
+- Result: transaction/idempotence/midnight/archive/races/rollback/DST/unlocks/reconstruction and integratedSVG scope verified. Browser pending, lost response/retry, stale-day explicit resubmit, authoritative refresh and320px/desktop pass. No test clock/auth bypass in app; no new dependencies or migration. Task7 accepted; task8 remains next.
+- Commit: feature commit follows this accepted evidence; BASE6819b50.
+- Problems / follow-ups: formal three-journey Playwright/check.sh/ops endpoints and local docs, then actual OAuth/manual and cloud gates. No complete-application/deployment claim.
+
+## Step 66: Commit task7 and dispatch the local acceptance slices
+- Time: 2026-10-23 12:39:44 +08:00 (Asia/Kuala_Lumpur; latest verified clock; dispatch afterward).
+- Phase: 1 Build
+- What I did: Created task7's coherent feature commit and recorded the completed review/verification checkpoint. Prepared disjoint task8 browser and ops briefs; browser owner has exclusive testDB/build/server access, ops owner works DB-free and coordinates config/build, root merges package scripts and owns public records.
+- Why: Formal browser journeys and read-only health/source metadata can progress independently without racing the database, .next or shared package files.
+- Files created/changed: thirteen task7 files in20058c3; GIT_FILE.md and ignored task8 briefs/ledger.
+- Commands run: scoped git add/commit (initial sandbox index.lock denied; identical host local commit succeeded). No push/remote.
+- Result: task7 commit20058c32a9446af2994e94da9f10fefa8ea48aab — feat: grow the garden from atomic daily completions. Task8 is now in progress, not yet verified. Mandatory aggregate gate will remain failing until real constituent suites exist and pass.
+- Commit:20058c3.
+- Problems / follow-ups: integrated task8 checks/review, final source-SHA rebuild and task9 reproducible docs. Actual OAuth and cloud remain separate pending work.
+
+## Step 67: Align the current milestone and original-prompt gap map
+- Time: 2026-10-23 12:39:44 +08:00 (Asia/Kuala_Lumpur; latest verified clock; records afterward).
+- Phase: 1 Build
+- What I did: Updated AGENTS/STATUS/task checklist/README/GATES and rewrote the current prompt audit around accepted task7 evidence and actual remaining work. Removed stale claims that auth was uncommitted and only database-foundation tests existed.
+- Why: The user asked both where the project stands and which original requirements remain; the next session must recover that answer without relying on old chat summaries.
+- Files created/changed: AGENTS.md, STATUS.md, README.md, GATES.md, docs/05-task-breakdown.md, docs/06-prompt-audit.md, GIT_FILE.md.
+- Commands run: independent read-only prompt audit, exact milestone edits; formatting/link checks follow before documentation commit.
+- Result: task8 in progress, task9/actual OAuth/Phase2 still open. Fresh151unit/45PG/build/scopedbrowser is separated from formal complete acceptance and historical dependency/free-tier records.
+- Commit: records pending; latest feature20058c3.
+- Problems / follow-ups: finish task8 integration/review, update final source metadata and task9 documentation; no cloud/provider completion inferred.

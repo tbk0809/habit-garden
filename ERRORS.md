@@ -56,3 +56,10 @@
 - **Local dev port conflict resolved:** the initial development port `55432` was occupied. The worker checked and used free loopback port `55434`; the separate test container uses `55433`. Current project Compose status confirms both mappings. No unrelated listener/container was stopped or changed.
 - **Document update context corrected:** a progress patch expected unpadded Markdown table rows after Prettier had aligned their cells. It failed verification without partial file edits. The coordinator updated the cell values, reran Prettier, and preserved append-only log history; no application code or behavior changed.
 - **Dependency install recovered:** the initial sandbox npm attempt stalled; an escalated public-registry attempt encountered `ECONNRESET`, then a bounded cached retry and clean `npm ci` succeeded. Exact pins/peer rules were preserved. Current known development-tool audit findings are recorded in `docs/07-dependency-pins.md`, not treated as a clean full audit.
+
+## 2026-10-23 — Resume verification environment failures
+
+- Fresh sandbox tests:151 unit cases passed; test-DB connection returned EACCES. Host probe returned ECONNREFUSED and Docker's Linux engine pipe was absent, establishing that the service was also stopped.
+- `docker desktop start --detach` returned0, but host backend log at04:33:49 UTC confirms the same stale Docker/run/dockerInference socket startup crash recorded on2026-10-22. Recovery is limited to stopping the failed startup and preserving checked runtime directories as sibling backups; database volumes/images/WSL disks are outside that operation.
+- Sandbox Turbopack build failed creating a pg junction with Windows access denied. The exact empty-runtime-env build passed on the host; no package/config workaround was introduced.
+- Full integration/browser evidence is pending until the local engine is restored. These failures are not passing acceptance and are not evidence of an application transaction defect.
