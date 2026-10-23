@@ -14,7 +14,13 @@ export function TimeZoneForm() {
   );
   const [pending, startTransition] = useTransition();
   const input = useRef<HTMLInputElement>(null);
+  const focusAfterPending = useRef(false);
   const router = useRouter();
+  useEffect(() => {
+    if (pending || !focusAfterPending.current) return;
+    focusAfterPending.current = false;
+    input.current?.focus();
+  }, [pending, result]);
   useEffect(() => {
     try {
       setSuggestion(Intl.DateTimeFormat().resolvedOptions().timeZone || null);
@@ -38,7 +44,7 @@ export function TimeZoneForm() {
           router.replace("/dashboard");
           router.refresh();
         } else if (response.error.code === "VALIDATION_ERROR")
-          input.current?.focus();
+          focusAfterPending.current = true;
       } catch {
         setResult({
           ok: false,

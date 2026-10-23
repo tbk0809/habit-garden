@@ -16,8 +16,8 @@
     "test:unit": "vitest run --project unit",
     "test:integration": "node --env-file=.env.test scripts/integration.ts",
     "test": "npm run test:unit && npm run test:integration",
-    "build": "next build",
-    "test:e2e": "node scripts/not-ready.ts e2e",
+    "build": "node scripts/build.ts",
+    "test:e2e": "node --env-file=.env.test --conditions=react-server scripts/e2e.ts",
     "db:migrate": "node --env-file=.env.local scripts/migrate.ts",
     "db:seed": "node --env-file=.env.local scripts/seed.ts"
   },
